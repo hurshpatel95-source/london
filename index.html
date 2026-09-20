@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260920-chelsea-guides">
+  <link rel="stylesheet" href="styles.css?v=20260920-secret-room">
 </head>
 <body>
   <a class="skip-link" href="#itinerary">Skip to itinerary</a>
@@ -102,8 +102,36 @@
     <p>London · 8–11 October 2026</p>
     <p><a href="https://www.pexels.com/photo/london-cityscape-460672/" target="_blank" rel="noopener">Photo: Pixabay / Pexels</a></p>
     <button type="button" id="print-button" class="text-button">Print this guide</button>
+    <div class="secret-entry">
+      <span>Not every door is on the map.</span>
+      <button type="button" id="secret-trigger" class="secret-trigger" aria-haspopup="dialog" aria-controls="secret-dialog" aria-label="Knock quietly to discover the hidden London bar guide"><span aria-hidden="true"></span><strong>Knock quietly</strong></button>
+    </div>
   </footer>
 
+  <dialog id="secret-dialog" class="secret-dialog" aria-labelledby="secret-title">
+    <div class="secret-door" aria-hidden="true"><span class="secret-door__panel"></span><span class="secret-door__knocker"></span></div>
+    <div class="secret-dialog__surface">
+      <button type="button" class="secret-close" aria-label="Close the secret room">×</button>
+      <section id="secret-riddle" class="secret-riddle">
+        <p class="secret-kicker">A London door with no sign</p>
+        <h2 id="secret-title" tabindex="-1">Answer the doorman</h2>
+        <p class="secret-verse" id="secret-verse">I have two banks, but not a penny.<br>I pass Westminster without a vote.<br>Your Saturday walk follows my lead.<br>What am I?</p>
+        <form id="secret-form" novalidate>
+          <label for="secret-answer">Whisper your answer</label>
+          <div class="secret-answer-row"><input id="secret-answer" name="answer" type="text" autocomplete="off" spellcheck="false" maxlength="80" aria-invalid="false" aria-describedby="secret-verse secret-error secret-hint-text"><button type="submit">Try the door</button></div>
+          <p id="secret-error" class="secret-error" aria-live="polite"></p>
+        </form>
+        <div class="secret-hints">
+          <button type="button" id="secret-hint">A quiet hint</button>
+          <p id="secret-hint-text" aria-live="polite"></p>
+          <button type="button" id="secret-skip" hidden>Ask the doorman</button>
+        </div>
+      </section>
+      <div id="secret-room"></div>
+    </div>
+  </dialog>
+
   <script src="app.js?v=20260920-chelsea-guides" defer></script>
+  <script src="speakeasy.js?v=20260920-secret-room" defer></script>
 </body>
 </html>
