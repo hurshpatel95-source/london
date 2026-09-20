@@ -1,11 +1,10 @@
-const POLL_URL = 'https://strawpoll.com/XOgOVx51rn3';
-const POLL_RESULTS_URL = 'https://strawpoll.com/XOgOVx51rn3/results';
-
 const BARS = [
   {
     id: 'connaught', rank: 6, name: 'Connaught Bar', area: 'Mayfair', address: 'The Connaught, Carlos Place, London W1K 2AL',
     source: 'https://www.maybourne.com/en/hotels/the-connaught/restaurants-bars/connaught-bar',
-    note: 'The classic Mayfair choice, known for its martini trolley. Walk-ins only; no reservations.',
+    ourTake: 'Best special-occasion choice if the famous bar experience matters most. Aim for Friday around 20:30 after the Covent Garden dinner; allow an estimated 25–35 minute walk or 15–25 minute taxi. More formal and splurgy.',
+    policy: 'Walk-ins only; no reservations.',
+    reviewSummary: 'The Infatuation’s February 2025 review highlights the theatrical martini trolley and elegant, conversation-focused atmosphere.', reviewSource: 'https://www.theinfatuation.com/london/reviews/the-connaught-bar', reviewLabel: 'The Infatuation · 6 Feb 2025',
     plans: {
       fri: { time: '20:30', fit: 'Best Friday fit', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' },
       sat: { time: '21:00', fit: 'Elegant, longer transfer', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' }
@@ -14,7 +13,9 @@ const BARS = [
   {
     id: 'satans', rank: 21, name: 'Satan’s Whiskers', area: 'Bethnal Green', address: '343 Cambridge Heath Road, London E2 9RA',
     source: 'https://www.satanswhiskers.com/', phone: '+442077398362', phoneLabel: '+44 20 7739 8362',
-    note: 'Neighbourhood cocktail bar with reservations recommended by phone; walk-ins are also accepted.',
+    ourTake: 'Best for a casual night with serious cocktails. Friday around 20:45 makes more sense than adding the East London detour after Dishoom; allow 25–40 minutes from Covent Garden and a longer trip back to Chelsea.',
+    policy: 'Reservations are recommended by phone; walk-ins are accepted.',
+    reviewSummary: 'Time Out’s July 2025 review praises adventurous cocktails, friendly staff and a relaxed neighbourhood feel, with hip-hop and quirky décor.', reviewSource: 'https://www.timeout.com/london/bars-and-pubs/satans-whiskers', reviewLabel: 'Time Out · 21 Jul 2025',
     plans: {
       fri: { time: '20:45', fit: 'East London wildcard', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Friday runs “a little later”' },
       sat: { time: '21:15', fit: 'For a livelier detour', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Saturday runs “a little later”' }
@@ -24,7 +25,9 @@ const BARS = [
     id: 'scarfes', rank: 31, name: 'Scarfes Bar', area: 'Holborn', address: 'Rosewood London, 252 High Holborn, London WC1V 7EN',
     source: 'https://www.rosewoodhotels.com/en/london/dining/scarfes-bar',
     policySource: 'https://scarfesbar.com/',
-    note: 'The easiest move after Dishoom. For a group of five, plan on a walk-in. If parents join and we’re six or more, contact the bar about a group reservation. Tables are normally allocated for 90 minutes; nothing is booked.',
+    ourTake: 'My overall pick for this itinerary: Saturday around 21:00 after Dishoom, an estimated 15–20 minute walk. Strong cocktails and atmosphere with the least extra travel; allow for a walk-in wait. Hotel-bar pricing and a possible queue are the tradeoffs.',
+    policy: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.',
+    reviewSummary: 'Time Out’s April 2025 review praises the inventive drinks, jazz and art-filled hotel-bar setting, and notes an evening queue.', reviewSource: 'https://www.timeout.com/london/bars-and-pubs/scarfes-bar', reviewLabel: 'Time Out · 16 Apr 2025',
     plans: {
       fri: { time: '20:30', fit: 'Excellent Friday alternative', travel: 'Est. 15–20 min walk from Covent Garden', status: 'Open · 16:00 till late' },
       sat: { time: '21:00', fit: 'Editor’s pick · best fit', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', recommended: true }
@@ -36,6 +39,57 @@ const NIGHT_META = {
   fri: { date: '20261009', label: 'Friday 9 October', rationale: 'The existing cocktail window begins around 20:00. The Connaught is the signature choice; Scarfes is an excellent, easier alternative from Covent Garden.' },
   sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Best overall fit: walk about 15–20 minutes from Dishoom to Scarfes for a suggested 21:00 arrival. It adds a world-ranked bar without moving dinner.' }
 };
+
+const SATURDAY_PUBS = [
+  {
+    name: 'Old Bank of England', address: '194 Fleet Street London EC4A 2LT', tag: 'Grand banking hall', hours: 'Saturday 11:00–23:00',
+    why: 'An ornate former Bank of England branch, used as a bank from 1888 to 1975.',
+    fit: 'Swap for The Blackfriar if this interior appeals more; they are an estimated 10–15 minute walk apart.',
+    dishoom: 'Est. 20–25 min', source: 'https://www.mcmullens.co.uk/local-pub/old-bank-of-england/', sourceLabel: 'Official pub details'
+  },
+  {
+    name: 'Seven Stars', address: '53 Carey Street London WC2A 2JB', tag: 'Quirky historic pub', hours: 'Saturday 12:00–23:00',
+    why: 'A tiny pub behind the Royal Courts of Justice, known for characterful rooms and its pub cat.',
+    fit: 'Swap for The Harp on the Fleet Street / Holborn route; space can be tight.',
+    dishoom: 'Est. 15–20 min', source: 'https://www.timeout.com/london/bars-and-pubs/seven-stars', sourceLabel: 'Time Out review & details · 15 Sep 2026'
+  },
+  {
+    name: 'Princess Louise', address: '208 High Holborn London WC1V 7EP', tag: 'Victorian interiors', hours: 'Saturday 12:00–23:00',
+    why: 'Ornate tiling, mirrors and glass-partitioned booths—the interior is the draw.',
+    fit: 'Swap for The Harp via Holborn if history and interiors sound better.',
+    dishoom: 'Est. 12–16 min', source: 'https://princesslouiseholborn.co.uk/about/', sourceLabel: 'Official pub details'
+  },
+  {
+    name: 'Porterhouse Covent Garden', address: '21–22 Maiden Lane London WC2E 7NA', tag: 'Livelier beer stop', hours: 'Saturday 12:00–00:00',
+    why: 'A multi-level beer bar with a broad selection—a modern contrast to the historic pubs.',
+    fit: 'Swap for The Harp or Lamb & Flag if a livelier bar appeals.', policy: 'Weekend walk-ins only; over 21s.',
+    dishoom: 'Est. 7–10 min', source: 'https://porterhouse.london/bookings/', sourceLabel: 'Official entry details'
+  },
+  {
+    name: 'Philomena’s', address: '40 Great Queen Street London WC2B 5AA', tag: 'Irish sports pub', hours: 'Saturday 10:00–01:00',
+    why: 'A choice for TV sports and pub atmosphere near dinner.',
+    fit: 'Swap for Lamb & Flag as the final stop; check what is showing on the day.', policy: 'First come, first served for sports events; no bookings.',
+    dishoom: 'Est. 8–12 min', source: 'https://www.philomenasbar.co.uk/', sourceLabel: 'Official pub details'
+  }
+];
+
+const BOROUGH_PICKS = [
+  { name: 'Monmouth Coffee Company', area: '2 Park Street', hours: 'Saturday 07:30–18:00', knownFor: 'Filter coffee and espresso', why: 'A market coffee institution and the natural first stop. Bring a reusable cup for takeaway; the trader does not use single-use paper cups.', when: '09:30 · first stop', source: 'https://boroughmarket.org.uk/traders/monmouth-coffee-company/' },
+  { name: 'Ginger Pig', area: 'Three Crown Square', hours: 'Saturday 09:00–17:00', knownFor: 'Pork sausage rolls', why: 'A classic, quick and shareable savoury choice. Hot-batch readiness varies.', when: 'Morning savoury option', source: 'https://boroughmarket.org.uk/traders/ginger-pig/' },
+  { name: 'Bread Ahead', area: 'Cathedral Street / Three Crown Square', hours: 'Saturday 09:00–17:00', knownFor: 'Filled doughnuts with changing flavours', why: 'Filled doughnuts are its best-known treat; flavours change.', when: 'Optional sweet pick', source: 'https://boroughmarket.org.uk/traders/bread-ahead-bakery-school/' },
+  { name: 'Kappacasein', area: '1 Stoney Street', hours: 'Saturday 09:00–17:00', knownFor: 'Cheese toasties and raclette over potatoes', why: 'A classic Borough Market savoury choice. Hot food depends on counter service that morning.', when: 'Morning savoury option', source: 'https://boroughmarket.org.uk/traders/kappacasein/' },
+  { name: 'The Black Pig', area: 'Borough Market Kitchen, Winchester Walk', hours: 'Saturday 09:00–17:00', knownFor: 'Honey, truffle and parmesan pork ciabatta', why: 'The heartier savoury choice for a larger appetite.', when: 'Larger-appetite option', source: 'https://boroughmarket.org.uk/traders/the-black-pig/' },
+  { name: 'Humble Crumble', area: 'Borough Market Kitchen', hours: 'Saturday 09:00–16:30', knownFor: 'Seasonal fruit crumble with vanilla custard or torched meringue', why: 'A dessert option for anyone who wants warm fruit and custard.', when: 'Optional sweet pick', source: 'https://boroughmarket.org.uk/traders/humble-crumble/' },
+  { name: 'Turnips', area: '43 Borough Market / Three Crown Square', hours: 'Saturday 09:00–17:00', knownFor: 'Chocolate strawberry cups', why: 'The vendor’s viral, photo-friendly hit. Strawberry availability varies with October stock.', when: 'Optional · check stock', source: 'https://www.turnipsboroughmarket.com/turnips-market/strawberries/', secondarySource: 'https://boroughmarket.org.uk/traders/turnips/' }
+];
+
+const BOROUGH_LATER_PICKS = [
+  { name: 'Brindisa', area: 'Outside the Stoney Street shop / Three Crown Square', hours: 'Saturday 09:00–17:00', knownFor: 'Hot chorizo and rocket rolls', why: 'A classic handheld lunch: spicy chorizo, sweet pepper and rocket. If chosen, prioritise it earlier in the afternoon because the rolls can sell out before the listed close.', source: 'https://boroughmarket.org.uk/traders/brindisa/' },
+  { name: 'JUMA', area: 'Borough Market Kitchen', hours: 'Saturday 10:00–17:00', knownFor: 'Handmade Iraqi kubba', why: 'Fried or braised stuffed dumplings, with lamb, rice and potato varieties highlighted in current coverage.', source: 'https://boroughmarket.org.uk/traders/kubba/' },
+  { name: 'Horn OK Please', area: 'Unit 55, Borough Market Kitchen, Jubilee Place', hours: 'Saturday 10:00–17:00', knownFor: 'Moong dal dosa and dosa chaat', why: 'Vegetarian Indian street food and a distinct savoury option among the market’s hot-food traders.', source: 'https://boroughmarket.org.uk/traders/horn-ok-please/' },
+  { name: 'Shuk', area: 'Borough Market Kitchen', hours: 'Saturday 09:00–17:00', knownFor: 'Middle Eastern stuffed pitas', why: 'Official examples include lamb sofrito with pickled red cabbage and fish tagine with amba tahini; fillings rotate.', source: 'https://boroughmarket.org.uk/traders/shuk/' },
+  { name: 'Gourmet Goat', area: 'Rochester Walk', hours: 'Saturday 09:00–17:00', knownFor: 'Greek Cypriot food and kid goat kofta pita', why: 'Look for the kofta pita highlighted in current coverage, alongside other seasonal dishes.', source: 'https://boroughmarket.org.uk/traders/gourmet-goat/' }
+];
 
 const DAYS = [
   {
@@ -56,16 +110,16 @@ const DAYS = [
       { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
       { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] } },
       { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Seven Dials London', tag: 'Venue TBD', summary: 'Dinner around Covent Garden or Seven Dials.' },
-      { start: '20:00', title: 'Cocktails', place: 'Mayfair, London', tag: 'Late', summary: 'Choose Mayfair polish or a Strand rooftop.', options: ['The Connaught Bar London', 'Red Room at The Connaught London', 'Radio Rooftop at ME London'], barsCta: true }
+      { start: '20:00', title: 'Cocktails', place: 'London', tag: 'Late', summary: 'Choose one of the three cocktail-bar options.', details: 'Friday recommendation: The Connaught around 20:30. Scarfes is a nearby alternative; Satan’s Whiskers is a longer East London outing.', barsCta: true }
     ]
   },
   {
     id: 'sat', date: '20261010', label: 'Saturday', theme: 'Markets, pubs & Dishoom',
     planningAlert: 'A relaxed crawl: two main pubs, one optional third stop, then the fixed 17:50 Dishoom arrival.',
-    planningNote: 'Aim for roughly 30–45 minutes per pub, but treat every time as a suggestion: skip anywhere busy or linger where the group is happy. The Blackfriar and Lamb & Flag are the main anchors; The Harp is optional if there is room. Pub stops are not booked. Parents and anyone else can join partway. Pub details checked 20 September 2026.',
+    planningNote: 'Aim for roughly 30–45 minutes per pub, but treat every time as a suggestion: skip anywhere busy or linger where the group is happy. The Blackfriar and Lamb & Flag are the main anchors; The Harp is optional if there is room. Pub stops are not booked; anyone can join partway. Pub details checked 20 September 2026.',
     routeStrip: 'The Blackfriar → The Harp (optional) → Lamb & Flag → Dishoom',
     events: [
-      { start: '09:30', end: '11:30', title: 'Borough Market breakfast', place: 'Borough Market', tag: 'Come hungry', summary: 'Coffee, sausage rolls, raclette and pastries.', details: 'Look for Monmouth coffee, Ginger Pig sausage rolls, raclette and whatever pastries catch the eye.', uid: '20261010-0@london-field-guide' },
+      { start: '09:30', end: '11:30', title: 'Borough Market breakfast', place: 'Borough Market', tag: 'Come hungry', summary: 'Start with Monmouth coffee, then choose Kappacasein or Ginger Pig; The Black Pig is the heartier alternative.', details: 'Borough Market’s published Saturday hours begin at 09:00. Our 09:30–11:30 visit fits the regular hours listed for all seven guide picks; prepared food, flavours and stock vary on the day.', source: 'https://boroughmarket.org.uk/visit-us/', sourceLabel: 'Official market hours', boroughGuide: true, uid: '20261010-0@london-field-guide' },
       { start: '11:30', end: '13:30', title: 'Thames & Tower Bridge walk', place: 'Tower Bridge', tag: 'Riverside walk', summary: 'Walk from Borough to Tower Bridge, cross the river and finish at Tower Hill for north-end views.', details: 'This is a free riverside walk; no paid tour is planned.', directions: { origin: 'Borough Market', destination: 'Tower Hill Station', mode: 'walking', waypoints: ['Tower Bridge'] }, uid: '20261010-1@london-field-guide' },
       { start: '13:30', end: '14:00', title: 'Tower Hill to Blackfriars', place: 'Blackfriars Station London', tag: '30-minute transfer budget', summary: 'Take the District or Circle line west from Tower Hill to Blackfriars.', details: 'Allow for the station walk and weekend service conditions.', directions: { origin: 'Tower Hill Station', destination: 'Blackfriars Station London', mode: 'transit' }, tfl: true, uid: 'saturday-towerhill-blackfriars-20261010@london-field-guide' },
       { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
@@ -77,7 +131,7 @@ const DAYS = [
   {
     id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles day & an early night',
     planningAlert: 'Passyunk is in Fitzrovia, central London—not near Tottenham Hotspur Stadium in north London. Allow an estimated 60–75 minutes between them by Tube and walking.',
-    planningNote: 'Passyunk is the chosen pregame stop, not a stadium fan zone or a short walk from the ground. Tailgate tickets are currently listed at £20 per person and are not booked; guests and parents can opt out and go directly to Tottenham. Suggested stadium entry is 13:45, 45 minutes before kickoff, with a target of being seated by 14:20. Target home remains 19:30–20:00.',
+    planningNote: 'Passyunk is the chosen pregame stop, not a stadium fan zone or a short walk from the ground. Tailgate tickets are currently listed at £20 per person and are not booked; anyone skipping it can go directly to Tottenham. Suggested stadium entry is 13:45, 45 minutes before kickoff, with a target of being seated by 14:20. Target home remains 19:30–20:00.',
     routeStrip: 'Chelsea → Passyunk, Fitzrovia → Tottenham stadium',
     alternative: true,
     events: [
@@ -101,6 +155,35 @@ const directionsUrl = ({origin, destination, mode = 'transit', waypoints = []}) 
   return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&travelmode=${mode}${points}`;
 };
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+function boroughGuideMarkup() {
+  return `<details class="borough-guide">
+    <summary><span>Borough food guide · 7 morning + 5 later</span><span aria-hidden="true">＋</span></summary>
+    <div class="borough-guide__inner">
+      <div class="borough-guide__intro">
+        <p><strong>Saturday 10 October · 09:30–11:30.</strong> Start with Monmouth coffee, then choose Kappacasein or Ginger Pig for breakfast. The Black Pig is the larger-appetite alternative. Browse the other well-known traders only if they appeal—these are choices, not a seven-stop challenge.</p>
+        <p class="borough-guide__combo"><strong>My morning pick:</strong> Monmouth + Kappacasein, or Monmouth + Ginger Pig for something quicker. Choose The Black Pig instead for a more substantial meal.</p>
+        <p>Published regular Saturday hours checked 20 September 2026. Prepared food and flavours depend on the day’s stock.</p>
+      </div>
+      <h4 class="borough-guide__section-title">Morning hit list · 7 choices</h4>
+      <div class="borough-pick-grid">${BOROUGH_PICKS.map(pick => `<article class="borough-pick">
+        <p class="borough-pick__when">${escapeHtml(pick.when)}</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
+        <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
+        <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a>${pick.secondarySource ? `<a href="${pick.secondarySource}" target="_blank" rel="noopener">Market listing <span aria-hidden="true">↗</span></a>` : ''}</div>
+      </article>`).join('')}</div>
+      <section class="borough-later" aria-labelledby="borough-later-title">
+        <h4 id="borough-later-title">Open later · savoury top hits</h4>
+        <p>“Open later” means these traders publish regular Saturday hours into the afternoon, before the market’s 17:00 close. Keep these options handy for lunch or afternoon food. Kitchen cutoffs are not separately published and stock varies.</p>
+        <div class="borough-pick-grid">${BOROUGH_LATER_PICKS.map(pick => `<article class="borough-pick">
+          <p class="borough-pick__when">Afternoon reference</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
+          <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
+          <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a></div>
+        </article>`).join('')}</div>
+      </section>
+      <p class="borough-guide__sources">Further reading: <a href="https://www.timeout.com/london/things-to-do/borough-market" target="_blank" rel="noopener">Time Out market guide · 25 Jun 2026</a> · <a href="https://www.timeout.com/london/restaurants/londons-best-bakeries" target="_blank" rel="noopener">Time Out bakery guide · 30 Jun 2026</a> · <a href="https://www.theinfatuation.com/london/guides/best-borough-market-restaurant-bars" target="_blank" rel="noopener">The Infatuation market guide · 22 Jul 2026</a>.</p>
+    </div>
+  </details>`;
+}
 
 function eventMarkup(event, dayId, index) {
   const detailId = `details-${dayId}-${index}`;
@@ -128,8 +211,28 @@ function eventMarkup(event, dayId, index) {
       <p class="event__summary">${escapeHtml(event.summary)}</p>
       <div class="event__links">${links}</div>
       ${expandedContent ? `<div class="event__details" id="${detailId}" hidden>${expandedContent}</div>` : ''}
+      ${event.boroughGuide ? boroughGuideMarkup() : ''}
     </article>
   </li>`;
+}
+
+function saturdayPubShortlistMarkup() {
+  return `<section class="pub-shortlist" aria-labelledby="pub-shortlist-title">
+    <header class="pub-shortlist__head">
+      <p class="eyebrow">Saturday swaps · details checked 20 September 2026</p>
+      <h3 id="pub-shortlist-title" tabindex="-1">More pubs to choose from</h3>
+      <p>Pick whichever appeals on the day—these are alternatives to the main crawl, not extra obligations. Two or three stops leave plenty of time; keep the 17:50 Dishoom arrival fixed.</p>
+      <p class="pub-shortlist__take"><strong>My picks:</strong> Old Bank or Princess Louise for interiors, Seven Stars for quirky character, Porterhouse for beer, and Philomena’s for a sports-pub atmosphere.</p>
+    </header>
+    <div class="pub-swap-grid">${SATURDAY_PUBS.map(pub => `<details class="pub-swap">
+      <summary><span><small>${escapeHtml(pub.tag)}</small><strong>${escapeHtml(pub.name)}</strong></span><span aria-hidden="true">＋</span></summary>
+      <div class="pub-swap__body">
+        <p>${escapeHtml(pub.why)}</p>
+        <dl><div><dt>Where it fits</dt><dd>${escapeHtml(pub.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(pub.hours)}</dd></div><div><dt>Walk to Dishoom</dt><dd>${escapeHtml(pub.dishoom)}</dd></div>${pub.policy ? `<div><dt>Entry</dt><dd>${escapeHtml(pub.policy)}</dd></div>` : ''}</dl>
+        <div class="pub-swap__links"><a href="${mapsUrl(pub.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${directionsUrl({origin: pub.address, destination: 'Dishoom Covent Garden', mode: 'walking'})}" target="_blank" rel="noopener">Walk to Dishoom <span aria-hidden="true">↗</span></a><a href="${pub.source}" target="_blank" rel="noopener">${escapeHtml(pub.sourceLabel)} <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </details>`).join('')}</div>
+  </section>`;
 }
 
 document.querySelector('#day-panels').innerHTML = DAYS.map((day, dayIndex) => `
@@ -138,21 +241,24 @@ document.querySelector('#day-panels').innerHTML = DAYS.map((day, dayIndex) => `
       <div><p>${day.label} · ${day.date.slice(6,8)} October</p><h2>${day.theme}</h2><span class="day-heading__zone">All times BST · London</span></div>
       <button class="day-calendar" type="button" data-calendar-day="${day.id}">Add day</button>
     </header>
-    ${day.planningNote ? `<aside class="sunday-note"><strong>${escapeHtml(day.planningAlert || 'Sunday pacing')}</strong>${day.routeStrip ? `<div class="route-strip">${escapeHtml(day.routeStrip)}</div>` : ''}<p>${escapeHtml(day.planningNote)}</p></aside>` : ''}
-    ${day.alternative ? `<details class="route-alternative"><summary>Skipping Passyunk? Go straight to Tottenham</summary><div><p>Guests or parents who opt out can leave Chelsea around 11:30. Allow 75–90 minutes via Victoria and Seven Sisters, including the walk, to arrive around 12:45–13:00.</p><p>Use any remaining time for quick food and photos, then keep the same suggested 13:45 entry. This replaces the Fitzrovia stop; it is not an extra detour.</p></div></details>` : ''}
+    ${day.planningNote ? `<aside class="sunday-note"><strong>${escapeHtml(day.planningAlert || 'Sunday pacing')}</strong>${day.routeStrip ? `<div class="route-strip">${escapeHtml(day.routeStrip)}</div>` : ''}<p>${escapeHtml(day.planningNote)}</p>${day.id === 'sat' ? '<button class="pub-shortlist-jump" type="button">Browse 5 other pub options <span aria-hidden="true">↓</span></button>' : ''}</aside>` : ''}
+    ${day.alternative ? `<details class="route-alternative"><summary>Skipping Passyunk? Go straight to Tottenham</summary><div><p>Anyone skipping the tailgate can leave Chelsea around 11:30. Allow 75–90 minutes via Victoria and Seven Sisters, including the walk, to arrive around 12:45–13:00.</p><p>Use any remaining time for quick food and photos, then keep the same suggested 13:45 entry. This replaces the Fitzrovia stop; it is not an extra detour.</p></div></details>` : ''}
     <ol class="timeline">${day.events.map((event, index) => eventMarkup(event, day.id, index)).join('')}</ol>
+    ${day.id === 'sat' ? saturdayPubShortlistMarkup() : ''}
   </section>`).join('');
 
 function barCardMarkup(bar, night) {
   const plan = bar.plans[night];
   const suggested = plan.time ? `${NIGHT_META[night].label} at ${plan.time}` : NIGHT_META[night].label;
-  return `<article class="bar-card${plan.recommended ? ' bar-card--recommended' : ''}${plan.unavailable ? ' bar-card--unavailable' : ''}${bar.closed ? ' bar-card--watchlist' : ''}" data-bar-id="${bar.id}">
-    <div class="bar-card__rank"><span>WORLD<br>RANK</span><strong>#${bar.rank}</strong></div>
+  return `<article class="bar-card${plan.recommended ? ' bar-card--recommended' : ''}" data-bar-id="${bar.id}">
+    <div class="bar-card__rank"><span>2025<br>WORLD RANK</span><strong>#${bar.rank}</strong></div>
     <div class="bar-card__content">
-      ${plan.recommended ? '<p class="bar-card__flag">Saturday recommendation</p>' : ''}${bar.closed ? '<p class="bar-card__flag bar-card__flag--closed">Ranked, but temporarily closed</p>' : ''}
+      ${plan.recommended ? '<p class="bar-card__flag">Saturday recommendation</p>' : ''}
       <p class="bar-card__area">${escapeHtml(bar.area)}</p>
       <h3>${escapeHtml(bar.name)}</h3>
-      <p class="bar-card__note">${escapeHtml(bar.note)}</p>
+      <div class="bar-card__take"><span>My take</span><p>${escapeHtml(bar.ourTake)}</p></div>
+      ${bar.policy ? `<p class="bar-card__policy"><strong>Entry:</strong> ${escapeHtml(bar.policy)}</p>` : ''}
+      ${bar.reviewSummary ? `<aside class="bar-card__review"><span>Review notes</span><p>${escapeHtml(bar.reviewSummary)}</p>${bar.reviewSource ? `<a href="${bar.reviewSource}" target="_blank" rel="noopener">${escapeHtml(bar.reviewLabel || 'Review source')} <span aria-hidden="true">↗</span></a>` : ''}</aside>` : ''}
       <dl class="bar-card__facts">
         <div><dt>Fit</dt><dd>${escapeHtml(plan.fit)}</dd></div>
         <div><dt>Journey</dt><dd>${escapeHtml(plan.travel)}</dd></div>
@@ -165,7 +271,7 @@ function barCardMarkup(bar, night) {
         ${bar.policySource ? `<a href="${bar.policySource}" target="_blank" rel="noopener">Entry & group policy <span aria-hidden="true">↗</span></a>` : ''}
         ${bar.phone ? `<a href="tel:${bar.phone}">Reservations · ${escapeHtml(bar.phoneLabel)}</a>` : ''}
       </div>
-      ${plan.unavailable ? '<p class="bar-card__calendar-note">No visit suggested for this night.</p>' : `<button type="button" class="bar-calendar" data-bar-calendar="${bar.id}" data-night="${night}">Add ${escapeHtml(suggested)} <span>· tentative</span></button><a class="bar-vote-link" href="${POLL_URL}" target="_blank" rel="noopener">Vote in shared poll <span aria-hidden="true">↗</span></a>`}
+      <button type="button" class="bar-calendar" data-bar-calendar="${bar.id}" data-night="${night}">Add ${escapeHtml(suggested)} <span>· tentative</span></button>
     </div>
   </article>`;
 }
@@ -185,13 +291,7 @@ function renderBars(night) {
     .map(bar => barCardMarkup(bar, night)).join('');
 }
 
-function renderPoll() {
-  const mount = document.querySelector('#poll-mount');
-  mount.innerHTML = `<div class="poll-live"><strong>Voting opens in StrawPoll</strong><p>Anyone joining can vote using their first name; results are shared. Choose one of the three practical options while Tayēr remains temporarily closed. The poll allows one vote per browser and lets you update your own choice.</p><div class="poll-live__actions"><a class="poll-primary" href="${POLL_URL}" target="_blank" rel="noopener">Vote with your name <span aria-hidden="true">↗</span></a><a href="${POLL_RESULTS_URL}" target="_blank" rel="noopener">View group results <span aria-hidden="true">↗</span></a></div></div>`;
-}
-
 renderBars(selectedNight);
-renderPoll();
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 function selectDay(id, moveFocus = false) {
@@ -232,6 +332,11 @@ document.querySelector('#bars-entry').addEventListener('click', () => {
   selectDay('bars');
   document.querySelector('#panel-bars').focus({preventScroll: true});
   document.querySelector('.day-nav').scrollIntoView();
+});
+document.querySelector('.pub-shortlist-jump').addEventListener('click', () => {
+  const heading = document.querySelector('#pub-shortlist-title');
+  heading.scrollIntoView({block: 'start'});
+  heading.focus({preventScroll: true});
 });
 document.querySelectorAll('.night-picker [data-night]').forEach(button => button.addEventListener('click', () => renderBars(button.dataset.night)));
 
