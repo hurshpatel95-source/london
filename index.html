@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260920-bars">
 </head>
 <body>
   <a class="skip-link" href="#itinerary">Skip to itinerary</a>
@@ -29,7 +29,7 @@
   </header>
 
   <nav class="day-nav" aria-label="Choose itinerary day">
-    <div class="day-nav__inner page-shell" role="tablist" aria-label="London itinerary days">
+    <div class="day-nav__inner page-shell" role="tablist" aria-label="London itinerary views">
       <button class="day-tab" role="tab" id="tab-thu" aria-controls="panel-thu" aria-selected="true" tabindex="0" data-day="thu">
         <span>Thu</span><strong>08</strong>
       </button>
@@ -42,6 +42,9 @@
       <button class="day-tab" role="tab" id="tab-sun" aria-controls="panel-sun" aria-selected="false" tabindex="-1" data-day="sun">
         <span>Sun</span><strong>11</strong>
       </button>
+      <button class="day-tab day-tab--bars" role="tab" id="tab-bars" aria-controls="panel-bars" aria-selected="false" tabindex="-1" data-day="bars">
+        <span>Bars</span><strong aria-hidden="true">✦</strong>
+      </button>
     </div>
   </nav>
 
@@ -52,8 +55,68 @@
       <div><span class="quick-card__icon" aria-hidden="true">◆</span><p><small>Booked · per group plan</small><strong>Dishoom · Sat 18:00</strong></p></div>
       <div><span class="quick-card__icon" aria-hidden="true">★</span><p><small>Kickoff</small><strong>Eagles · Sun 14:30</strong></p></div>
     </section>
+    <button class="bars-entry" id="bars-entry" type="button">
+      <span><small>NEW · NIGHT PLANNER</small><strong>Four world-ranked London bars</strong></span>
+      <span>Compare & vote <span aria-hidden="true">→</span></span>
+    </button>
 
     <div id="day-panels"></div>
+    <section class="day-panel bars-panel" id="panel-bars" role="tabpanel" aria-labelledby="tab-bars" hidden tabindex="0">
+      <header class="bars-intro">
+        <p class="eyebrow">The evening edit · 2025 list</p>
+        <h2>Four ranked bars.<br>Three practical picks.</h2>
+        <p class="bars-intro__lede">Four London bars made the 2025 global top 50. Compare the three currently practical options while Tayēr + Elementary is temporarily closed.</p>
+        <div class="bars-intro__meta">
+          <span>Poll audience</span>
+          <span class="name-chip">Hursh</span><span class="name-chip">Nisha</span><span class="name-chip">Ciara</span><span class="name-chip">John</span>
+        </div>
+      </header>
+
+      <div class="night-planner" aria-labelledby="night-planner-title">
+        <div class="night-planner__heading">
+          <div><p class="eyebrow">Choose a night</p><h3 id="night-planner-title">When should we go?</h3></div>
+          <div class="night-picker" role="group" aria-label="Compare bars by night">
+            <button type="button" data-night="fri">Fri 9</button>
+            <button type="button" data-night="sat" class="is-active" aria-pressed="true">Sat 10</button>
+            <button type="button" data-night="sun">Sun 11</button>
+          </div>
+        </div>
+        <div id="night-rationale" class="night-rationale" aria-live="polite"></div>
+      </div>
+
+      <div class="bar-grid" id="bar-grid"></div>
+      <aside class="bar-watchlist" aria-label="Temporarily closed ranked bar">
+        <div class="bar-watchlist__rank"><span>WORLD RANK</span><strong>#5</strong></div>
+        <div>
+          <p class="bar-card__flag bar-card__flag--closed">Ranked, but temporarily closed</p>
+          <h3>Tayēr + Elementary</h3>
+          <p>The official site reports a temporary closure following a fire in the building. It remains on the 2025 list, but is outside the night planner until reopening is confirmed.</p>
+          <a href="https://tayer-elementary.com/" target="_blank" rel="noopener">Check official reopening updates <span aria-hidden="true">↗</span></a>
+          <a href="https://www.the50.com/bars/best-in-the-world/list/1-50" target="_blank" rel="noopener">Rank source <span aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
+
+      <section class="night-compare" aria-labelledby="compare-title">
+        <p class="eyebrow">Weekend comparison</p>
+        <h3 id="compare-title">Friday / Saturday / Sunday</h3>
+        <div class="compare-grid">
+          <article><strong>Friday · West End</strong><p>The existing cocktail window starts around 20:00 after dinner. The Connaught is the polished Mayfair choice; Scarfes is the easier eastbound alternative from Covent Garden.</p></article>
+          <article class="compare-grid__pick"><strong>Saturday · Best fit</strong><p>Scarfes around 21:00 follows Dishoom naturally. Allow an estimated 15–20 minute walk from 12 Upper St Martin’s Lane to 252 High Holborn.</p></article>
+          <article><strong>Sunday · Conditional</strong><p>Only consider a stop after the stadium if exit and travel leave enough time. Recheck same-day hours; The Connaught has no published Sunday hours and is excluded.</p></article>
+        </div>
+      </section>
+
+      <section class="poll-card" aria-labelledby="poll-title">
+        <div>
+          <p class="eyebrow">Shared group poll</p>
+          <h3 id="poll-title">Vote for the bar, together</h3>
+          <p>Choose one favourite from the three practical options. This is a shared poll; selecting a night above does not cast a vote.</p>
+        </div>
+        <div id="poll-mount" class="poll-mount"></div>
+      </section>
+
+      <p class="ranking-note">Global ranks and operational details checked 20 September 2026. Ranks are from <a href="https://www.the50.com/bars/best-in-the-world/list/1-50" target="_blank" rel="noopener">The World’s 50 Best Bars 2025</a>. <a href="https://www.the50.com/stories/News/the-worlds-50-best-bars-2026-milan.html" target="_blank" rel="noopener">The 2026 list is revealed 7 October</a>, two days before Friday’s plans, so ranks may change before the trip.</p>
+    </section>
 
     <aside class="field-note">
       <p class="eyebrow">Field note</p>
@@ -67,6 +130,6 @@
     <button type="button" id="print-button" class="text-button">Print this guide</button>
   </footer>
 
-  <script src="app.js" defer></script>
+  <script src="app.js?v=20260920-bars" defer></script>
 </body>
 </html>
