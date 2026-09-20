@@ -130,6 +130,23 @@ main { padding-block: 12px 64px; }
 .borough-pick__links { display: flex; flex-wrap: wrap; gap: .4rem .8rem; }
 .borough-pick__links a, .borough-guide__sources a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
 .borough-guide__sources { margin: 12px 0 0; color: var(--muted); font-size: 12px; }
+.dinner-guide { margin-top: 1rem; border: 1px solid var(--green); background: var(--paper); }
+.dinner-guide > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 46px; padding: .65rem .8rem; color: var(--green); font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
+.dinner-guide > summary::-webkit-details-marker { display: none; }
+.dinner-guide[open] > summary > span:last-child { transform: rotate(45deg); }
+.dinner-guide__inner { padding: 12px; border-top: 1px solid var(--line); }
+.dinner-guide__intro { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.dinner-option-grid { display: grid; gap: 8px; }
+.dinner-option { padding: 12px; border: 1px solid var(--line); background: #f9f6ee; }
+.dinner-option--recommended { border-color: var(--copper); }
+.dinner-option__flag { display: inline-block; margin: 0 0 .5rem; padding: .18rem .45rem; border-radius: 999px; background: #f2dfd2; color: #7d351b; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.dinner-option h4 { margin: 0 0 .65rem; font: 400 1.4rem/1.1 "Libre Caslon Display", Georgia, serif; color: var(--green); }
+.dinner-option dl { display: grid; gap: 1px; margin: 0; background: var(--line); }
+.dinner-option dl div { padding: .5rem .65rem; background: white; }
+.dinner-option dt { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.dinner-option dd { margin: .1rem 0 0; font-size: 13px; }
+.dinner-option__links { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: 10px; }
+.dinner-option__links a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
 .borough-later { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .borough-later > p { margin: -.25rem 0 12px; color: var(--muted); font-size: 14px; }
 .badge { display: inline-block; margin-top: .25rem; padding: .2rem .55rem; border-radius: 999px; background: #e5eee8; color: var(--green); font-size: 14px; font-weight: 700; }
@@ -142,7 +159,6 @@ main { padding-block: 12px 64px; }
 
 .bars-panel { --bar-dark: #082c22; }
 .bars-intro { position: relative; overflow: hidden; margin-bottom: 24px; padding: clamp(28px, 7vw, 64px); background: var(--bar-dark); color: white; }
-.bars-intro::after { content: "50"; position: absolute; right: -20px; bottom: -62px; color: rgba(255,255,255,.035); font: 400 14rem/1 "Libre Caslon Display", Georgia, serif; }
 .bars-intro .eyebrow { color: #efb47d; }
 .bars-intro h2 { max-width: 720px; margin: 0; font: 400 clamp(2.8rem, 10vw, 5.5rem)/.92 "Libre Caslon Display", Georgia, serif; letter-spacing: -.03em; }
 .bars-intro__lede { max-width: 620px; margin: 1.2rem 0 1.5rem; color: #dce6e1; font-size: clamp(1rem, 2vw, 1.2rem); }
@@ -156,15 +172,18 @@ main { padding-block: 12px 64px; }
 .night-rationale strong { color: var(--copper-text); }
 .night-rationale p { margin: .25rem 0 0; }
 .bar-grid { display: grid; gap: 14px; }
-.bar-card { display: grid; grid-template-columns: 82px 1fr; border: 1px solid var(--line); background: var(--paper); box-shadow: 0 8px 26px rgba(30,38,31,.05); }
+.bar-card { border: 1px solid var(--line); background: var(--paper); box-shadow: 0 8px 26px rgba(30,38,31,.05); }
 .bar-card--recommended { border: 2px solid var(--copper); box-shadow: var(--shadow); }
-.bar-card__rank { display: flex; flex-direction: column; align-items: center; padding: 20px 8px; background: var(--green); color: white; text-align: center; }
-.bar-card__rank span { color: #b9cbc3; font-size: 10px; font-weight: 700; letter-spacing: .13em; }
-.bar-card__rank strong { margin-top: .4rem; font: 400 2.4rem/1 "Libre Caslon Display", Georgia, serif; color: #efb47d; }
 .bar-card__content { min-width: 0; padding: 20px; }
 .bar-card__flag { display: inline-block; margin: 0 0 .6rem; padding: .2rem .5rem; border-radius: 999px; background: #f2dfd2; color: #7d351b; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 .bar-card__area { margin: 0; color: var(--copper-text); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .bar-card h3 { margin: .15rem 0 .5rem; font: 400 clamp(1.75rem, 5vw, 2.35rem)/1 "Libre Caslon Display", Georgia, serif; color: var(--green); }
+.bar-card__recognition { margin: 0 0 .85rem; color: var(--muted); font-size: 12px; }
+.bar-card__recognition a { color: var(--green); font-weight: 700; text-underline-offset: 2px; }
+.bar-card__highlights { display: grid; gap: 1px; margin: 0 0 1rem; background: var(--line); }
+.bar-card__highlights div { padding: .55rem .7rem; background: #f9f6ee; }
+.bar-card__highlights dt { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.bar-card__highlights dd { margin: .12rem 0 0; font-size: 14px; }
 .bar-card__take { margin: 0; color: var(--muted); }
 .bar-card__take > span, .bar-card__review > span { color: var(--copper-text); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .bar-card__take p { margin: .2rem 0 0; }
@@ -178,7 +197,7 @@ main { padding-block: 12px 64px; }
 .bar-card__facts dt { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .bar-card__facts dd { margin: .12rem 0 0; font-size: 14px; font-weight: 600; }
 .bar-card__actions { display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
-.bar-card__actions a, .ranking-note a { color: var(--green); font-size: 14px; font-weight: 700; text-underline-offset: 3px; }
+.bar-card__actions a { color: var(--green); font-size: 14px; font-weight: 700; text-underline-offset: 3px; }
 .bar-calendar { width: 100%; margin-top: 1rem; min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--green); background: transparent; color: var(--green); font-weight: 700; text-align: left; }
 .bar-calendar span { color: var(--muted); font-size: 12px; font-weight: 500; }
 .night-compare { margin-top: 48px; }
@@ -187,7 +206,6 @@ main { padding-block: 12px 64px; }
 .compare-grid article strong { color: var(--green); }
 .compare-grid article p { margin: .4rem 0 0; color: var(--muted); }
 .compare-grid__pick { box-shadow: inset 4px 0 var(--copper); }
-.ranking-note { margin: 18px 0 0; color: var(--muted); font-size: 14px; }
 .pub-shortlist { margin-top: 52px; padding-top: 30px; border-top: 1px solid var(--line); }
 .pub-shortlist__head { max-width: 760px; margin-bottom: 20px; }
 .pub-shortlist__head h3 { margin: 0; font: 400 clamp(2rem, 6vw, 3.1rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }
@@ -220,7 +238,7 @@ main { padding-block: 12px 64px; }
   .event__body::before { left: -17px; }
   .bar-grid { grid-template-columns: repeat(2, 1fr); }
   .borough-pick-grid { grid-template-columns: repeat(2, 1fr); }
-  .bar-card { grid-template-columns: 94px 1fr; }
+  .dinner-option-grid { grid-template-columns: repeat(3, 1fr); }
   .compare-grid { grid-template-columns: repeat(3, 1fr); }
   .pub-swap-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -237,9 +255,7 @@ main { padding-block: 12px 64px; }
   .bars-entry { align-items: end; }
   .bars-entry > span:last-child { font-size: 12px; }
   .night-picker { width: 100%; }
-  .bar-card { grid-template-columns: 70px 1fr; }
   .bar-card__content { padding: 16px; }
-  .bar-card__rank strong { font-size: 2rem; }
   .sat-plan-picker { padding: 12px; }
   .sat-plan-picker__buttons { grid-template-columns: 1fr; }
 }
@@ -261,9 +277,8 @@ main { padding-block: 12px 64px; }
   .event { break-inside: avoid; padding-bottom: 18px; }
   .event__details[hidden] { display: block; }
   .field-note { break-inside: avoid; }
-  .bars-intro, .bar-card__rank { background: white !important; color: var(--ink) !important; border: 1px solid var(--line); }
-  .bars-intro .eyebrow, .bars-intro__lede, .bar-card__rank span, .bar-card__rank strong { color: var(--ink) !important; }
-  .bars-intro::after { display: none; }
+  .bars-intro { background: white !important; color: var(--ink) !important; border: 1px solid var(--line); }
+  .bars-intro .eyebrow, .bars-intro__lede { color: var(--ink) !important; }
   .bar-card, .night-planner, .night-compare { break-inside: avoid; box-shadow: none; }
   .pub-swap { break-inside: avoid; }
   .pub-swap > .pub-swap__body { display: block !important; }
@@ -271,6 +286,9 @@ main { padding-block: 12px 64px; }
   .borough-pick { break-inside: avoid; }
   .sat-plan-picker { display: none !important; }
   .borough-guide > .borough-guide__inner { display: block !important; }
+  .event:has(.dinner-guide), .dinner-guide { break-inside: auto; }
+  .dinner-option { break-inside: avoid; }
+  .dinner-guide > .dinner-guide__inner { display: block !important; }
   .sunday-note, .route-alternative { break-inside: avoid; }
   .route-alternative > div { display: block !important; }
 }

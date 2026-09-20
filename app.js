@@ -1,8 +1,9 @@
 const BARS = [
   {
-    id: 'connaught', rank: 6, name: 'Connaught Bar', area: 'Mayfair', address: 'The Connaught, Carlos Place, London W1K 2AL',
+    id: 'connaught', rank: 6, editorialOrder: 1, name: 'Connaught Bar', area: 'Mayfair', address: 'The Connaught, Carlos Place, London W1K 2AL',
     source: 'https://www.maybourne.com/en/hotels/the-connaught/restaurants-bars/connaught-bar',
     ourTake: 'My overall pick for Friday: aim for around 20:30 after the Covent Garden dinner. The polished Mayfair setting and martini trolley make this the special-occasion choice. Allow an estimated 25–35 minute walk or 15–25 minute taxi; it is a splurge, walk-ins can involve a wait, and nothing is booked.',
+    knownFor: 'The martini trolley and a polished, conversation-focused Mayfair room.', tradeoff: 'The most formal and splurgy option; walk-in waits are possible.',
     policy: 'Walk-ins only; no reservations.',
     reviewSummary: 'The Infatuation’s February 2025 review highlights the theatrical martini trolley and elegant, conversation-focused atmosphere.', reviewSource: 'https://www.theinfatuation.com/london/reviews/the-connaught-bar', reviewLabel: 'The Infatuation · 6 Feb 2025',
     plans: {
@@ -11,10 +12,38 @@ const BARS = [
     }
   },
   {
-    id: 'scarfes', rank: 31, name: 'Scarfes Bar', area: 'Holborn', address: 'Rosewood London, 252 High Holborn, London WC1V 7EN',
+    id: 'fumoir', editorialOrder: 2, name: 'The Fumoir', area: 'Mayfair', address: 'Claridge’s, Brook Street London W1K 4HR',
+    source: 'https://www.maybourne.com/en/hotels/claridges/restaurants-bars/the-fumoir',
+    ourTake: 'The closest alternative to the Connaught experience: an intimate Art Deco room at Claridge’s for classic luxury-hotel cocktails. Aim for Friday around 20:30; allow an estimated 25–35 minute walk or 15–25 minute taxi from Covent Garden.',
+    knownFor: 'A moody Lalique-lined room, classic cocktails, champagne and premium spirits.', tradeoff: 'It is a small walk-in room, so a wait is possible; photography is not permitted.',
+    policy: 'No reservations and no photography.',
+    reviewSummary: 'Time Out’s July 2026 hotel feature highlights The Fumoir as Claridge’s moody 1930s bar.', reviewSource: 'https://www.timeout.com/london/news/best-hotel-2026-claridges-070826', reviewLabel: 'Time Out hotel feature · 8 Jul 2026',
+    plans: { fri: { time: '20:30', fit: 'Closest Connaught-style alternative', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 12:00–01:00' } }
+  },
+  {
+    id: 'red-room', editorialOrder: 3, name: 'Red Room', area: 'Mayfair', address: 'The Connaught, Carlos Place London W1K 2AL',
+    source: 'https://www.maybourne.com/en/hotels/the-connaught/restaurants-bars/red-room',
+    ourTake: 'A more relaxed, wine-led choice in the same hotel as Connaught Bar. Aim for Friday around 20:30, with the same estimated 25–35 minute walk or 15–25 minute taxi from Covent Garden.',
+    knownFor: 'Wine-inspired cocktails and a room displaying art by women.', tradeoff: 'Less of a classic cocktail-bar ritual than Connaught Bar; choose it for wine and a relaxed atmosphere.',
+    policy: 'No reservations for drinks. Friday and Saturday last orders are 00:30.',
+    reviewSummary: 'The Infatuation’s February 2025 review highlights the relaxed atmosphere and wine-inspired cocktails.', reviewSource: 'https://www.theinfatuation.com/london/reviews/red-room-at-the-connaught', reviewLabel: 'The Infatuation · 6 Feb 2025',
+    plans: { fri: { time: '20:30', fit: 'Relaxed, wine-led Mayfair option', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open Fri–Sat · 15:00–01:00' } }
+  },
+  {
+    id: 'bar-antoine', editorialOrder: 4, name: 'Bar Antoine', area: 'Mayfair / Park Lane', address: 'Four Seasons Hotel London at Park Lane, Hamilton Place London W1J 7DR',
+    source: 'https://www.fourseasons.com/london/dining/lounges/bar-antoine/',
+    ourTake: 'The modern, livelier polished option, slightly farther west. A Friday 20:45–22:00 visit fits after dinner; allow an estimated 35–45 minute walk or 20–30 minute taxi from Covent Garden.',
+    knownFor: 'Chef-led cocktails with French flavour references, including croissant, Comté and mustard inspirations.', tradeoff: 'The longest transfer of the Mayfair options; choose it for newer energy over old-school hotel-bar intimacy.',
+    policy: 'The official site offers table reservations; availability is not confirmed.',
+    reviewSummary: 'The Week’s July 2026 Four Seasons hotel review praises the Cornichon Martini and Fig Affair.', reviewSource: 'https://theweek.com/culture-life/travel/four-seasons-park-lane-london-luxury-hotel-review', reviewLabel: 'The Week hotel review · 22 Jul 2026',
+    plans: { fri: { time: '20:45', end: '22:00', fit: 'Modern, livelier polished option', travel: 'Est. 35–45 min walk or 20–30 min taxi', status: 'Open Mon–Sat · 12:00–01:00' } }
+  },
+  {
+    id: 'scarfes', rank: 31, editorialOrder: 5, name: 'Scarfes Bar', area: 'Holborn', address: 'Rosewood London, 252 High Holborn, London WC1V 7EN',
     source: 'https://www.rosewoodhotels.com/en/london/dining/scarfes-bar',
     policySource: 'https://scarfesbar.com/',
     ourTake: 'The optional Saturday nightcap after Dishoom: aim for 21:00 and allow an estimated 15–20 minute walk to this art-filled Holborn hotel bar. Stay for roughly one hour if energy remains. It also works as the easier Friday alternative from Covent Garden; hotel-bar pricing and a possible walk-in queue are the tradeoffs.',
+    knownFor: 'Inventive cocktails, live jazz and an art-filled hotel-bar setting.', tradeoff: 'Hotel-bar pricing and a possible evening walk-in queue.',
     policy: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.',
     reviewSummary: 'Time Out’s April 2025 review praises the inventive drinks, jazz and art-filled hotel-bar setting, and notes an evening queue.', reviewSource: 'https://www.timeout.com/london/bars-and-pubs/scarfes-bar', reviewLabel: 'Time Out · 16 Apr 2025',
     plans: {
@@ -25,7 +54,7 @@ const BARS = [
 ];
 
 const NIGHT_META = {
-  fri: { date: '20261009', label: 'Friday 9 October', rationale: 'The Connaught is the polished Mayfair recommendation around 20:30. Scarfes is the easier Holborn alternative from Covent Garden; the two bars are separate choices for the evening.' },
+  fri: { date: '20261009', label: 'Friday 9 October', rationale: 'Connaught is the polished Mayfair recommendation around 20:30. Fumoir is the closest classic alternative, Red Room is wine-led, Bar Antoine is more modern and lively, and Scarfes is the easier Holborn option.' },
   sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Scarfes is an optional nightcap after Dishoom: walk an estimated 15–20 minutes, arrive around 21:00 and stay for roughly one hour if energy remains.' }
 };
 
@@ -80,6 +109,30 @@ const BOROUGH_LATER_PICKS = [
   { name: 'Gourmet Goat', area: 'Rochester Walk', hours: 'Saturday 09:00–17:00', knownFor: 'Greek Cypriot food and kid goat kofta pita', why: 'Look for the kofta pita highlighted in current coverage, alongside other seasonal dishes.', source: 'https://boroughmarket.org.uk/traders/gourmet-goat/' }
 ];
 
+const FRIDAY_DINNER_OPTIONS = [
+  {
+    name: 'Blacklock Covent Garden', address: '16a Bedford Street London WC2E 9HE', hours: 'Friday dinner · 16:45–22:30',
+    knownFor: 'Casual British chophouse cooking: steaks, chops and sharing sides.', fit: 'My Friday pick for a casual seated dinner built around chops and sharing sides.',
+    booking: 'Online bookings are available for up to eight; larger groups contact the restaurant. Walk-ins are not guaranteed.',
+    tradeoff: 'The dining room is in a basement and there is no lift access.',
+    source: 'https://theblacklock.com/restaurants/covent-garden/', bookingSource: 'https://theblacklock.com/coventgarden-reservations/'
+  },
+  {
+    name: 'Pizza Pilgrims Covent Garden', address: '23 Garrick Street London WC2E 9BN', hours: 'Friday · 11:30–23:00',
+    knownFor: 'Neapolitan pizza with a light, chewy, charred crust; current menu examples include ’nduja and double pepperoni with hot honey.', fit: 'The easiest casual Italian choice between Covent Garden and Leicester Square.',
+    booking: 'Ordinary reservations and walk-ins are supported. Group bookings for eight or more offer sharing menus. Booking for 18:00 is sensible because the room is small; availability is not confirmed.',
+    tradeoff: 'A small, buzzy and casual room rather than a long, polished group dinner.',
+    source: 'https://www.pizzapilgrims.co.uk/pizzerias/covent-garden/', bookingSource: 'https://www.pizzapilgrims.co.uk/bookings/'
+  },
+  {
+    name: 'Seven Dials Market', address: 'Earlham Street London WC2H 9LX', hours: 'Friday · 11:00–23:00; street food from 12:00',
+    knownFor: 'A food hall with 15 traders and choose-your-own-cuisine flexibility.', fit: 'Best for varied tastes and a livelier, informal dinner.',
+    booking: 'Most tables are walk-in. Reserved Bar Nana tables from 17:00 on Friday currently carry a £300 minimum drinks spend; check current terms.',
+    tradeoff: 'It is noisier, orders may involve separate queues, and group seating is uncertain.',
+    source: 'https://www.sevendialsmarket.com/visit-us/', bookingSource: 'https://www.sevendialsmarket.com/table-bookings-terms-conditions/', faqSource: 'https://www.sevendialsmarket.com/faqs/'
+  }
+];
+
 const DAYS = [
   {
     id: 'thu', date: '20261008', label: 'Thursday', theme: 'Arrival & Chelsea',
@@ -98,8 +151,8 @@ const DAYS = [
       { start: '09:30', end: '13:00', title: 'Royal London walk', place: 'Westminster, London', tag: 'On foot + Tube', summary: 'Sloane Square to the landmarks of Westminster.', details: 'Take the District line from Sloane Square to St James’s Park. Walk Buckingham Palace → St James’s Park → Westminster Abbey → Big Ben → Whitehall.', directions: { origin: 'Buckingham Palace', destination: 'Whitehall London', mode: 'walking', waypoints: ['St James’s Park London','Westminster Abbey','Big Ben'] } },
       { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
       { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] } },
-      { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Seven Dials London', tag: 'Venue TBD', summary: 'Dinner around Covent Garden or Seven Dials.' },
-      { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 is the recommendation; Scarfes is the easier Holborn alternative.', details: 'Choose one of the two world-ranked bars for Friday. The optional Saturday Scarfes nightcap remains a separate choice after Dishoom.', barsCta: true }
+      { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Covent Garden London', tag: 'Choose one · nothing booked', summary: 'Blacklock for chops, steaks and sharing sides; Pizza Pilgrims for casual Italian; or Seven Dials Market for varied tastes.', details: 'Target an 18:00 seating and aim to finish around 19:45–20:00 before heading to Mayfair for roughly 20:30, or Bar Antoine around 20:45. Times are estimates and nothing is booked.', dinnerGuide: true },
+      { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 leads a broader shortlist of polished cocktail options.', details: 'Choose by mood, location and travel. The optional Saturday Scarfes nightcap remains a separate choice after Dishoom.', barsCta: true }
     ]
   },
   {
@@ -194,6 +247,20 @@ function boroughGuideMarkup(plan = 'breakfast') {
   </details>`;
 }
 
+function fridayDinnerGuideMarkup() {
+  return `<details class="dinner-guide">
+    <summary><span>Dinner guide · Blacklock / Pizza Pilgrims / Seven Dials Market</span><span aria-hidden="true">＋</span></summary>
+    <div class="dinner-guide__inner">
+      <p class="dinner-guide__intro"><strong>Choose one:</strong> Blacklock is my Friday pick for chops, steaks and sharing sides in a casual seated format; Pizza Pilgrims is the easiest casual Italian choice; Seven Dials Market offers the most variety. Target 18:00 and aim to finish by 19:45–20:00 before heading toward Mayfair. Nothing is booked.</p>
+      <div class="dinner-option-grid">${FRIDAY_DINNER_OPTIONS.map((option, index) => `<article class="dinner-option${index === 0 ? ' dinner-option--recommended' : ''}">
+        ${index === 0 ? '<p class="dinner-option__flag">My Friday pick</p>' : ''}<h4>${escapeHtml(option.name)}</h4>
+        <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>Why it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(option.hours)}</dd></div><div><dt>Booking</dt><dd>${escapeHtml(option.booking)}</dd></div><div><dt>Tradeoff</dt><dd>${escapeHtml(option.tradeoff)}</dd></div></dl>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.source}" target="_blank" rel="noopener">Official venue details <span aria-hidden="true">↗</span></a><a href="${option.bookingSource}" target="_blank" rel="noopener">Booking terms <span aria-hidden="true">↗</span></a>${option.faqSource ? `<a href="${option.faqSource}" target="_blank" rel="noopener">FAQ <span aria-hidden="true">↗</span></a>` : ''}</div>
+      </article>`).join('')}</div>
+    </div>
+  </details>`;
+}
+
 function eventMarkup(event, dayId, index) {
   const detailId = `details-${dayId}-${index}`;
   const options = event.options || [];
@@ -221,6 +288,7 @@ function eventMarkup(event, dayId, index) {
       <div class="event__links">${links}</div>
       ${expandedContent ? `<div class="event__details" id="${detailId}" hidden>${expandedContent}</div>` : ''}
       ${event.boroughGuide ? boroughGuideMarkup(event.boroughGuide === 'lunch' ? 'lunch' : 'breakfast') : ''}
+      ${event.dinnerGuide ? fridayDinnerGuideMarkup() : ''}
     </article>
   </li>`;
 }
@@ -282,11 +350,12 @@ function barCardMarkup(bar, night) {
   const plan = bar.plans[night];
   const suggested = plan.time ? `${NIGHT_META[night].label} at ${plan.time}` : NIGHT_META[night].label;
   return `<article class="bar-card${plan.recommended ? ' bar-card--recommended' : ''}" data-bar-id="${bar.id}">
-    <div class="bar-card__rank"><span>2025<br>WORLD RANK</span><strong>#${bar.rank}</strong></div>
     <div class="bar-card__content">
       ${plan.recommended ? `<p class="bar-card__flag">${night === 'fri' ? 'Friday recommendation' : 'Recommendation'}</p>` : ''}${plan.nightcap ? '<p class="bar-card__flag">Optional Saturday nightcap</p>' : ''}
       <p class="bar-card__area">${escapeHtml(bar.area)}</p>
       <h3>${escapeHtml(bar.name)}</h3>
+      ${bar.rank ? `<p class="bar-card__recognition">Recognised at #${bar.rank} in The World’s 50 Best Bars 2025 · <a href="https://www.the50.com/bars/best-in-the-world/list/1-50" target="_blank" rel="noopener">source <span aria-hidden="true">↗</span></a></p>` : ''}
+      <dl class="bar-card__highlights"><div><dt>Known for</dt><dd>${escapeHtml(bar.knownFor)}</dd></div><div><dt>Tradeoff</dt><dd>${escapeHtml(bar.tradeoff)}</dd></div></dl>
       <div class="bar-card__take"><span>My take</span><p>${escapeHtml(bar.ourTake)}</p></div>
       ${bar.policy ? `<p class="bar-card__policy"><strong>Entry:</strong> ${escapeHtml(bar.policy)}</p>` : ''}
       ${bar.reviewSummary ? `<aside class="bar-card__review"><span>Review notes</span><p>${escapeHtml(bar.reviewSummary)}</p>${bar.reviewSource ? `<a href="${bar.reviewSource}" target="_blank" rel="noopener">${escapeHtml(bar.reviewLabel || 'Review source')} <span aria-hidden="true">↗</span></a>` : ''}</aside>` : ''}
@@ -298,7 +367,6 @@ function barCardMarkup(bar, night) {
       <div class="bar-card__actions">
         <a href="${mapsUrl(bar.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>
         <a href="${bar.source}" target="_blank" rel="noopener">Official site <span aria-hidden="true">↗</span></a>
-        <a href="https://www.the50.com/bars/best-in-the-world/list/1-50" target="_blank" rel="noopener">Rank source <span aria-hidden="true">↗</span></a>
         ${bar.policySource ? `<a href="${bar.policySource}" target="_blank" rel="noopener">Entry & group policy <span aria-hidden="true">↗</span></a>` : ''}
         ${bar.phone ? `<a href="tel:${bar.phone}">Reservations · ${escapeHtml(bar.phoneLabel)}</a>` : ''}
       </div>
@@ -318,7 +386,8 @@ function renderBars(night) {
   document.querySelector('#night-rationale').innerHTML = `<strong>${escapeHtml(NIGHT_META[night].label)}</strong><p>${escapeHtml(NIGHT_META[night].rationale)}</p>`;
   document.querySelector('#bar-grid').innerHTML = BARS
     .slice()
-    .sort((a, b) => Number(Boolean(b.plans[night].recommended || b.plans[night].nightcap)) - Number(Boolean(a.plans[night].recommended || a.plans[night].nightcap)) || a.rank - b.rank)
+    .filter(bar => bar.plans[night])
+    .sort((a, b) => Number(Boolean(b.plans[night].recommended || b.plans[night].nightcap)) - Number(Boolean(a.plans[night].recommended || a.plans[night].nightcap)) || (a.editorialOrder ?? 99) - (b.editorialOrder ?? 99))
     .map(bar => barCardMarkup(bar, night)).join('');
 }
 
@@ -464,7 +533,7 @@ document.querySelector('#bar-grid').addEventListener('click', event => {
     date: NIGHT_META[night].date,
     events: [{
       start: plan.time,
-      end: bar.id === 'scarfes' && night === 'sat' ? '22:00' : undefined,
+      end: plan.end || (bar.id === 'scarfes' && night === 'sat' ? '22:00' : undefined),
       title: `Suggested: ${bar.name}`,
       place: bar.address,
       summary: `${plan.fit}. Tentative suggestion only; this is not booked. Reconfirm hours and entry policy before going.`,
