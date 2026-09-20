@@ -2,11 +2,11 @@ const BARS = [
   {
     id: 'connaught', rank: 6, name: 'Connaught Bar', area: 'Mayfair', address: 'The Connaught, Carlos Place, London W1K 2AL',
     source: 'https://www.maybourne.com/en/hotels/the-connaught/restaurants-bars/connaught-bar',
-    ourTake: 'Best special-occasion choice if the famous bar experience matters most. Aim for Friday around 20:30 after the Covent Garden dinner; allow an estimated 25–35 minute walk or 15–25 minute taxi. More formal and splurgy.',
+    ourTake: 'My overall pick for Friday: aim for around 20:30 after the Covent Garden dinner. The polished Mayfair setting and martini trolley make this the special-occasion choice. Allow an estimated 25–35 minute walk or 15–25 minute taxi; it is a splurge, walk-ins can involve a wait, and nothing is booked.',
     policy: 'Walk-ins only; no reservations.',
     reviewSummary: 'The Infatuation’s February 2025 review highlights the theatrical martini trolley and elegant, conversation-focused atmosphere.', reviewSource: 'https://www.theinfatuation.com/london/reviews/the-connaught-bar', reviewLabel: 'The Infatuation · 6 Feb 2025',
     plans: {
-      fri: { time: '20:30', fit: 'Best Friday fit', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' },
+      fri: { time: '20:30', fit: 'Friday recommendation · polished Mayfair', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00', recommended: true },
       sat: { time: '21:00', fit: 'Elegant, longer transfer', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' }
     }
   },
@@ -25,19 +25,19 @@ const BARS = [
     id: 'scarfes', rank: 31, name: 'Scarfes Bar', area: 'Holborn', address: 'Rosewood London, 252 High Holborn, London WC1V 7EN',
     source: 'https://www.rosewoodhotels.com/en/london/dining/scarfes-bar',
     policySource: 'https://scarfesbar.com/',
-    ourTake: 'My overall pick for this itinerary: Saturday around 21:00 after Dishoom, an estimated 15–20 minute walk. Strong cocktails and atmosphere with the least extra travel; allow for a walk-in wait. Hotel-bar pricing and a possible queue are the tradeoffs.',
+    ourTake: 'The easier Friday alternative from Covent Garden: aim for around 20:30 and allow an estimated 15–20 minute walk to this art-filled Holborn hotel bar. Strong cocktails and jazz atmosphere, with hotel-bar pricing and a possible walk-in queue as the tradeoffs. Saturday at 21:00 remains an optional backup after the longer day.',
     policy: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.',
     reviewSummary: 'Time Out’s April 2025 review praises the inventive drinks, jazz and art-filled hotel-bar setting, and notes an evening queue.', reviewSource: 'https://www.timeout.com/london/bars-and-pubs/scarfes-bar', reviewLabel: 'Time Out · 16 Apr 2025',
     plans: {
       fri: { time: '20:30', fit: 'Excellent Friday alternative', travel: 'Est. 15–20 min walk from Covent Garden', status: 'Open · 16:00 till late' },
-      sat: { time: '21:00', fit: 'Editor’s pick · best fit', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', recommended: true }
+      sat: { time: '21:00', fit: 'Saturday fallback · only if the group still wants one', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', fallback: true }
     }
   }
 ];
 
 const NIGHT_META = {
-  fri: { date: '20261009', label: 'Friday 9 October', rationale: 'The existing cocktail window begins around 20:00. The Connaught is the signature choice; Scarfes is an excellent, easier alternative from Covent Garden.' },
-  sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Best overall fit: walk about 15–20 minutes from Dishoom to Scarfes for a suggested 21:00 arrival. It adds a world-ranked bar without moving dinner.' }
+  fri: { date: '20261009', label: 'Friday 9 October', rationale: 'Friday is the cocktail night. The Connaught is the polished Mayfair recommendation around 20:30; Scarfes is the easier Holborn alternative, while Satan’s Whiskers makes it a more casual East London outing.' },
+  sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Saturday is already a long day, so no cocktail outing is expected. If energy remains after Dishoom, Scarfes is the easiest nearby option around 21:00.' }
 };
 
 const SATURDAY_PUBS = [
@@ -110,7 +110,7 @@ const DAYS = [
       { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
       { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] } },
       { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Seven Dials London', tag: 'Venue TBD', summary: 'Dinner around Covent Garden or Seven Dials.' },
-      { start: '20:00', title: 'Cocktails', place: 'London', tag: 'Late', summary: 'Choose one of the three cocktail-bar options.', details: 'Friday recommendation: The Connaught around 20:30. Scarfes is a nearby alternative; Satan’s Whiskers is a longer East London outing.', barsCta: true }
+      { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 is the recommendation; choose one of three distinct cocktail-bar options.', details: 'The Connaught is the polished Mayfair pick. Scarfes is the easier Holborn alternative from Covent Garden; Satan’s Whiskers is the more casual East London outing.', barsCta: true }
     ]
   },
   {
@@ -293,7 +293,7 @@ function barCardMarkup(bar, night) {
   return `<article class="bar-card${plan.recommended ? ' bar-card--recommended' : ''}" data-bar-id="${bar.id}">
     <div class="bar-card__rank"><span>2025<br>WORLD RANK</span><strong>#${bar.rank}</strong></div>
     <div class="bar-card__content">
-      ${plan.recommended ? '<p class="bar-card__flag">Saturday recommendation</p>' : ''}
+      ${plan.recommended ? `<p class="bar-card__flag">${night === 'fri' ? 'Friday recommendation' : 'Recommendation'}</p>` : ''}${plan.fallback ? '<p class="bar-card__flag">Saturday fallback</p>' : ''}
       <p class="bar-card__area">${escapeHtml(bar.area)}</p>
       <h3>${escapeHtml(bar.name)}</h3>
       <div class="bar-card__take"><span>My take</span><p>${escapeHtml(bar.ourTake)}</p></div>
@@ -316,7 +316,7 @@ function barCardMarkup(bar, night) {
   </article>`;
 }
 
-let selectedNight = 'sat';
+let selectedNight = 'fri';
 function renderBars(night) {
   selectedNight = night;
   document.querySelectorAll('.night-picker [data-night]').forEach(button => {
@@ -327,7 +327,7 @@ function renderBars(night) {
   document.querySelector('#night-rationale').innerHTML = `<strong>${escapeHtml(NIGHT_META[night].label)}</strong><p>${escapeHtml(NIGHT_META[night].rationale)}</p>`;
   document.querySelector('#bar-grid').innerHTML = BARS
     .slice()
-    .sort((a, b) => Number(Boolean(b.plans[night].recommended)) - Number(Boolean(a.plans[night].recommended)) || a.rank - b.rank)
+    .sort((a, b) => Number(Boolean(b.plans[night].recommended || b.plans[night].fallback)) - Number(Boolean(a.plans[night].recommended || a.plans[night].fallback)) || a.rank - b.rank)
     .map(bar => barCardMarkup(bar, night)).join('');
 }
 
