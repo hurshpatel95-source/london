@@ -11,33 +11,22 @@ const BARS = [
     }
   },
   {
-    id: 'satans', rank: 21, name: 'Satan’s Whiskers', area: 'Bethnal Green', address: '343 Cambridge Heath Road, London E2 9RA',
-    source: 'https://www.satanswhiskers.com/', phone: '+442077398362', phoneLabel: '+44 20 7739 8362',
-    ourTake: 'Best for a casual night with serious cocktails. Friday around 20:45 makes more sense than adding the East London detour after Dishoom; allow 25–40 minutes from Covent Garden and a longer trip back to Chelsea.',
-    policy: 'Reservations are recommended by phone; walk-ins are accepted.',
-    reviewSummary: 'Time Out’s July 2025 review praises adventurous cocktails, friendly staff and a relaxed neighbourhood feel, with hip-hop and quirky décor.', reviewSource: 'https://www.timeout.com/london/bars-and-pubs/satans-whiskers', reviewLabel: 'Time Out · 21 Jul 2025',
-    plans: {
-      fri: { time: '20:45', fit: 'East London wildcard', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Friday runs “a little later”' },
-      sat: { time: '21:15', fit: 'For a livelier detour', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Saturday runs “a little later”' }
-    }
-  },
-  {
     id: 'scarfes', rank: 31, name: 'Scarfes Bar', area: 'Holborn', address: 'Rosewood London, 252 High Holborn, London WC1V 7EN',
     source: 'https://www.rosewoodhotels.com/en/london/dining/scarfes-bar',
     policySource: 'https://scarfesbar.com/',
-    ourTake: 'The easier Friday alternative from Covent Garden: aim for around 20:30 and allow an estimated 15–20 minute walk to this art-filled Holborn hotel bar. Strong cocktails and jazz atmosphere, with hotel-bar pricing and a possible walk-in queue as the tradeoffs. Saturday at 21:00 remains an optional backup after the longer day.',
+    ourTake: 'The optional Saturday nightcap after Dishoom: aim for 21:00 and allow an estimated 15–20 minute walk to this art-filled Holborn hotel bar. Stay for roughly one hour if energy remains. It also works as the easier Friday alternative from Covent Garden; hotel-bar pricing and a possible walk-in queue are the tradeoffs.',
     policy: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.',
     reviewSummary: 'Time Out’s April 2025 review praises the inventive drinks, jazz and art-filled hotel-bar setting, and notes an evening queue.', reviewSource: 'https://www.timeout.com/london/bars-and-pubs/scarfes-bar', reviewLabel: 'Time Out · 16 Apr 2025',
     plans: {
       fri: { time: '20:30', fit: 'Excellent Friday alternative', travel: 'Est. 15–20 min walk from Covent Garden', status: 'Open · 16:00 till late' },
-      sat: { time: '21:00', fit: 'Saturday fallback · only if the group still wants one', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', fallback: true }
+      sat: { time: '21:00', fit: 'Optional Saturday nightcap after Dishoom', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', nightcap: true }
     }
   }
 ];
 
 const NIGHT_META = {
-  fri: { date: '20261009', label: 'Friday 9 October', rationale: 'Friday is the cocktail night. The Connaught is the polished Mayfair recommendation around 20:30; Scarfes is the easier Holborn alternative, while Satan’s Whiskers makes it a more casual East London outing.' },
-  sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Saturday is already a long day, so no cocktail outing is expected. If energy remains after Dishoom, Scarfes is the easiest nearby option around 21:00.' }
+  fri: { date: '20261009', label: 'Friday 9 October', rationale: 'The Connaught is the polished Mayfair recommendation around 20:30. Scarfes is the easier Holborn alternative from Covent Garden; the two bars are separate choices for the evening.' },
+  sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Scarfes is an optional nightcap after Dishoom: walk an estimated 15–20 minutes, arrive around 21:00 and stay for roughly one hour if energy remains.' }
 };
 
 const SATURDAY_PUBS = [
@@ -110,7 +99,7 @@ const DAYS = [
       { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
       { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] } },
       { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Seven Dials London', tag: 'Venue TBD', summary: 'Dinner around Covent Garden or Seven Dials.' },
-      { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 is the recommendation; choose one of three distinct cocktail-bar options.', details: 'The Connaught is the polished Mayfair pick. Scarfes is the easier Holborn alternative from Covent Garden; Satan’s Whiskers is the more casual East London outing.', barsCta: true }
+      { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 is the recommendation; Scarfes is the easier Holborn alternative.', details: 'Choose one of the two world-ranked bars for Friday. The optional Saturday Scarfes nightcap remains a separate choice after Dishoom.', barsCta: true }
     ]
   },
   {
@@ -125,7 +114,8 @@ const DAYS = [
       { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
       { start: '15:10', end: '15:50', title: 'Optional: The Harp', place: 'The Harp, 47 Chandos Place London WC2N 4HS', tag: 'Optional if there is room', summary: 'A compact traditional alehouse for cask ale and cider.', details: 'Allow an estimated 25–30 minutes to walk here via Fleet Street and the Strand from The Blackfriar. Saturday hours are listed as 11:00–23:00; skip it if busy or linger depending on space and mood.', source: 'https://www.harpcoventgarden.com/', sourceLabel: 'Official pub information', directions: { origin: 'The Blackfriar London', destination: 'The Harp Covent Garden', mode: 'walking' }, status: 'TENTATIVE', uid: 'saturday-harp-20261010@london-field-guide' },
       { start: '16:00', end: '16:45', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow an estimated 8–10 minute walk from The Harp, or start earlier if the group skips The Harp. Saturday hours are listed as 11:00–23:00. From 16:45, linger here or wander Covent Garden and Seven Dials; leave by about 17:40 with a generous 10-minute walk budget to Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', directions: { origin: 'The Harp Covent Garden', destination: 'Lamb and Flag Covent Garden', mode: 'walking' }, status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
-      { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' }
+      { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' },
+      { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
     ]
   },
   {
@@ -163,7 +153,8 @@ const SATURDAY_LUNCH = {
     { start: '13:15', end: '14:00', title: 'Walk west to The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Est. 25–35 minute walk + buffer', summary: 'Follow Bankside west via Millennium Bridge toward Blackfriars.', directions: { origin: 'Borough Market', destination: 'The Blackfriar London', mode: 'walking', waypoints: ['Millennium Bridge London'] }, uid: 'saturday-borough-blackfriar-20261010@london-field-guide' },
     { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
     { start: '15:30', end: '16:15', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow 30–40 minutes to walk west with sightseeing buffer. The Harp is an alternative to Lamb & Flag. Afterward, wander Covent Garden or linger before leaving for Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
-    { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'From 16:15, use the flexible time for Covent Garden or Seven Dials and keep the 17:50 arrival. Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' }
+    { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'From 16:15, use the flexible time for Covent Garden or Seven Dials and keep the 17:50 arrival. Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' },
+    { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
   ]
 };
 
@@ -293,7 +284,7 @@ function barCardMarkup(bar, night) {
   return `<article class="bar-card${plan.recommended ? ' bar-card--recommended' : ''}" data-bar-id="${bar.id}">
     <div class="bar-card__rank"><span>2025<br>WORLD RANK</span><strong>#${bar.rank}</strong></div>
     <div class="bar-card__content">
-      ${plan.recommended ? `<p class="bar-card__flag">${night === 'fri' ? 'Friday recommendation' : 'Recommendation'}</p>` : ''}${plan.fallback ? '<p class="bar-card__flag">Saturday fallback</p>' : ''}
+      ${plan.recommended ? `<p class="bar-card__flag">${night === 'fri' ? 'Friday recommendation' : 'Recommendation'}</p>` : ''}${plan.nightcap ? '<p class="bar-card__flag">Optional Saturday nightcap</p>' : ''}
       <p class="bar-card__area">${escapeHtml(bar.area)}</p>
       <h3>${escapeHtml(bar.name)}</h3>
       <div class="bar-card__take"><span>My take</span><p>${escapeHtml(bar.ourTake)}</p></div>
@@ -327,7 +318,7 @@ function renderBars(night) {
   document.querySelector('#night-rationale').innerHTML = `<strong>${escapeHtml(NIGHT_META[night].label)}</strong><p>${escapeHtml(NIGHT_META[night].rationale)}</p>`;
   document.querySelector('#bar-grid').innerHTML = BARS
     .slice()
-    .sort((a, b) => Number(Boolean(b.plans[night].recommended || b.plans[night].fallback)) - Number(Boolean(a.plans[night].recommended || a.plans[night].fallback)) || a.rank - b.rank)
+    .sort((a, b) => Number(Boolean(b.plans[night].recommended || b.plans[night].nightcap)) - Number(Boolean(a.plans[night].recommended || a.plans[night].nightcap)) || a.rank - b.rank)
     .map(bar => barCardMarkup(bar, night)).join('');
 }
 
@@ -473,6 +464,7 @@ document.querySelector('#bar-grid').addEventListener('click', event => {
     date: NIGHT_META[night].date,
     events: [{
       start: plan.time,
+      end: bar.id === 'scarfes' && night === 'sat' ? '22:00' : undefined,
       title: `Suggested: ${bar.name}`,
       place: bar.address,
       summary: `${plan.fit}. Tentative suggestion only; this is not booked. Reconfirm hours and entry policy before going.`,
