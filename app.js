@@ -514,13 +514,12 @@ const DAYS = [
   {
     id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles day & an early night',
     planningAlert: 'Passyunk is in Fitzrovia, central London—not near Tottenham Hotspur Stadium in north London. Allow an estimated 60–75 minutes between them by Tube and walking.',
-    planningNote: 'Passyunk is the chosen pregame stop, not a stadium fan zone or a short walk from the ground. Tailgate tickets are currently listed at £20 per person and are not booked; anyone skipping it can go directly to Tottenham. Suggested stadium entry is 13:45, 45 minutes before kickoff, with a target of being seated by 14:20. Plan to be back in Chelsea around 19:30–20:00.',
+    planningNote: 'This original option routes through the ticketed Passyunk event in Fitzrovia before Tottenham. Tickets are currently listed at £20 per person and are not booked. Suggested stadium entry is 13:45, 45 minutes before kickoff, with a target of being seated by 14:20. Plan to be back in Chelsea around 19:30–20:00.',
     routeStrip: 'Chelsea → Passyunk, Fitzrovia → Tottenham stadium',
-    alternative: true,
     events: [
       { start: '09:30', end: '10:15', title: 'Breakfast on Pavilion Road', place: 'Pavilion Road Chelsea', tag: '45 minutes', summary: 'Coffee and a proper breakfast before heading north.', uid: '20261011-0@london-field-guide' },
       { start: '10:15', end: '11:00', title: 'Chelsea to Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Est. 45 minutes', summary: 'Sloane Square to Warren Street, then walk to Passyunk.', details: 'Take the District or Circle line east one stop to Victoria → Victoria line north to Warren Street → walk to 80 Cleveland Street. Travel time is an estimate.', directions: { origin: 'Sloane Square Station', destination: 'Passyunk Avenue 80 Cleveland Street London W1T 6NE', mode: 'transit' }, uid: 'sunday-chelsea-fitzrovia-20261011@london-field-guide' },
-      { start: '11:00', end: '12:15', title: 'Passyunk Eagles tailgate in Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Chosen stop · £20 · not booked', summary: 'A 75-minute slice of the official 09:00–21:00 Philly event in central London.', details: 'Meet at 80 Cleveland Street, W1T 6NE. Our visit is 11:00–12:15; leave at 12:15 for Tottenham. Food trucks, mobile bars, live entertainment and a big screen are listed. Tickets are £20, non-refundable and do not include a free drink; plan food and drinks separately. The tailgate ticket is separate from the sold-out in-venue watch party. Check ticket availability on the booking page. For arrival or re-entry questions: eaglesweek@passyunkavenue.com.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate details', secondarySource: 'https://www.sevenrooms.com/events/ahNzfnNldmVucm9vbXMtc2VjdXJlchwLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoM?event_id=ahNzfnNldmVucm9vbXMtc2VjdXJlcjkLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoMCxIQc3JfR2VuVmVudWVFdmVudBiAgMe414rXCgw', secondarySourceLabel: 'Check tailgate tickets', tertiarySource: 'https://passyunkavenue.com/fitzrovia/', tertiarySourceLabel: 'Official Fitzrovia venue', venueKey: 'Passyunk Avenue Fitzrovia', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
+      { start: '11:00', end: '12:15', title: 'Passyunk Eagles tailgate in Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Original option · £20 · not booked', summary: 'A 75-minute slice of the official 09:00–21:00 Philly event in central London.', details: 'Meet at 80 Cleveland Street, W1T 6NE. Our visit is 11:00–12:15; leave at 12:15 for Tottenham. Food trucks, mobile bars, live entertainment and a big screen are listed. Tickets are £20, non-refundable and do not include a free drink; plan food and drinks separately. The tailgate ticket is separate from the sold-out in-venue watch party. Check ticket availability on the booking page. For arrival or re-entry questions: eaglesweek@passyunkavenue.com.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate details', secondarySource: 'https://www.sevenrooms.com/events/ahNzfnNldmVucm9vbXMtc2VjdXJlchwLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoM?event_id=ahNzfnNldmVucm9vbXMtc2VjdXJlcjkLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoMCxIQc3JfR2VuVmVudWVFdmVudBiAgMe414rXCgw', secondarySourceLabel: 'Check tailgate tickets', tertiarySource: 'https://passyunkavenue.com/fitzrovia/', tertiarySourceLabel: 'Official Fitzrovia venue', venueKey: 'Passyunk Avenue Fitzrovia', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
       { start: '12:15', end: '13:30', title: 'Fitzrovia to Tottenham', place: 'Tottenham Hotspur Stadium', tag: 'Est. 60–75 minutes', summary: 'Warren Street to Seven Sisters, then continue on foot toward the stadium.', details: 'Walk to Warren Street → Victoria line north to Seven Sisters → allow roughly 30–35 minutes to walk along the High Road toward the stadium, plus queues. Follow stewards and check live TfL guidance. Spurs advises using Liverpool Street for Overground journeys because of the Seven Sisters transfer diversion.', source: 'https://www.tottenhamhotspur.com/the-stadium/attending-matches/getting-here/', sourceLabel: 'Official stadium travel advice', tfl: true, uid: '20261011-1@london-field-guide' },
       { start: '13:30', end: '13:45', title: 'Find the ticket entrance', place: 'Tottenham Hotspur Stadium', tag: 'Outside buffer', summary: 'Use the NFL ticket instructions and skip photos if queues build.', details: 'This is a brief planning buffer, not a booked tour or event activation.', uid: 'sunday-stadium-photos-20261011@london-field-guide' },
       { start: '13:45', end: '14:20', title: 'Security & find our seats', place: 'Tottenham Hotspur Stadium', tag: 'Suggested entry · 45 minutes before kickoff', summary: 'Use the entrance and instructions on the NFL ticket; target being seated by 14:20.', details: 'The 13:45 arrival is our suggested target, not an official mandated entry time. Follow the ticket and current game-day guidance.', uid: 'sunday-stadium-entry-20261011@london-field-guide' },
@@ -548,6 +547,51 @@ const SATURDAY_LUNCH = {
     { start: '15:30', end: '16:15', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow 30–40 minutes to walk west with sightseeing buffer. The Harp is an alternative to Lamb & Flag. Afterward, wander Covent Garden or linger before leaving for Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', venueKey: 'Lamb & Flag', status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
     { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'From 16:15, use the flexible time for Covent Garden or Seven Dials and keep the 17:50 arrival. Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', venueKey: 'Dishoom Covent Garden', uid: '20261010-3@london-field-guide' },
     { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', venueKey: 'Scarfes Bar', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
+  ]
+};
+
+const SUNDAY_PREGAME_OPTIONS = [
+  {
+    name: 'Redemption Taproom', address: 'Unit 16 Compass West Estate, West Road London N17 0XL', tag: 'Best casual NFL fit · confirm opening',
+    knownFor: 'Independent Tottenham brewery, family-friendly and away-fan friendly, with pop-up food planned for weekend mid-afternoon kickoffs.',
+    fit: 'East of the stadium via West Road. The venue says it opens for both stadium NFL games, but its 11 October opening time is not yet published. Use it only if a suitably early time is confirmed.',
+    hours: '11 October time pending', website: 'https://redemptionbrewing.co.uk/pages/taproom', menu: 'https://redemptionbrewing.co.uk/pages/taproom', menuLabel: 'Taproom & food details'
+  },
+  {
+    name: 'TrueFan Eagles tailgate', address: '782 High Road London N17 0BX', tag: 'Paid Eagles option · availability unconfirmed',
+    knownFor: 'A team-linked Eagles tailgate listing buffet food, drinks, entertainment and guest appearances, close to the stadium.',
+    fit: 'Steps from the stadium. Official event hours are 10:30–13:30. It is currently listed at US$250 per person, ticketed and non-refundable; ticket availability is unconfirmed. Check with the organiser before planning around it. If booking it, leave Chelsea around 09:00, then leave the event around 12:30–12:40.',
+    hours: '11 October · 10:30–13:30', website: 'https://truefantravel.com/trips/eagles-london/', menu: 'https://www.philadelphiaeagles.com/fans/fan-travel', menuLabel: 'Eagles Fan Travel'
+  },
+  {
+    name: 'The Bluecoats', address: '614 High Road London N17 9TA', tag: 'Pub food · short window',
+    knownFor: 'A former school building serving pub food such as Sunday roast, cheeseburgers, fish and chips and nduja Scotch egg.',
+    fit: 'On the High Road route up from Seven Sisters. It opens at noon, leaving a tight meal window. Prebook if choosing it, order promptly and keep the 12:30 move toward the entrance.',
+    hours: 'Regular Sunday · 12:00–22:00', website: 'https://thebluecoatspub.com/', menu: 'https://thebluecoatspub.com/food-drink/', menuLabel: 'Food & drink'
+  },
+  {
+    name: 'Antwerp Arms', address: '168–170 Church Road London N17 8AS', tag: 'Community pub · drink-first',
+    knownFor: 'A historic community pub opposite Bruce Castle Park, pouring Tottenham-brewed Redemption ales.',
+    fit: 'West of the stadium, opposite Bruce Castle Park. It opens at noon. Treat it as one quick drink and leave around 12:30; changing food pop-ups are not reliable enough for the meal plan.',
+    hours: 'Regular Sunday · 12:00–22:30', website: 'https://www.antwerparms.co.uk/', menuNote: 'Ask about the day’s food when you arrive.'
+  }
+];
+
+const SUNDAY_LOCAL = {
+  id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles day & an early night',
+  planningAlert: 'Recommended: travel straight north and keep pregame flexible near Tottenham.',
+  planningNote: 'The default plan avoids the Fitzrovia detour. Choose one local pregame stop based on confirmed opening times, or use the High Road and stadium-campus atmosphere before moving to the ticket entrance. No free public NFL tailgate or 2026 fan-zone programme is confirmed yet.',
+  routeStrip: 'Chelsea → Seven Sisters → Tottenham High Road → ticket entrance',
+  events: [
+    { start: '09:30', end: '10:00', title: 'Breakfast on Pavilion Road', place: 'Pavilion Road Chelsea', tag: 'Quick breakfast', summary: 'Coffee and breakfast before heading north.', uid: '20261011-0@london-field-guide' },
+    { start: '10:00', end: '11:30', title: 'Chelsea to Tottenham', place: 'Tottenham High Road London', tag: '90-minute planning budget', summary: 'Use the low-transfer route via Victoria and Seven Sisters, then walk north along the High Road.', details: 'Sloane Square → District or Circle line one stop to Victoria → Victoria line north to Seven Sisters → follow official wayfinding and allow roughly 30 minutes to walk. Check live TfL and event guidance; if same-day service favours it, Liverpool Street to White Hart Lane is another official route.', source: 'https://www.tottenhamhotspur.com/the-stadium/attending-matches/getting-here/trains/', sourceLabel: 'Official stadium rail guidance', tfl: true, uid: 'sunday-local-transit-20261011@london-field-guide' },
+    { start: '11:30', end: '12:30', title: 'Local pregame · choose one stop', place: 'Tottenham High Road London', tag: 'Flexible · confirm on the day', summary: 'Look for local NFL atmosphere, one quick pub stop or food after entry—choose one, not a crawl.', details: 'Use the first half-hour for the stadium exterior, High Road atmosphere or Redemption only if it confirms an early opening. Bluecoats and Antwerp open at noon for a brief stop. Browse merchandise only if official event-day hours are confirmed and queues allow. Stadium food is the fallback if a local kitchen would make the entry target tight.', localPregameGuide: true, uid: 'sunday-local-pregame-20261011@london-field-guide' },
+    { start: '12:30', end: '13:15', title: 'Head to the correct ticket entrance', place: 'Tottenham Hotspur Stadium', tag: 'Reach the entrance 12:45–13:00', summary: 'Allow for crowds and queues; aim to be through the turnstiles by 13:15, 75 minutes before kickoff.', details: 'Use only the entrance on the digital NFL ticket and follow the 2026 ticket and event guide when issued.', source: 'https://www.nfl.com/international/games/london/faqs', sourceLabel: 'Official NFL London FAQ', uid: 'sunday-stadium-photos-20261011@london-field-guide' },
+    { start: '13:15', end: '14:20', title: 'Inside: food, atmosphere & seats', place: 'Tottenham Hotspur Stadium', tag: 'Through turnstiles target', summary: 'Use the time after entry for food, wayfinding and the stadium atmosphere; target being seated by 14:20.', details: 'Current 2026 NFL gate times and fan activities have not yet been published; follow the event guide and ticket instructions.', uid: 'sunday-stadium-entry-20261011@london-field-guide' },
+    { start: '14:30', end: '17:45', title: 'Eagles vs Jaguars', place: 'Tottenham Hotspur Stadium', tag: 'Kickoff · 14:30 BST', summary: 'Philadelphia Eagles vs Jacksonville Jaguars.', details: 'Approximate finish; overtime could run later. Kickoff is confirmed by the official Eagles schedule release.', source: 'https://www.philadelphiaeagles.com/news/eagles-jaguars-nfl-london-games-tottenham-hotspur-stadium-2026-schedule-release', sourceLabel: 'Official game details', uid: '20261011-3@london-field-guide' },
+    { start: '17:45', end: '20:00', title: 'Return to Chelsea', place: 'Chelsea, London', tag: 'Back in Chelsea 19:30–20:00', summary: 'Allow for stadium exit, queues and the walk back to Seven Sisters.', details: 'Walk to Seven Sisters → Victoria line south to Victoria → District or Circle line west to Sloane Square. The Chelsea arrival time is a planning estimate; check TfL and follow steward directions.', directions: { origin: 'Tottenham Hotspur Stadium', destination: 'Sloane Square Station', mode: 'transit' }, tfl: true, uid: 'sunday-return-chelsea-20261011@london-field-guide' },
+    { start: '20:00', end: '21:00', title: 'Casual dinner in Chelsea', place: 'Chelsea, London', tag: 'Flexible · nothing booked', summary: 'The Enterprise for a relaxed local pub dinner, with Côte Sloane Square as the practical Tube-side backup.', details: 'Move dinner earlier if the return from Tottenham is quicker. Choose one relaxed meal on the way back to the Chelsea base.', sundayDinnerGuide: true, uid: 'sunday-easy-dinner-20261011@london-field-guide' },
+    { start: '21:00', end: '21:45', title: 'Back, pack & wind down', place: 'Chelsea, London', tag: 'Early night', summary: 'Walk back, confirm Monday transfer and check-in, get bags ready, then call it a night.', uid: 'sunday-pack-20261011@london-field-guide' }
   ]
 };
 
@@ -691,6 +735,7 @@ function eventMarkup(event, dayId, index) {
       ${event.chelseaNightcapGuide ? chelseaGuideMarkup('nightcap') : ''}
       ${event.dinnerGuide ? fridayDinnerGuideMarkup() : ''}
       ${event.sundayDinnerGuide ? sundayDinnerGuideMarkup() : ''}
+      ${event.localPregameGuide ? localPregameGuideMarkup() : ''}
     </article>
   </li>`;
 }
@@ -714,12 +759,30 @@ function saturdayPubShortlistMarkup() {
   </section>`;
 }
 
+function localPregameGuideMarkup() {
+  return `<details class="dinner-guide local-pregame-guide">
+    <summary><span>Compare 4 local pregame options</span><span aria-hidden="true">＋</span></summary>
+    <div class="dinner-guide__inner">
+      <p class="dinner-guide__intro"><strong>Choose one, not a crawl.</strong> Redemption is the best casual NFL fit if it confirms an early opening. TrueFan is a paid Eagles option with unconfirmed ticket availability. Bluecoats and Antwerp open at noon, so keep either stop brief and move toward the correct entrance at 12:30.</p>
+      <div class="dinner-option-grid">${SUNDAY_PREGAME_OPTIONS.map(option => `<article class="dinner-option">
+        <p class="dinner-option__flag">${escapeHtml(option.tag)}</p><h4>${escapeHtml(option.name)}</h4>
+        <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>How it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Published hours</dt><dd>${escapeHtml(option.hours)}</dd></div></dl>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.website}" target="_blank" rel="noopener">Website <span aria-hidden="true">↗</span></a>${option.menu ? `<a href="${option.menu}" target="_blank" rel="noopener">${escapeHtml(option.menuLabel)} <span aria-hidden="true">↗</span></a>` : `<small>${escapeHtml(option.menuNote)}</small>`}</div>
+      </article>`).join('')}</div>
+      <details class="route-alternative local-sight"><summary>Optional sight: Bruce Castle Park</summary><div><p>If the group wants a short outdoor detour instead of fan atmosphere, the park has the manor exterior, a historic oak and a 45-minute circular walk. The park is always open; the museum’s 13:00 Sunday opening is too late for this plan.</p><p><a href="${mapsUrl('Bruce Castle Park London N17 8NS')}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a> · <a href="https://www.haringey.gov.uk/leisure-parks-culture/parks-greenspaces/parks-facilities-haringey/bruce-castle-park" target="_blank" rel="noopener">Official park details <span aria-hidden="true">↗</span></a></p></div></details>
+    </div>
+  </details>`;
+}
+
 const viewIds = [...DAYS.map(day => day.id), 'bars'];
 const initialHash = location.hash.slice(1);
 let currentView = viewIds.includes(initialHash) ? initialHash : 'thu';
-let selectedSaturdayPlan = new URLSearchParams(location.search).get('sat') === 'lunch' ? 'lunch' : 'breakfast';
+const initialParams = new URLSearchParams(location.search);
+let selectedSaturdayPlan = initialParams.get('sat') === 'lunch' ? 'lunch' : 'breakfast';
+let selectedSundayPlan = initialParams.get('sun') === 'tailgate' ? 'tailgate' : 'local';
 const activeSaturday = () => selectedSaturdayPlan === 'lunch' ? SATURDAY_LUNCH : DAYS.find(day => day.id === 'sat');
-const activeDays = () => DAYS.map(day => day.id === 'sat' ? activeSaturday() : day);
+const activeSunday = () => selectedSundayPlan === 'tailgate' ? DAYS.find(day => day.id === 'sun') : SUNDAY_LOCAL;
+const activeDays = () => DAYS.map(day => day.id === 'sat' ? activeSaturday() : day.id === 'sun' ? activeSunday() : day);
 
 function saturdayPlanSelectorMarkup() {
   return `<section class="sat-plan-picker" aria-labelledby="sat-plan-title">
@@ -731,16 +794,26 @@ function saturdayPlanSelectorMarkup() {
   </section>`;
 }
 
+function sundayPlanSelectorMarkup() {
+  return `<section class="sat-plan-picker sun-plan-picker" aria-labelledby="sun-plan-title">
+    <div><p class="eyebrow">Choose Sunday</p><h3 id="sun-plan-title">Pregame near Tottenham or Passyunk?</h3><p>The timeline, printout and calendar use the selected plan.</p></div>
+    <div class="sat-plan-picker__buttons" role="radiogroup" aria-label="Sunday itinerary plan">
+      <button type="button" role="radio" data-sun-plan="local" aria-checked="${selectedSundayPlan === 'local'}" tabindex="${selectedSundayPlan === 'local' ? '0' : '-1'}" class="${selectedSundayPlan === 'local' ? 'is-active' : ''}"><span>Recommended</span><strong>Pregame near Tottenham</strong></button>
+      <button type="button" role="radio" data-sun-plan="tailgate" aria-checked="${selectedSundayPlan === 'tailgate'}" tabindex="${selectedSundayPlan === 'tailgate' ? '0' : '-1'}" class="${selectedSundayPlan === 'tailgate' ? 'is-active' : ''}"><span>Original</span><strong>Passyunk tailgate</strong></button>
+    </div>
+  </section>`;
+}
+
 function renderDayPanels() {
   document.querySelector('#day-panels').innerHTML = activeDays().map(day => `
     <section class="day-panel" id="panel-${day.id}" role="tabpanel" aria-labelledby="tab-${day.id}" ${day.id !== currentView ? 'hidden' : ''} tabindex="0">
       <header class="day-heading">
         <div><p>${day.label} · ${day.date.slice(6,8)} October</p><h2>${day.theme}</h2><span class="day-heading__zone">All times BST · London</span></div>
-        <button class="day-calendar" type="button" data-calendar-day="${day.id}">${day.id === 'sat' ? `Add ${selectedSaturdayPlan} plan` : 'Add day'}</button>
+        <button class="day-calendar" type="button" data-calendar-day="${day.id}">${day.id === 'sat' ? `Add ${selectedSaturdayPlan} plan` : day.id === 'sun' ? `Add ${selectedSundayPlan} plan` : 'Add day'}</button>
       </header>
       ${day.id === 'sat' ? saturdayPlanSelectorMarkup() : ''}
+      ${day.id === 'sun' ? sundayPlanSelectorMarkup() : ''}
       ${day.planningNote ? `<aside class="sunday-note"><strong>${escapeHtml(day.planningAlert || 'Sunday pacing')}</strong>${day.routeStrip ? `<div class="route-strip">${escapeHtml(day.routeStrip)}</div>` : ''}<p>${escapeHtml(day.planningNote)}</p>${day.id === 'sat' ? '<button class="pub-shortlist-jump" type="button">Browse 5 other pub options <span aria-hidden="true">↓</span></button>' : ''}</aside>` : ''}
-      ${day.alternative ? `<details class="route-alternative"><summary>Skipping Passyunk? Go straight to Tottenham</summary><div><p>Anyone skipping the tailgate can leave Chelsea around 11:30. Allow 75–90 minutes via Victoria and Seven Sisters, including the walk, to arrive around 12:45–13:00.</p><p>Use any remaining time for quick food and photos, then keep the same suggested 13:45 entry. This replaces the Fitzrovia stop; it is not an extra detour.</p></div></details>` : ''}
       <ol class="timeline">${day.events.map((event, index) => eventMarkup(event, day.id, index)).join('')}</ol>
       ${day.id === 'sat' ? saturdayPubShortlistMarkup() : ''}
     </section>`).join('');
@@ -839,10 +912,23 @@ document.addEventListener('click', event => {
     document.querySelector(`[data-sat-plan="${selectedSaturdayPlan}"]`).focus();
     return;
   }
+  const sundayPlanButton = event.target.closest('[data-sun-plan]');
+  if (sundayPlanButton) {
+    selectedSundayPlan = sundayPlanButton.dataset.sunPlan;
+    const url = new URL(location.href);
+    url.searchParams.set('sun', selectedSundayPlan);
+    url.hash = 'sun';
+    history.replaceState(null, '', url.toString());
+    currentView = 'sun';
+    renderDayPanels();
+    selectDay('sun');
+    document.querySelector(`[data-sun-plan="${selectedSundayPlan}"]`).focus();
+    return;
+  }
   const dayCalendar = event.target.closest('[data-calendar-day]');
   if (dayCalendar) {
     const day = activeDays().find(item => item.id === dayCalendar.dataset.calendarDay);
-    const suffix = day.id === 'sat' ? `-${selectedSaturdayPlan}` : '';
+    const suffix = day.id === 'sat' ? `-${selectedSaturdayPlan}` : day.id === 'sun' ? `-${selectedSundayPlan}` : '';
     makeCalendar([day], `london-${day.label.toLowerCase()}-${day.date}${suffix}.ics`);
     return;
   }
@@ -863,11 +949,16 @@ document.addEventListener('click', event => {
 });
 
 document.addEventListener('keydown', event => {
-  const planButton = event.target.closest('[data-sat-plan]');
+  const planButton = event.target.closest('[data-sat-plan], [data-sun-plan]');
   if (!planButton || !['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
   event.preventDefault();
-  const next = planButton.dataset.satPlan === 'lunch' ? 'breakfast' : 'lunch';
-  document.querySelector(`[data-sat-plan="${next}"]`).click();
+  if (planButton.dataset.satPlan) {
+    const next = planButton.dataset.satPlan === 'lunch' ? 'breakfast' : 'lunch';
+    document.querySelector(`[data-sat-plan="${next}"]`).click();
+  } else {
+    const next = planButton.dataset.sunPlan === 'local' ? 'tailgate' : 'local';
+    document.querySelector(`[data-sun-plan="${next}"]`).click();
+  }
 });
 
 document.querySelector('#bars-entry').addEventListener('click', () => {
@@ -924,7 +1015,7 @@ function makeCalendar(days, filename) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-document.querySelector('#calendar-all').addEventListener('click', () => makeCalendar(activeDays(), `london-8-11-october-2026-${selectedSaturdayPlan}.ics`));
+document.querySelector('#calendar-all').addEventListener('click', () => makeCalendar(activeDays(), `london-8-11-october-2026-${selectedSaturdayPlan}-${selectedSundayPlan}.ics`));
 document.querySelector('#bar-grid').addEventListener('click', event => {
   const button = event.target.closest('[data-bar-calendar]');
   if (!button) return;
