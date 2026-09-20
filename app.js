@@ -92,20 +92,14 @@ const VENUE_LINKS = {
   },
   "Admiral Codrington": {
     "website": "https://theadmiralcodrington.com/",
-    "menu": "https://theadmiralcodrington.com/menus",
-    "menuLabel": "Official menus",
+    "menu": "https://drive.google.com/file/d/1eUE1gbcdLoAdY6UZw0igXOGfAOXPnbZp/view?usp=sharing",
+    "menuLabel": "Drinks menu",
     "menuNote": ""
   },
   "The Surprise Chelsea": {
     "website": "https://www.thesurprise-chelsea.co.uk/",
     "menu": "https://www.thesurprise-chelsea.co.uk/food-drink/",
     "menuLabel": "Official food and drink page",
-    "menuNote": ""
-  },
-  "Barts": {
-    "website": "https://www.barts-london.com/",
-    "menu": "https://www.barts-london.com/menus/",
-    "menuLabel": "Official menus",
     "menuNote": ""
   },
   "PJ’s Chelsea Brasserie": {
@@ -122,9 +116,10 @@ const VENUE_LINKS = {
   },
   "The Cadogan Arms": {
     "website": "https://thecadoganarms.london/",
-    "menu": "https://thecadoganarms.london/menus/",
-    "menuLabel": "Food menus",
-    "menuNote": ""
+    "menu": "https://thecadoganarms.london/wp-content/uploads/The-Cadogan-Arms-All-Day-Dining-Menu-10.09.2026.pdf",
+    "menuLabel": "Food menu (PDF)",
+    "menuNote": "",
+    "extraMenus": [{ "url": "https://thecadoganarms.london/wp-content/uploads/Beverage-Menu-Cadogan-Arms-July-2026.pdf", "label": "Drinks menu (PDF)" }]
   },
   "Sartori": {
     "website": "https://www.sartorirestaurant.com/",
@@ -250,6 +245,36 @@ const VENUE_LINKS = {
     "website": "https://www.thedelaunay.com/",
     "menu": "https://www.thedelaunay.com/menus/dinner/",
     "menuLabel": "Dinner menu",
+    "menuNote": ""
+  },
+  "Caraffini": {
+    "website": "https://www.caraffini.co.uk/",
+    "menu": "https://www.caraffini.co.uk/menu",
+    "menuLabel": "Menu",
+    "menuNote": ""
+  },
+  "Daphne’s": {
+    "website": "https://daphnes-restaurant.co.uk/",
+    "menu": "https://daphnes-restaurant.co.uk/wp-content/uploads/2026/09/07.09.2026-ALC-2.pdf",
+    "menuLabel": "À la carte menu (PDF)",
+    "menuNote": ""
+  },
+  "Stanley’s Chelsea": {
+    "website": "https://stanleyschelsea.co.uk/",
+    "menu": "https://cdn.prod.website-files.com/5ed8d746a147702f4610e594/6a833c8ba79cd69bc8393053_Stanley%27s%20Menu%2013.08.26.pdf",
+    "menuLabel": "Menu (PDF)",
+    "menuNote": ""
+  },
+  "The Knox": {
+    "website": "https://theknoxbar.co.uk/",
+    "menu": "https://theknoxbar.co.uk/menu/",
+    "menuLabel": "Food & drink menu",
+    "menuNote": ""
+  },
+  "Sir Frank’s Bar": {
+    "website": "https://beaverbrooktownhouse.co.uk/the-bar/",
+    "menu": "https://hotelcms-production.imgix.net/beaverbrooktownhouse.co.uk/wp-content/uploads/2026/08/Sir-Franks-Bar-Menu.pdf?fm=pdf",
+    "menuLabel": "Bar menu (PDF)",
     "menuNote": ""
   }
 };
@@ -431,6 +456,23 @@ const SUNDAY_DINNER_OPTIONS = [
   }
 ];
 
+const CHELSEA_DINNER_OPTIONS = [
+  { name: 'Caraffini', address: '61–63 Lower Sloane Street London SW1W 8DH', hours: 'Thursday dinner · 18:00–22:00', knownFor: 'Traditional Italian pasta, seafood, sliced beef and tiramisu.', fit: 'A relaxed, family-run classic Italian near Sloane Square.', hoursSource: 'https://www.caraffini.co.uk/find-us' },
+  { name: 'Daphne’s', address: '112 Draycott Avenue London SW3 3AE', hours: 'Thursday à la carte · 12:00–22:45; closes 23:00', knownFor: 'Regional Italian cooking, including pasta, risotto, chicken and sea bass.', fit: 'An established, polished Italian on Draycott Avenue; the dressier dinner option.', hoursSource: 'https://daphnes-restaurant.co.uk/menus/' },
+  { name: 'PJ’s Chelsea Brasserie', address: '52 Fulham Road London SW3 6HH', hours: 'Thursday venue hours · 12:00–00:00', knownFor: 'A broad brasserie menu spanning steak tartare, burrata, squid, salads, steaks and burgers.', fit: 'Relaxed with some polish and the broadest familiar menu.', hoursSource: 'https://www.pjschelseabrasserie.co.uk/menus' },
+  { name: 'The Cadogan Arms', address: '298 King’s Road London SW3 5UG', hours: 'Thursday bar · 12:00–00:00; kitchen to 22:00', knownFor: 'British gastropub dishes such as chicken, ham and leek pie, fish and chips, Scotch egg and sticky toffee pudding.', fit: 'A handsome, lively King’s Road pub where dinner can flow into a drink.', hoursSource: 'https://thecadoganarms.london/contact/' },
+  { name: 'Hawksmoor Knightsbridge', address: '3 Yeomans Row London SW3 2AL', hours: 'Thursday · 17:00–23:00; kitchen to 22:00', knownFor: 'Dry-aged steaks, oysters and seafood, with chicken and fish mains too.', fit: 'The polished Art Deco steakhouse option toward Knightsbridge.', hoursSource: 'https://thehawksmoor.com/locations/knightsbridge/0/' },
+  { name: 'Stanley’s Chelsea', address: '151 Sydney Street London SW3 6NT', hours: 'Thursday venue hours · 12:00–23:30', knownFor: 'Contemporary British dishes such as risotto, grilled cod, pork schnitzel and dry-aged sirloin.', fit: 'A relaxed covered courtyard, Orangery or dining-room setting just off King’s Road.', hoursSource: 'https://stanleyschelsea.co.uk/' }
+];
+
+const CHELSEA_NIGHTCAP_OPTIONS = [
+  { name: 'The Cadogan Arms', address: '298 King’s Road London SW3 5UG', hours: 'Thursday · 12:00–00:00', knownFor: 'Wines, bespoke beers and classic cocktails in a restored Chelsea pub.', fit: 'Works at 22:30; if dinner is here, simply stay for a drink.' },
+  { name: 'The Knox', address: '7–12 Sloane Square London SW1W 8EG', hours: 'Thursday · 17:00–02:00', knownFor: 'A relaxed, intimate midweek bar for cocktails and light bites.', fit: 'The strongest verified late-hours choice for a 22:30 arrival.' },
+  { name: 'Sir Frank’s Bar', address: 'Beaverbrook Town House, 115 Sloane Street London SW1X 9PJ', hours: 'Thursday · 11:00 until late', knownFor: 'An Art Deco hotel bar with booths and a convivial feel; signature cocktails are currently £18 and martinis £20, plus service.', fit: 'Potentially suitable at 22:30; confirm the closing time that day.' },
+  { name: 'The Surprise Chelsea', address: '6 Christchurch Terrace London SW3 4AJ', hours: 'Thursday · 12:00–23:00', knownFor: 'A welcoming neighbourhood pub for a quiet pint or casual drink.', fit: 'An earlier one-drink option: arrive around 21:45–22:00.' },
+  { name: 'Admiral Codrington', address: '17 Mossop Street London SW3 2LY', hours: 'Thursday · 12:00–23:00', knownFor: 'A restored neighbourhood pub with cosy snugs, a fireside area and garden room.', fit: 'An earlier one-drink option, especially after dinner near Fulham Road or Knightsbridge.' }
+];
+
 const DAYS = [
   {
     id: 'thu', date: '20261008', label: 'Thursday', theme: 'Arrival & Chelsea',
@@ -439,8 +481,8 @@ const DAYS = [
       { start: '17:50', title: 'Arrive at London City Airport', place: 'London City Airport', tag: 'Inbound', summary: 'BA 7304 from Milan Linate.', details: 'Flight details are from the group plan; verify timing with the airline before travel.' },
       { start: '18:15', end: '19:15', title: 'Transfer to Chelsea', place: 'Chelsea, London', tag: 'Approx. 50 min', summary: 'Black cab or Uber XL from London City Airport.', details: 'Travel time is an estimate and will vary with evening traffic.', directions: { origin: 'London City Airport', destination: 'Chelsea London', mode: 'driving' } },
       { start: '19:15', end: '20:00', title: 'Settle in', place: 'Chelsea, London', tag: 'At the house', summary: 'Drop bags and ease into welcome refreshments.' },
-      { start: '20:15', end: '22:30', title: 'Welcome dinner', place: 'Chelsea, London', tag: 'Choose together', summary: 'Chelsea dinner options for the first night.', options: [{ name: "PJ’s Chelsea Brasserie", venueKey: "PJ’s Chelsea Brasserie" }, { name: 'Hawksmoor Knightsbridge', venueKey: 'Hawksmoor Knightsbridge' }, { name: 'The Cadogan Arms', venueKey: 'The Cadogan Arms' }] },
-      { start: '22:30', title: 'Chelsea nightcap', place: 'Chelsea, London', tag: 'Late', summary: 'One more, if the mood is right.', options: [{ name: 'The Admiral Codrington', venueKey: 'Admiral Codrington' }, { name: 'The Surprise Chelsea', venueKey: 'The Surprise Chelsea' }, { name: 'Barts Speakeasy at Chelsea Cloisters', venueKey: 'Barts' }] }
+      { start: '20:15', end: '22:30', title: 'Welcome dinner', place: 'Chelsea, London', tag: 'Choose together', summary: 'Compare six nearby Italian, British, steakhouse and broad-menu options.', details: 'Target 20:15 and book the chosen venue. Menus and hours can change.', chelseaDinnerGuide: true },
+      { start: '22:30', title: 'Chelsea nightcap', place: 'Chelsea, London', tag: 'Optional · choose one', summary: 'Five relaxed local options, with earlier pub choices and later-closing bars.', details: 'For pubs closing at 23:00, finish dinner earlier and aim to arrive around 21:45–22:00. After 22:30, choose a later-closing option.', chelseaNightcapGuide: true }
     ]
   },
   {
@@ -550,6 +592,28 @@ function boroughGuideMarkup(plan = 'breakfast') {
   </details>`;
 }
 
+function chelseaGuideMarkup(type) {
+  const isDinner = type === 'dinner';
+  const options = isDinner ? CHELSEA_DINNER_OPTIONS : CHELSEA_NIGHTCAP_OPTIONS;
+  const title = isDinner ? 'Welcome dinner guide · 6 options' : 'Chelsea nightcap guide · 5 options';
+  const intro = isDinner
+    ? '<strong>Choose one:</strong> Caraffini and Daphne’s cover relaxed and polished Italian; PJ’s has the broadest familiar menu; Cadogan Arms is the British gastropub; Hawksmoor leads on steak and seafood; Stanley’s offers contemporary British cooking in a courtyard setting.'
+    : '<strong>Choose by timing:</strong> Cadogan Arms and The Knox work after 22:30; confirm Sir Frank’s closing time that day. The Surprise and Admiral Codrington suit an earlier 21:45–22:00 drink.';
+  const pairings = isDinner ? '<p class="dinner-guide__intro"><strong>Simple pairings:</strong> Caraffini → The Knox · Cadogan Arms → stay for a drink · Daphne’s, PJ’s or Hawksmoor → Admiral Codrington if dinner finishes early, or Sir Frank’s later (confirm hours).</p>' : '';
+  return `<details class="dinner-guide chelsea-guide">
+    <summary><span>${title}</span><span aria-hidden="true">＋</span></summary>
+    <div class="dinner-guide__inner">
+      <p class="dinner-guide__intro">${intro} ${isDinner ? 'Target 20:15; book the chosen restaurant and confirm kitchen hours. Menus may change seasonally.' : 'Nothing is booked.'}</p>
+      ${pairings}
+      <div class="dinner-option-grid">${options.map(option => `<article class="dinner-option">
+        <h4>${escapeHtml(option.name)}</h4>
+        <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>Why it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Thursday hours</dt><dd>${escapeHtml(option.hours)}</dd></div></dl>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>${venueLinksMarkup(option.name, 'venue-links venue-links--inline')}${option.hoursSource ? `<a href="${option.hoursSource}" target="_blank" rel="noopener">Hours <span aria-hidden="true">↗</span></a>` : ''}</div>
+      </article>`).join('')}</div>
+    </div>
+  </details>`;
+}
+
 function fridayDinnerGuideMarkup() {
   return `<details class="dinner-guide">
     <summary><span>Dinner guide · 5 nearby options</span><span aria-hidden="true">＋</span></summary>
@@ -623,6 +687,8 @@ function eventMarkup(event, dayId, index) {
       ${expandedContent ? `<div class="event__details" id="${detailId}" hidden>${expandedContent}</div>` : ''}
       ${event.boroughGuide ? boroughGuideMarkup(event.boroughGuide === 'lunch' ? 'lunch' : 'breakfast') : ''}
       ${event.coventGuide ? coventGardenGuideMarkup() : ''}
+      ${event.chelseaDinnerGuide ? chelseaGuideMarkup('dinner') : ''}
+      ${event.chelseaNightcapGuide ? chelseaGuideMarkup('nightcap') : ''}
       ${event.dinnerGuide ? fridayDinnerGuideMarkup() : ''}
       ${event.sundayDinnerGuide ? sundayDinnerGuideMarkup() : ''}
     </article>
