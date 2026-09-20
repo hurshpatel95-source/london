@@ -174,6 +174,22 @@ function boroughGuideMarkup() {
       <section class="borough-later" aria-labelledby="borough-later-title">
         <h4 id="borough-later-title">Open later · savoury top hits</h4>
         <p>“Open later” means these traders publish regular Saturday hours into the afternoon, before the market’s 17:00 close. Keep these options handy for lunch or afternoon food. Kitchen cutoffs are not separately published and stock varies.</p>
+        <aside class="market-switch" aria-labelledby="market-switch-title">
+          <p class="eyebrow">Optional Saturday switch</p>
+          <h5 id="market-switch-title">Pub → market lunch → pubs</h5>
+          <p><strong>Start the crawl early and make Borough the lunch stop.</strong> Keep breakfast light, start at The George near Borough, eat at the market, then continue west toward Covent Garden. Have the market lunch before heading west to avoid backtracking later.</p>
+          <ol class="market-switch__route">
+            <li><time datetime="09:30">09:30–10:00</time><span><strong>Coffee & light breakfast</strong> · Keep room for lunch.</span></li>
+            <li><time datetime="10:00">10:00–11:20</time><span><strong>Short Tower Bridge loop</strong> · Borough → Tower Bridge → cross → London Bridge → cross back → The George. Roughly 3–3.5 km and 45–55 minutes of actual walking, with an 80-minute window and buffer. Outdoor crossings and views only; no paid exhibition.</span></li>
+            <li><time datetime="11:30">11:30–12:10</time><span><strong>First drink at The George</strong> · London’s last remaining galleried inn, with 17th-century history. Courtyard is walk-in only; nothing is booked. Regular Saturday hours 11:00–00:00.</span></li>
+            <li><time datetime="12:15">12:15–13:15</time><span><strong>Borough Market lunch</strong> · Walk about 3–5 minutes back and choose one item, or share, from the savoury list below.</span></li>
+            <li><time datetime="13:15">13:15–14:00</time><span><strong>Walk west to The Blackfriar</strong> · Follow Bankside via Millennium Bridge; allow an estimated 25–35 minutes plus buffer.</span></li>
+            <li><time datetime="14:00">14:00–16:15</time><span><strong>The Blackfriar, then Lamb & Flag</strong> · Blackfriar 14:00–14:40; allow 30–40 minutes to walk west with sightseeing buffer; Lamb & Flag 15:30–16:15. The Harp is an alternative to Lamb & Flag.</span></li>
+            <li><time datetime="16:15">16:15–17:50</time><span><strong>Covent Garden to dinner</strong> · Wander Seven Dials, linger if the group wants, then keep the 17:50 Dishoom arrival.</span></li>
+          </ol>
+          <p class="market-switch__note">This optional order replaces the full morning market meal and the original 11:30–13:30 river walk. Times and walking durations are planning estimates.</p>
+          <div class="market-switch__links"><a href="${mapsUrl('The George Inn 75-77 Borough High Street London SE1 1NH')}" target="_blank" rel="noopener">The George map <span aria-hidden="true">↗</span></a><a href="https://www.greeneking.co.uk/pubs/greater-london/george-southwark/find-us" target="_blank" rel="noopener">Official hours & courtyard policy <span aria-hidden="true">↗</span></a><a href="https://www.nationaltrust.org.uk/visit/london/george-inn" target="_blank" rel="noopener">National Trust history <span aria-hidden="true">↗</span></a></div>
+        </aside>
         <div class="borough-pick-grid">${BOROUGH_LATER_PICKS.map(pick => `<article class="borough-pick">
           <p class="borough-pick__when">Afternoon reference</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
           <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
