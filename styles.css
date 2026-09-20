@@ -112,6 +112,7 @@ main { padding-block: 12px 64px; }
 .bars-intro__lede { max-width: 620px; margin: 1.2rem 0 1.5rem; color: #dce6e1; font-size: clamp(1rem, 2vw, 1.2rem); }
 .bars-intro__meta { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; color: #a9bbb3; font-size: 14px; }
 .name-chip { padding: .25rem .6rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: white; }
+.bars-intro__invite { position: relative; z-index: 1; max-width: 650px; margin: .8rem 0 0; color: #dce6e1; font-size: 14px; }
 .night-planner { margin: 0 0 24px; padding: 22px; border: 1px solid var(--line); background: var(--paper); }
 .night-planner__heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
 .night-planner__heading h3, .night-compare h3, .poll-card h3 { margin: 0; font: 400 clamp(1.8rem, 5vw, 2.5rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }

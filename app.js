@@ -24,7 +24,7 @@ const BARS = [
     id: 'scarfes', rank: 31, name: 'Scarfes Bar', area: 'Holborn', address: 'Rosewood London, 252 High Holborn, London WC1V 7EN',
     source: 'https://www.rosewoodhotels.com/en/london/dining/scarfes-bar',
     policySource: 'https://scarfesbar.com/',
-    note: 'The easiest move after Dishoom. Groups of four are walk-in; the official policy allows 90 minutes at the table.',
+    note: 'The easiest move after Dishoom. For a group of five, plan on a walk-in. If parents join and we’re six or more, contact the bar about a group reservation. Tables are normally allocated for 90 minutes; nothing is booked.',
     plans: {
       fri: { time: '20:30', fit: 'Excellent Friday alternative', travel: 'Est. 15–20 min walk from Covent Garden', status: 'Open · 16:00 till late' },
       sat: { time: '21:00', fit: 'Editor’s pick · best fit', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', recommended: true }
@@ -70,12 +70,12 @@ const DAYS = [
   },
   {
     id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles day & an early night',
-    planningNote: 'The working rhythm: 40-minute breakfast · 1-hour Passyunk pregame · target home 19:30–20:00. Passyunk is a separately ticketed event in Fitzrovia, not at the stadium. Entry is currently listed at £20 per person and is not booked.',
+    planningNote: 'The working rhythm: 40-minute breakfast · optional 1-hour Passyunk pregame for anyone interested · target home 19:30–20:00. Parents are welcome to join. Passyunk is a separately ticketed event in Fitzrovia, not at the stadium. Entry is currently listed at £20 per person and is not booked.',
     alternative: true,
     events: [
       { start: '09:00', end: '09:40', title: 'Breakfast on Pavilion Road', place: 'Pavilion Road Chelsea', tag: '40 minutes', summary: 'Coffee and a proper breakfast before heading north.', uid: '20261011-0@london-field-guide' },
       { start: '09:40', end: '10:20', title: 'Chelsea to Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Est. 40 minutes', summary: 'Sloane Square to Warren Street, then walk to Passyunk.', details: 'Take the District or Circle line east one stop to Victoria → Victoria line north to Warren Street → walk to 80 Cleveland Street. Travel time is an estimate.', directions: { origin: 'Sloane Square Station', destination: 'Passyunk Avenue 80 Cleveland Street London W1T 6NE', mode: 'transit' }, uid: 'sunday-chelsea-fitzrovia-20261011@london-field-guide' },
-      { start: '10:20', end: '11:20', title: 'Passyunk Eagles tailgate · suggested', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: '£20 entry · not booked', summary: 'A chosen one-hour slice of the official 09:00–21:00 event on 11 October in Fitzrovia.', details: 'This is a separate-entry event in Fitzrovia, not a stadium tailgate. Entry is currently listed at £20 per person, does not include a free drink, and has not been booked. Depart by 11:20 to protect the stadium buffer.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate & tickets', secondarySource: 'https://passyunkavenue.com/fitzrovia/', secondarySourceLabel: 'Official Fitzrovia venue', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
+      { start: '10:20', end: '11:20', title: 'Optional: Passyunk Eagles tailgate', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Join if you fancy it · £20 · not booked', summary: 'An optional one-hour slice for anyone interested—including parents—of the official 09:00–21:00 event on 11 October in Fitzrovia.', details: 'This is a separate-entry event in Fitzrovia, not a stadium tailgate. Entry is currently listed at £20 per person, does not include a free drink, and has not been booked. Depart by 11:20 to protect the stadium buffer.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate & tickets', secondarySource: 'https://passyunkavenue.com/fitzrovia/', secondarySourceLabel: 'Official Fitzrovia venue', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
       { start: '11:20', end: '12:30', title: 'Head to Tottenham', place: 'Tottenham Hotspur Stadium', tag: 'Est. 70 minutes', summary: 'Warren Street to Seven Sisters, then continue on foot toward the stadium.', details: 'Walk to Warren Street → Victoria line north to Seven Sisters → allow roughly 30–35 minutes to walk along the High Road toward the stadium, plus queues. Follow stewards and check live TfL guidance. Spurs advises using Liverpool Street for Overground journeys because of the Seven Sisters transfer diversion.', source: 'https://www.tottenhamhotspur.com/the-stadium/attending-matches/getting-here/', sourceLabel: 'Official stadium travel advice', tfl: true, uid: '20261011-1@london-field-guide' },
       { start: '12:30', end: '13:00', title: 'Stadium photos & pregame buzz', place: 'Tottenham Hotspur Stadium', tag: 'Local wander', summary: 'Take in the atmosphere and grab merchandise only if the queue is short.', details: 'This is free time around the stadium, not a booked tour or event activation.', uid: 'sunday-stadium-photos-20261011@london-field-guide' },
       { start: '13:00', end: '14:15', title: 'Security, food & find our seats', place: 'Tottenham Hotspur Stadium', tag: 'Planned buffer', summary: 'Use the entrance and instructions on the NFL ticket; aim to be seated by 13:45.', details: 'This is planning buffer, not a statement of gate-opening time. Follow the event-specific ticket and venue guidance.', uid: 'sunday-stadium-entry-20261011@london-field-guide' },
@@ -153,7 +153,7 @@ function barCardMarkup(bar, night) {
         <a href="${mapsUrl(bar.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>
         <a href="${bar.source}" target="_blank" rel="noopener">Official site <span aria-hidden="true">↗</span></a>
         <a href="https://www.the50.com/bars/best-in-the-world/list/1-50" target="_blank" rel="noopener">Rank source <span aria-hidden="true">↗</span></a>
-        ${bar.policySource ? `<a href="${bar.policySource}" target="_blank" rel="noopener">Walk-in policy <span aria-hidden="true">↗</span></a>` : ''}
+        ${bar.policySource ? `<a href="${bar.policySource}" target="_blank" rel="noopener">Entry & group policy <span aria-hidden="true">↗</span></a>` : ''}
         ${bar.phone ? `<a href="tel:${bar.phone}">Reservations · ${escapeHtml(bar.phoneLabel)}</a>` : ''}
       </div>
       ${plan.unavailable ? '<p class="bar-card__calendar-note">No visit suggested for this night.</p>' : `<button type="button" class="bar-calendar" data-bar-calendar="${bar.id}" data-night="${night}">Add ${escapeHtml(suggested)} <span>· tentative</span></button><a class="bar-vote-link" href="${POLL_URL}" target="_blank" rel="noopener">Vote in shared poll <span aria-hidden="true">↗</span></a>`}
@@ -178,7 +178,7 @@ function renderBars(night) {
 
 function renderPoll() {
   const mount = document.querySelector('#poll-mount');
-  mount.innerHTML = `<div class="poll-live"><strong>Voting opens in StrawPoll</strong><p>Use your first name; results are shared. Choose one of the three practical options while Tayēr remains temporarily closed. The poll allows one vote per browser and lets you update your own choice.</p><div class="poll-live__actions"><a class="poll-primary" href="${POLL_URL}" target="_blank" rel="noopener">Vote with your name <span aria-hidden="true">↗</span></a><a href="${POLL_RESULTS_URL}" target="_blank" rel="noopener">View group results <span aria-hidden="true">↗</span></a></div></div>`;
+  mount.innerHTML = `<div class="poll-live"><strong>Voting opens in StrawPoll</strong><p>Anyone joining can vote using their first name; results are shared. Choose one of the three practical options while Tayēr remains temporarily closed. The poll allows one vote per browser and lets you update your own choice.</p><div class="poll-live__actions"><a class="poll-primary" href="${POLL_URL}" target="_blank" rel="noopener">Vote with your name <span aria-hidden="true">↗</span></a><a href="${POLL_RESULTS_URL}" target="_blank" rel="noopener">View group results <span aria-hidden="true">↗</span></a></div></div>`;
 }
 
 renderBars(selectedNight);
