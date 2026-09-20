@@ -71,8 +71,9 @@ main { padding-block: 12px 64px; }
 .day-heading__zone { display: block; margin-top: .25rem; color: var(--muted); font-size: 14px; font-weight: 500; }
 .day-calendar { flex: 0 0 auto; border: 0; border-bottom: 1px solid var(--green); padding: .2rem 0; background: transparent; color: var(--green); font-size: 14px; font-weight: 700; }
 .sunday-note { margin: -4px 0 14px; padding: 14px 16px; border-left: 4px solid var(--copper); background: #f7eade; }
-.sunday-note strong { color: var(--copper-text); }
+.sunday-note strong { display: block; color: var(--copper-text); }
 .sunday-note p { margin: .2rem 0 0; color: #434941; }
+.route-strip { width: fit-content; margin: .65rem 0; padding: .4rem .65rem; border-radius: 3px; background: var(--green); color: white; font-size: 14px; font-weight: 700; }
 .route-alternative { margin: 0 0 24px; border: 1px solid var(--line); background: var(--paper); }
 .route-alternative summary { padding: 14px 16px; color: var(--green); font-weight: 700; cursor: pointer; }
 .route-alternative > div { padding: 0 16px 16px; color: var(--muted); }
