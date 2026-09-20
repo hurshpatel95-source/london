@@ -70,6 +70,14 @@ main { padding-block: 12px 64px; }
 .day-heading h2 { margin: .2rem 0 0; font: 400 clamp(2.1rem, 9vw, 3.3rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }
 .day-heading__zone { display: block; margin-top: .25rem; color: var(--muted); font-size: 14px; font-weight: 500; }
 .day-calendar { flex: 0 0 auto; border: 0; border-bottom: 1px solid var(--green); padding: .2rem 0; background: transparent; color: var(--green); font-size: 14px; font-weight: 700; }
+.sunday-note { margin: -4px 0 14px; padding: 14px 16px; border-left: 4px solid var(--copper); background: #f7eade; }
+.sunday-note strong { color: var(--copper-text); }
+.sunday-note p { margin: .2rem 0 0; color: #434941; }
+.route-alternative { margin: 0 0 24px; border: 1px solid var(--line); background: var(--paper); }
+.route-alternative summary { padding: 14px 16px; color: var(--green); font-weight: 700; cursor: pointer; }
+.route-alternative > div { padding: 0 16px 16px; color: var(--muted); }
+.route-alternative p { margin: .6rem 0 0; }
+.route-alternative a { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
 
 .timeline { list-style: none; margin: 0; padding: 0; }
 .event { position: relative; display: grid; grid-template-columns: 70px 1fr; gap: 18px; padding-bottom: 30px; }
@@ -107,7 +115,7 @@ main { padding-block: 12px 64px; }
 .night-planner { margin: 0 0 24px; padding: 22px; border: 1px solid var(--line); background: var(--paper); }
 .night-planner__heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
 .night-planner__heading h3, .night-compare h3, .poll-card h3 { margin: 0; font: 400 clamp(1.8rem, 5vw, 2.5rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }
-.night-picker { display: grid; grid-template-columns: repeat(3, 1fr); padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--ivory); }
+.night-picker { display: grid; grid-template-columns: repeat(2, 1fr); padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--ivory); }
 .night-picker button { min-height: 40px; border: 0; border-radius: 999px; padding: .45rem .8rem; background: transparent; color: var(--green); font-size: 14px; font-weight: 700; }
 .night-picker button.is-active { background: var(--green); color: white; }
 .night-rationale { margin-top: 18px; padding: 1rem; border-left: 3px solid var(--copper); background: #f5eee6; }
@@ -214,6 +222,8 @@ main { padding-block: 12px 64px; }
   .bars-intro .eyebrow, .bars-intro__lede, .poll-card .eyebrow, .poll-card h3, .poll-card p, .bar-card__rank span, .bar-card__rank strong { color: var(--ink) !important; }
   .bars-intro::after { display: none; }
   .bar-card, .bar-watchlist, .night-planner, .night-compare, .poll-card { break-inside: avoid; box-shadow: none; }
+  .sunday-note, .route-alternative { break-inside: avoid; }
+  .route-alternative > div { display: block !important; }
   .poll-live__actions a { color: var(--ink) !important; text-decoration: underline; }
   .poll-live__actions .poll-primary { padding: 0; background: transparent; color: var(--ink); }
 }

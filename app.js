@@ -8,8 +8,7 @@ const BARS = [
     note: 'The classic Mayfair choice, known for its martini trolley. Walk-ins only; no reservations.',
     plans: {
       fri: { time: '20:30', fit: 'Best Friday fit', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' },
-      sat: { time: '21:00', fit: 'Elegant, longer transfer', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' },
-      sun: { fit: 'Not a Sunday option', travel: 'No Sunday hours published', status: 'Unavailable on current schedule', unavailable: true }
+      sat: { time: '21:00', fit: 'Elegant, longer transfer', travel: 'Est. 25–35 min walk or 15–25 min taxi', status: 'Open · 16:00–01:00' }
     }
   },
   {
@@ -18,8 +17,7 @@ const BARS = [
     note: 'Neighbourhood cocktail bar with reservations recommended by phone; walk-ins are also accepted.',
     plans: {
       fri: { time: '20:45', fit: 'East London wildcard', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Friday runs “a little later”' },
-      sat: { time: '21:15', fit: 'For a livelier detour', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Saturday runs “a little later”' },
-      sun: { time: '20:30', fit: 'Conditional Sunday fallback', travel: 'Est. 45–70 min after stadium egress; 35–60 min back to Chelsea', status: 'Open · 17:00 till late' }
+      sat: { time: '21:15', fit: 'For a livelier detour', travel: 'Est. 25–40 min by transit or taxi', status: 'Open · Saturday runs “a little later”' }
     }
   },
   {
@@ -29,16 +27,14 @@ const BARS = [
     note: 'The easiest move after Dishoom. Groups of four are walk-in; the official policy allows 90 minutes at the table.',
     plans: {
       fri: { time: '20:30', fit: 'Excellent Friday alternative', travel: 'Est. 15–20 min walk from Covent Garden', status: 'Open · 16:00 till late' },
-      sat: { time: '21:00', fit: 'Editor’s pick · best fit', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', recommended: true },
-      sun: { time: '20:30', fit: 'Conditional central fallback', travel: 'Only after stadium exit and a same-day timing check', status: 'Open · 16:00 till late' }
+      sat: { time: '21:00', fit: 'Editor’s pick · best fit', travel: 'Est. 15–20 min walk from Dishoom', status: 'Open · 16:00 till late', recommended: true }
     }
   }
 ];
 
 const NIGHT_META = {
   fri: { date: '20261009', label: 'Friday 9 October', rationale: 'The existing cocktail window begins around 20:00. The Connaught is the signature choice; Scarfes is an excellent, easier alternative from Covent Garden.' },
-  sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Best overall fit: walk about 15–20 minutes from Dishoom to Scarfes for a suggested 21:00 arrival. It adds a world-ranked bar without moving dinner.' },
-  sun: { date: '20261011', label: 'Sunday 11 October', rationale: 'Keep Sunday conditional on stadium exit, energy and same-day checks. Scarfes is the more central optional stop; Satan’s Whiskers is a longer east London detour.' }
+  sat: { date: '20261010', label: 'Saturday 10 October', rationale: 'Best overall fit: walk about 15–20 minutes from Dishoom to Scarfes for a suggested 21:00 arrival. It adds a world-ranked bar without moving dinner.' }
 };
 
 const DAYS = [
@@ -73,12 +69,20 @@ const DAYS = [
     ]
   },
   {
-    id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles in London',
+    id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles day & an early night',
+    planningNote: 'The working rhythm: 40-minute breakfast · 1-hour Passyunk pregame · target home 19:30–20:00. Passyunk is a separately ticketed event in Fitzrovia, not at the stadium. Entry is currently listed at £20 per person and is not booked.',
+    alternative: true,
     events: [
-      { start: '08:30', end: '10:00', title: 'Chelsea coffee run', place: 'Pavilion Road Chelsea', tag: 'Wear midnight green', summary: 'Flat whites and pastries on Pavilion Road.' },
-      { start: '10:15', end: '11:00', title: 'Head north to Tottenham', place: 'Tottenham Hotspur Stadium', tag: 'Travel time estimate', summary: 'Walk, Tube and Overground to White Hart Lane.', details: 'Walk to Sloane Square (~8 min per plan) → District line one stop to Victoria → Victoria line north to Seven Sisters → London Overground Weaver line to White Hart Lane → walk to the stadium.', tfl: true },
-      { start: '11:00', end: '14:00', title: 'Passyunk Avenue Philly Tailgate', place: 'Tottenham Hotspur Stadium South Podium', tag: 'Reconfirm details', summary: 'Planned meetup at South Podium / Stadium Plaza.', details: 'Cheesesteaks, beer and pretzels. Event and exact location to be reconfirmed.' },
-      { start: '14:30', end: '17:45', title: 'Eagles vs Jaguars', place: 'Tottenham Hotspur Stadium', tag: 'Kickoff · 14:30 BST', summary: 'Philadelphia Eagles vs Jacksonville Jaguars.', details: 'Approximate finish. Kickoff confirmed by the official Eagles schedule release.', source: 'https://www.philadelphiaeagles.com/news/eagles-jaguars-nfl-london-games-tottenham-hotspur-stadium-2026-schedule-release' }
+      { start: '09:00', end: '09:40', title: 'Breakfast on Pavilion Road', place: 'Pavilion Road Chelsea', tag: '40 minutes', summary: 'Coffee and a proper breakfast before heading north.', uid: '20261011-0@london-field-guide' },
+      { start: '09:40', end: '10:20', title: 'Chelsea to Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Est. 40 minutes', summary: 'Sloane Square to Warren Street, then walk to Passyunk.', details: 'Take the District or Circle line east one stop to Victoria → Victoria line north to Warren Street → walk to 80 Cleveland Street. Travel time is an estimate.', directions: { origin: 'Sloane Square Station', destination: 'Passyunk Avenue 80 Cleveland Street London W1T 6NE', mode: 'transit' }, uid: 'sunday-chelsea-fitzrovia-20261011@london-field-guide' },
+      { start: '10:20', end: '11:20', title: 'Passyunk Eagles tailgate · suggested', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: '£20 entry · not booked', summary: 'A chosen one-hour slice of the official 09:00–21:00 event on 11 October in Fitzrovia.', details: 'This is a separate-entry event in Fitzrovia, not a stadium tailgate. Entry is currently listed at £20 per person, does not include a free drink, and has not been booked. Depart by 11:20 to protect the stadium buffer.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate & tickets', secondarySource: 'https://passyunkavenue.com/fitzrovia/', secondarySourceLabel: 'Official Fitzrovia venue', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
+      { start: '11:20', end: '12:30', title: 'Head to Tottenham', place: 'Tottenham Hotspur Stadium', tag: 'Est. 70 minutes', summary: 'Warren Street to Seven Sisters, then continue on foot toward the stadium.', details: 'Walk to Warren Street → Victoria line north to Seven Sisters → allow roughly 30–35 minutes to walk along the High Road toward the stadium, plus queues. Follow stewards and check live TfL guidance. Spurs advises using Liverpool Street for Overground journeys because of the Seven Sisters transfer diversion.', source: 'https://www.tottenhamhotspur.com/the-stadium/attending-matches/getting-here/', sourceLabel: 'Official stadium travel advice', tfl: true, uid: '20261011-1@london-field-guide' },
+      { start: '12:30', end: '13:00', title: 'Stadium photos & pregame buzz', place: 'Tottenham Hotspur Stadium', tag: 'Local wander', summary: 'Take in the atmosphere and grab merchandise only if the queue is short.', details: 'This is free time around the stadium, not a booked tour or event activation.', uid: 'sunday-stadium-photos-20261011@london-field-guide' },
+      { start: '13:00', end: '14:15', title: 'Security, food & find our seats', place: 'Tottenham Hotspur Stadium', tag: 'Planned buffer', summary: 'Use the entrance and instructions on the NFL ticket; aim to be seated by 13:45.', details: 'This is planning buffer, not a statement of gate-opening time. Follow the event-specific ticket and venue guidance.', uid: 'sunday-stadium-entry-20261011@london-field-guide' },
+      { start: '14:30', end: '17:45', title: 'Eagles vs Jaguars', place: 'Tottenham Hotspur Stadium', tag: 'Kickoff · 14:30 BST', summary: 'Philadelphia Eagles vs Jacksonville Jaguars.', details: 'Approximate finish; overtime could run later. Kickoff is confirmed by the official Eagles schedule release.', source: 'https://www.philadelphiaeagles.com/news/eagles-jaguars-nfl-london-games-tottenham-hotspur-stadium-2026-schedule-release', sourceLabel: 'Official game details', uid: '20261011-3@london-field-guide' },
+      { start: '17:45', end: '20:00', title: 'Return to Chelsea', place: 'Chelsea, London', tag: 'Target home 19:30–20:00', summary: 'Allow for stadium exit, queues and the walk back to Seven Sisters.', details: 'Walk to Seven Sisters → Victoria line south to Victoria → District or Circle line west to Sloane Square. The home time is a planning estimate; check TfL and follow steward directions.', directions: { origin: 'Tottenham Hotspur Stadium', destination: 'Sloane Square Station', mode: 'transit' }, tfl: true, uid: 'sunday-return-chelsea-20261011@london-field-guide' },
+      { start: '20:00', end: '20:45', title: 'Easy dinner at home', place: 'Chelsea, London', tag: 'Flexible timing', summary: 'Takeaway or local pickup; move earlier if everyone gets home sooner.', uid: 'sunday-easy-dinner-20261011@london-field-guide' },
+      { start: '20:45', end: '21:30', title: 'Pack & wind down', place: 'Chelsea, London', tag: 'Early night', summary: 'Confirm Monday transfer and check-in, get bags ready, then call it a night.', uid: 'sunday-pack-20261011@london-field-guide' }
     ]
   }
 ];
@@ -101,7 +105,8 @@ function eventMarkup(event, dayId, index) {
     event.place ? `<a href="${mapsUrl(event.place)}" target="_blank" rel="noopener">Open in Maps <span aria-hidden="true">↗</span></a>` : '',
     event.directions ? `<a href="${directionsUrl(event.directions)}" target="_blank" rel="noopener">Directions <span aria-hidden="true">↗</span></a>` : '',
     event.tfl ? '<a href="https://tfl.gov.uk/plan-a-journey/" target="_blank" rel="noopener">TfL journey planner <span aria-hidden="true">↗</span></a>' : '',
-    event.source ? `<a href="${event.source}" target="_blank" rel="noopener">Official game details <span aria-hidden="true">↗</span></a>` : '',
+    event.source ? `<a href="${event.source}" target="_blank" rel="noopener">${escapeHtml(event.sourceLabel || 'Official game details')} <span aria-hidden="true">↗</span></a>` : '',
+    event.secondarySource ? `<a href="${event.secondarySource}" target="_blank" rel="noopener">${escapeHtml(event.secondarySourceLabel || 'Venue details')} <span aria-hidden="true">↗</span></a>` : '',
     event.barsCta ? '<a href="#bars">Compare the bar shortlist <span aria-hidden="true">→</span></a>' : '',
     expandedContent ? `<button class="event__toggle" type="button" aria-expanded="false" aria-controls="${detailId}">More detail</button>` : ''
   ].filter(Boolean).join('');
@@ -124,6 +129,8 @@ document.querySelector('#day-panels').innerHTML = DAYS.map((day, dayIndex) => `
       <div><p>${day.label} · ${day.date.slice(6,8)} October</p><h2>${day.theme}</h2><span class="day-heading__zone">All times BST · London</span></div>
       <button class="day-calendar" type="button" data-calendar-day="${day.id}">Add day</button>
     </header>
+    ${day.planningNote ? `<aside class="sunday-note"><strong>Sunday pacing</strong><p>${escapeHtml(day.planningNote)}</p></aside>` : ''}
+    ${day.alternative ? `<details class="route-alternative"><summary>Prefer to go straight to Tottenham?</summary><div><p><strong>Swap this for the Fitzrovia stop:</strong> breakfast 09:00–09:40, then leave Chelsea around 10:00. Allow 75–90 minutes via Victoria and Seven Sisters, including the walk.</p><p>If you arrive early and the weather is dry, Bruce Castle Park is a pleasant optional 20–30 minute stop, followed by roughly a 15–20 minute walk toward the stadium. Otherwise, stay around the High Road for photos. Plan lunch and pregame time around 12:00–13:00, then keep the same 13:00 entry buffer. The museum opens at 13:00, too late for this plan, and no stadium tour is assumed.</p><p><a href="https://www.haringey.gov.uk/leisure-parks-culture/parks-greenspaces/parks-facilities-haringey/bruce-castle-park" target="_blank" rel="noopener">Official Bruce Castle Park information <span aria-hidden="true">↗</span></a></p></div></details>` : ''}
     <ol class="timeline">${day.events.map((event, index) => eventMarkup(event, day.id, index)).join('')}</ol>
   </section>`).join('');
 
