@@ -70,6 +70,15 @@ main { padding-block: 12px 64px; }
 .day-heading h2 { margin: .2rem 0 0; font: 400 clamp(2.1rem, 9vw, 3.3rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }
 .day-heading__zone { display: block; margin-top: .25rem; color: var(--muted); font-size: 14px; font-weight: 500; }
 .day-calendar { flex: 0 0 auto; border: 0; border-bottom: 1px solid var(--green); padding: .2rem 0; background: transparent; color: var(--green); font-size: 14px; font-weight: 700; }
+.sat-plan-picker { display: grid; gap: 16px; margin: -4px 0 18px; padding: 18px; border: 2px solid var(--copper); background: var(--paper); box-shadow: var(--shadow); }
+.sat-plan-picker h3 { margin: 0; font: 400 clamp(1.7rem, 5vw, 2.35rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }
+.sat-plan-picker > div > p:last-child { margin: .35rem 0 0; color: var(--muted); font-size: 14px; }
+.sat-plan-picker__buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.sat-plan-picker__buttons button { min-height: 64px; padding: .65rem .8rem; border: 1px solid var(--line); background: var(--ivory); color: var(--green); text-align: left; }
+.sat-plan-picker__buttons button span, .sat-plan-picker__buttons button strong { display: block; }
+.sat-plan-picker__buttons button span { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.sat-plan-picker__buttons button.is-active { border-color: var(--green); background: var(--green); color: white; }
+.sat-plan-picker__buttons button.is-active span { color: #efb47d; }
 .sunday-note { margin: -4px 0 14px; padding: 14px 16px; border-left: 4px solid var(--copper); background: #f7eade; }
 .sunday-note strong { display: block; color: var(--copper-text); }
 .sunday-note p { margin: .2rem 0 0; color: #434941; }
@@ -123,17 +132,6 @@ main { padding-block: 12px 64px; }
 .borough-guide__sources { margin: 12px 0 0; color: var(--muted); font-size: 12px; }
 .borough-later { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .borough-later > p { margin: -.25rem 0 12px; color: var(--muted); font-size: 14px; }
-.market-switch { margin: 16px 0; padding: 18px; border: 1px solid var(--copper); background: #fff8ef; }
-.market-switch .eyebrow { color: var(--copper-text); }
-.market-switch h5 { margin: 0; font: 400 clamp(1.55rem, 5vw, 2.1rem)/1.05 "Libre Caslon Display", Georgia, serif; color: var(--green); }
-.market-switch > p:not(.eyebrow) { margin: .65rem 0 0; color: var(--muted); font-size: 14px; }
-.market-switch__route { list-style: none; margin: 1rem 0; padding: 0; border-top: 1px solid var(--line); }
-.market-switch__route li { display: grid; grid-template-columns: 88px 1fr; gap: .75rem; padding: .65rem 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-.market-switch__route time { color: var(--copper-text); font-weight: 700; }
-.market-switch__route li > span { min-width: 0; }
-.market-switch__note { padding-left: 10px; border-left: 3px solid var(--copper); }
-.market-switch__links { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 12px; }
-.market-switch__links a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
 .badge { display: inline-block; margin-top: .25rem; padding: .2rem .55rem; border-radius: 999px; background: #e5eee8; color: var(--green); font-size: 14px; font-weight: 700; }
 .field-note { margin-top: 54px; padding: 24px; border: 1px solid var(--line); background: rgba(255,255,255,.43); }
 .field-note p:last-child { margin: 0; color: var(--muted); }
@@ -242,8 +240,8 @@ main { padding-block: 12px 64px; }
   .bar-card { grid-template-columns: 70px 1fr; }
   .bar-card__content { padding: 16px; }
   .bar-card__rank strong { font-size: 2rem; }
-  .market-switch { padding: 12px; }
-  .market-switch__route li { grid-template-columns: 1fr; gap: .2rem; }
+  .sat-plan-picker { padding: 12px; }
+  .sat-plan-picker__buttons { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -271,7 +269,7 @@ main { padding-block: 12px 64px; }
   .pub-swap > .pub-swap__body { display: block !important; }
   .event:has(.borough-guide), .borough-guide { break-inside: auto; }
   .borough-pick { break-inside: avoid; }
-  .market-switch__route li { break-inside: avoid; }
+  .sat-plan-picker { display: none !important; }
   .borough-guide > .borough-guide__inner { display: block !important; }
   .sunday-note, .route-alternative { break-inside: avoid; }
   .route-alternative > div { display: block !important; }

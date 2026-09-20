@@ -149,6 +149,24 @@ const DAYS = [
   }
 ];
 
+const SATURDAY_LUNCH = {
+  id: 'sat', date: '20261010', label: 'Saturday', theme: 'Tower Bridge, market lunch & pubs',
+  planningAlert: 'Recommended alternative: keep breakfast quick, make Borough Market the lunch stop, then continue west.',
+  planningNote: 'This plan starts walking at 09:30, visits The George before a 12:15 Borough lunch, then continues to The Blackfriar and Lamb & Flag. The Harp can replace Lamb & Flag. Pub stops are not booked; walking times are estimates and the 17:50 Dishoom arrival stays fixed.',
+  routeStrip: 'Tower Bridge loop → The George → Borough lunch → The Blackfriar → Lamb & Flag → Dishoom',
+  events: [
+    { start: '09:15', end: '09:30', title: 'Grab-and-go breakfast', place: 'London Bridge Station', tag: 'Quick start', summary: 'Pick up coffee and something light near London Bridge or Borough, skip long queues, and be ready to walk at 09:30.', uid: 'saturday-quick-breakfast-20261010@london-field-guide' },
+    { start: '09:30', end: '11:00', title: 'Thames & Tower Bridge walk', place: 'Tower Hill London', tag: 'Outdoor walk', summary: 'Walk from Borough to Tower Bridge, cross the river and finish at Tower Hill.', details: 'Outdoor crossings and views only; no paid exhibition. This replaces the original 11:30–13:30 walk.', directions: { origin: 'Borough Market', destination: 'Tower Hill Station', mode: 'walking', waypoints: ['Tower Bridge'] }, uid: '20261010-1@london-field-guide' },
+    { start: '11:00', end: '11:30', title: 'Tower Hill to The George', place: 'The George Inn, 75–77 Borough High Street London SE1 1NH', tag: 'Est. 20–30 minute walk', summary: 'Walk back via London Bridge to The George near Borough Market.', directions: { origin: 'Tower Hill Station', destination: 'The George Inn 75-77 Borough High Street London SE1 1NH', mode: 'walking', waypoints: ['London Bridge'] }, uid: 'saturday-towerhill-george-20261010@london-field-guide' },
+    { start: '11:30', end: '12:10', title: 'First drink at The George', place: 'The George Inn, 75–77 Borough High Street London SE1 1NH', tag: 'Historic pub · nothing booked', summary: 'London’s last remaining galleried inn, with 17th-century history.', details: 'The courtyard is walk-in only. Regular Saturday hours are 11:00–00:00; allow an estimated 3–5 minutes to walk back to the market.', source: 'https://www.greeneking.co.uk/pubs/greater-london/george-southwark/find-us', sourceLabel: 'Official hours & courtyard policy', secondarySource: 'https://www.nationaltrust.org.uk/visit/london/george-inn', secondarySourceLabel: 'National Trust history', status: 'TENTATIVE', uid: 'saturday-george-20261010@london-field-guide' },
+    { start: '12:15', end: '13:15', title: 'Borough Market lunch', place: 'Borough Market', tag: 'Choose one savoury hit', summary: 'Choose one item, or share, from the savoury food guide; prepared food and stock vary on the day.', details: 'Published regular Saturday hours cover this lunch window for the later-food list. This is the main market meal in the lunch plan.', source: 'https://boroughmarket.org.uk/visit-us/', sourceLabel: 'Official market hours', boroughGuide: 'lunch', uid: '20261010-0@london-field-guide' },
+    { start: '13:15', end: '14:00', title: 'Walk west to The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Est. 25–35 minute walk + buffer', summary: 'Follow Bankside west via Millennium Bridge toward Blackfriars.', directions: { origin: 'Borough Market', destination: 'The Blackfriar London', mode: 'walking', waypoints: ['Millennium Bridge London'] }, uid: 'saturday-borough-blackfriar-20261010@london-field-guide' },
+    { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
+    { start: '15:30', end: '16:15', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow 30–40 minutes to walk west with sightseeing buffer. The Harp is an alternative to Lamb & Flag. Afterward, wander Covent Garden or linger before leaving for Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
+    { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'From 16:15, use the flexible time for Covent Garden or Seven Dials and keep the 17:50 arrival. Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' }
+  ]
+};
+
 const mapsUrl = place => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
 const directionsUrl = ({origin, destination, mode = 'transit', waypoints = []}) => {
   const points = waypoints.length ? `&waypoints=${encodeURIComponent(waypoints.join('|'))}` : '';
@@ -156,40 +174,24 @@ const directionsUrl = ({origin, destination, mode = 'transit', waypoints = []}) 
 };
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 
-function boroughGuideMarkup() {
+function boroughGuideMarkup(plan = 'breakfast') {
+  const isLunch = plan === 'lunch';
   return `<details class="borough-guide">
-    <summary><span>Borough food guide · 7 morning + 5 later</span><span aria-hidden="true">＋</span></summary>
+    <summary><span>${isLunch ? 'Borough lunch guide · 12 choices' : 'Borough food guide · 7 morning + 5 later'}</span><span aria-hidden="true">＋</span></summary>
     <div class="borough-guide__inner">
       <div class="borough-guide__intro">
-        <p><strong>Saturday 10 October · 09:30–11:30.</strong> Start with Monmouth coffee, then choose Kappacasein or Ginger Pig for breakfast. The Black Pig is the larger-appetite alternative. Browse the other well-known traders only if they appeal—these are choices, not a seven-stop challenge.</p>
-        <p class="borough-guide__combo"><strong>My morning pick:</strong> Monmouth + Kappacasein, or Monmouth + Ginger Pig for something quicker. Choose The Black Pig instead for a more substantial meal.</p>
+        ${isLunch ? '<p><strong>Saturday 10 October · 12:15–13:15 lunch.</strong> Choose one savoury item, or share, before heading west. All seven market favourites below publish regular Saturday hours that cover 12:15; prepared food and stock vary.</p><p class="borough-guide__combo"><strong>Lunch shortlist:</strong> Kappacasein or Ginger Pig for a classic market choice; The Black Pig for a larger appetite. The five savoury hits below add more substantial options.</p>' : '<p><strong>Saturday 10 October · 09:30–11:30 breakfast.</strong> Start with Monmouth coffee, then choose Kappacasein or Ginger Pig. The Black Pig is the larger-appetite alternative. Browse the other well-known traders only if they appeal—these are choices, not a seven-stop challenge.</p><p class="borough-guide__combo"><strong>My morning pick:</strong> Monmouth + Kappacasein, or Monmouth + Ginger Pig for something quicker. Choose The Black Pig instead for a more substantial meal.</p>'}
         <p>Published regular Saturday hours checked 20 September 2026. Prepared food and flavours depend on the day’s stock.</p>
       </div>
-      <h4 class="borough-guide__section-title">Morning hit list · 7 choices</h4>
+      <h4 class="borough-guide__section-title">${isLunch ? 'Market favourites · 7 choices' : 'Morning hit list · 7 choices'}</h4>
       <div class="borough-pick-grid">${BOROUGH_PICKS.map(pick => `<article class="borough-pick">
-        <p class="borough-pick__when">${escapeHtml(pick.when)}</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
+        <p class="borough-pick__when">${escapeHtml(isLunch ? 'Market favourite · open at 12:15' : pick.when)}</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
         <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
         <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a>${pick.secondarySource ? `<a href="${pick.secondarySource}" target="_blank" rel="noopener">Market listing <span aria-hidden="true">↗</span></a>` : ''}</div>
       </article>`).join('')}</div>
       <section class="borough-later" aria-labelledby="borough-later-title">
         <h4 id="borough-later-title">Open later · savoury top hits</h4>
         <p>“Open later” means these traders publish regular Saturday hours into the afternoon, before the market’s 17:00 close. Keep these options handy for lunch or afternoon food. Kitchen cutoffs are not separately published and stock varies.</p>
-        <aside class="market-switch" aria-labelledby="market-switch-title">
-          <p class="eyebrow">Optional Saturday switch</p>
-          <h5 id="market-switch-title">Pub → market lunch → pubs</h5>
-          <p><strong>Start the crawl early and make Borough the lunch stop.</strong> Keep breakfast light, start at The George near Borough, eat at the market, then continue west toward Covent Garden. Have the market lunch before heading west to avoid backtracking later.</p>
-          <ol class="market-switch__route">
-            <li><time datetime="09:30">09:30–10:00</time><span><strong>Coffee & light breakfast</strong> · Keep room for lunch.</span></li>
-            <li><time datetime="10:00">10:00–11:20</time><span><strong>Short Tower Bridge loop</strong> · Borough → Tower Bridge → cross → London Bridge → cross back → The George. Roughly 3–3.5 km and 45–55 minutes of actual walking, with an 80-minute window and buffer. Outdoor crossings and views only; no paid exhibition.</span></li>
-            <li><time datetime="11:30">11:30–12:10</time><span><strong>First drink at The George</strong> · London’s last remaining galleried inn, with 17th-century history. Courtyard is walk-in only; nothing is booked. Regular Saturday hours 11:00–00:00.</span></li>
-            <li><time datetime="12:15">12:15–13:15</time><span><strong>Borough Market lunch</strong> · Walk about 3–5 minutes back and choose one item, or share, from the savoury list below.</span></li>
-            <li><time datetime="13:15">13:15–14:00</time><span><strong>Walk west to The Blackfriar</strong> · Follow Bankside via Millennium Bridge; allow an estimated 25–35 minutes plus buffer.</span></li>
-            <li><time datetime="14:00">14:00–16:15</time><span><strong>The Blackfriar, then Lamb & Flag</strong> · Blackfriar 14:00–14:40; allow 30–40 minutes to walk west with sightseeing buffer; Lamb & Flag 15:30–16:15. The Harp is an alternative to Lamb & Flag.</span></li>
-            <li><time datetime="16:15">16:15–17:50</time><span><strong>Covent Garden to dinner</strong> · Wander Seven Dials, linger if the group wants, then keep the 17:50 Dishoom arrival.</span></li>
-          </ol>
-          <p class="market-switch__note">This optional order replaces the full morning market meal and the original 11:30–13:30 river walk. Times and walking durations are planning estimates.</p>
-          <div class="market-switch__links"><a href="${mapsUrl('The George Inn 75-77 Borough High Street London SE1 1NH')}" target="_blank" rel="noopener">The George map <span aria-hidden="true">↗</span></a><a href="https://www.greeneking.co.uk/pubs/greater-london/george-southwark/find-us" target="_blank" rel="noopener">Official hours & courtyard policy <span aria-hidden="true">↗</span></a><a href="https://www.nationaltrust.org.uk/visit/london/george-inn" target="_blank" rel="noopener">National Trust history <span aria-hidden="true">↗</span></a></div>
-        </aside>
         <div class="borough-pick-grid">${BOROUGH_LATER_PICKS.map(pick => `<article class="borough-pick">
           <p class="borough-pick__when">Afternoon reference</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
           <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
@@ -227,7 +229,7 @@ function eventMarkup(event, dayId, index) {
       <p class="event__summary">${escapeHtml(event.summary)}</p>
       <div class="event__links">${links}</div>
       ${expandedContent ? `<div class="event__details" id="${detailId}" hidden>${expandedContent}</div>` : ''}
-      ${event.boroughGuide ? boroughGuideMarkup() : ''}
+      ${event.boroughGuide ? boroughGuideMarkup(event.boroughGuide === 'lunch' ? 'lunch' : 'breakfast') : ''}
     </article>
   </li>`;
 }
@@ -251,17 +253,39 @@ function saturdayPubShortlistMarkup() {
   </section>`;
 }
 
-document.querySelector('#day-panels').innerHTML = DAYS.map((day, dayIndex) => `
-  <section class="day-panel" id="panel-${day.id}" role="tabpanel" aria-labelledby="tab-${day.id}" ${dayIndex ? 'hidden' : ''} tabindex="0">
-    <header class="day-heading">
-      <div><p>${day.label} · ${day.date.slice(6,8)} October</p><h2>${day.theme}</h2><span class="day-heading__zone">All times BST · London</span></div>
-      <button class="day-calendar" type="button" data-calendar-day="${day.id}">Add day</button>
-    </header>
-    ${day.planningNote ? `<aside class="sunday-note"><strong>${escapeHtml(day.planningAlert || 'Sunday pacing')}</strong>${day.routeStrip ? `<div class="route-strip">${escapeHtml(day.routeStrip)}</div>` : ''}<p>${escapeHtml(day.planningNote)}</p>${day.id === 'sat' ? '<button class="pub-shortlist-jump" type="button">Browse 5 other pub options <span aria-hidden="true">↓</span></button>' : ''}</aside>` : ''}
-    ${day.alternative ? `<details class="route-alternative"><summary>Skipping Passyunk? Go straight to Tottenham</summary><div><p>Anyone skipping the tailgate can leave Chelsea around 11:30. Allow 75–90 minutes via Victoria and Seven Sisters, including the walk, to arrive around 12:45–13:00.</p><p>Use any remaining time for quick food and photos, then keep the same suggested 13:45 entry. This replaces the Fitzrovia stop; it is not an extra detour.</p></div></details>` : ''}
-    <ol class="timeline">${day.events.map((event, index) => eventMarkup(event, day.id, index)).join('')}</ol>
-    ${day.id === 'sat' ? saturdayPubShortlistMarkup() : ''}
-  </section>`).join('');
+const viewIds = [...DAYS.map(day => day.id), 'bars'];
+const initialHash = location.hash.slice(1);
+let currentView = viewIds.includes(initialHash) ? initialHash : 'thu';
+let selectedSaturdayPlan = new URLSearchParams(location.search).get('sat') === 'lunch' ? 'lunch' : 'breakfast';
+const activeSaturday = () => selectedSaturdayPlan === 'lunch' ? SATURDAY_LUNCH : DAYS.find(day => day.id === 'sat');
+const activeDays = () => DAYS.map(day => day.id === 'sat' ? activeSaturday() : day);
+
+function saturdayPlanSelectorMarkup() {
+  return `<section class="sat-plan-picker" aria-labelledby="sat-plan-title">
+    <div><p class="eyebrow">Choose Saturday</p><h3 id="sat-plan-title">Breakfast plan or market lunch?</h3><p>The timeline, printout and calendar use the selected plan.</p></div>
+    <div class="sat-plan-picker__buttons" role="radiogroup" aria-label="Saturday itinerary plan">
+      <button type="button" role="radio" data-sat-plan="lunch" aria-checked="${selectedSaturdayPlan === 'lunch'}" tabindex="${selectedSaturdayPlan === 'lunch' ? '0' : '-1'}" class="${selectedSaturdayPlan === 'lunch' ? 'is-active' : ''}"><span>Recommended</span><strong>Borough Market lunch</strong></button>
+      <button type="button" role="radio" data-sat-plan="breakfast" aria-checked="${selectedSaturdayPlan === 'breakfast'}" tabindex="${selectedSaturdayPlan === 'breakfast' ? '0' : '-1'}" class="${selectedSaturdayPlan === 'breakfast' ? 'is-active' : ''}"><span>Original</span><strong>Breakfast plan</strong></button>
+    </div>
+  </section>`;
+}
+
+function renderDayPanels() {
+  document.querySelector('#day-panels').innerHTML = activeDays().map(day => `
+    <section class="day-panel" id="panel-${day.id}" role="tabpanel" aria-labelledby="tab-${day.id}" ${day.id !== currentView ? 'hidden' : ''} tabindex="0">
+      <header class="day-heading">
+        <div><p>${day.label} · ${day.date.slice(6,8)} October</p><h2>${day.theme}</h2><span class="day-heading__zone">All times BST · London</span></div>
+        <button class="day-calendar" type="button" data-calendar-day="${day.id}">${day.id === 'sat' ? `Add ${selectedSaturdayPlan} plan` : 'Add day'}</button>
+      </header>
+      ${day.id === 'sat' ? saturdayPlanSelectorMarkup() : ''}
+      ${day.planningNote ? `<aside class="sunday-note"><strong>${escapeHtml(day.planningAlert || 'Sunday pacing')}</strong>${day.routeStrip ? `<div class="route-strip">${escapeHtml(day.routeStrip)}</div>` : ''}<p>${escapeHtml(day.planningNote)}</p>${day.id === 'sat' ? '<button class="pub-shortlist-jump" type="button">Browse 5 other pub options <span aria-hidden="true">↓</span></button>' : ''}</aside>` : ''}
+      ${day.alternative ? `<details class="route-alternative"><summary>Skipping Passyunk? Go straight to Tottenham</summary><div><p>Anyone skipping the tailgate can leave Chelsea around 11:30. Allow 75–90 minutes via Victoria and Seven Sisters, including the walk, to arrive around 12:45–13:00.</p><p>Use any remaining time for quick food and photos, then keep the same suggested 13:45 entry. This replaces the Fitzrovia stop; it is not an extra detour.</p></div></details>` : ''}
+      <ol class="timeline">${day.events.map((event, index) => eventMarkup(event, day.id, index)).join('')}</ol>
+      ${day.id === 'sat' ? saturdayPubShortlistMarkup() : ''}
+    </section>`).join('');
+}
+
+renderDayPanels();
 
 function barCardMarkup(bar, night) {
   const plan = bar.plans[night];
@@ -311,6 +335,7 @@ renderBars(selectedNight);
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 function selectDay(id, moveFocus = false) {
+  currentView = id;
   tabs.forEach(tab => {
     const selected = tab.dataset.day === id;
     tab.setAttribute('aria-selected', selected);
@@ -318,7 +343,11 @@ function selectDay(id, moveFocus = false) {
     document.querySelector(`#panel-${tab.dataset.day}`).hidden = !selected;
     if (selected && moveFocus) tab.focus();
   });
-  if (history.replaceState) history.replaceState(null, '', `#${id}`);
+  if (history.replaceState) {
+    const url = new URL(location.href);
+    url.hash = id;
+    history.replaceState(null, '', url.toString());
+  }
 }
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectDay(tab.dataset.day));
@@ -335,6 +364,33 @@ tabs.forEach((tab, index) => {
 });
 
 document.addEventListener('click', event => {
+  const planButton = event.target.closest('[data-sat-plan]');
+  if (planButton) {
+    selectedSaturdayPlan = planButton.dataset.satPlan;
+    const url = new URL(location.href);
+    url.searchParams.set('sat', selectedSaturdayPlan);
+    url.hash = 'sat';
+    history.replaceState(null, '', url.toString());
+    currentView = 'sat';
+    renderDayPanels();
+    selectDay('sat');
+    document.querySelector(`[data-sat-plan="${selectedSaturdayPlan}"]`).focus();
+    return;
+  }
+  const dayCalendar = event.target.closest('[data-calendar-day]');
+  if (dayCalendar) {
+    const day = activeDays().find(item => item.id === dayCalendar.dataset.calendarDay);
+    const suffix = day.id === 'sat' ? `-${selectedSaturdayPlan}` : '';
+    makeCalendar([day], `london-${day.label.toLowerCase()}-${day.date}${suffix}.ics`);
+    return;
+  }
+  const pubJump = event.target.closest('.pub-shortlist-jump');
+  if (pubJump) {
+    const heading = document.querySelector('#pub-shortlist-title');
+    heading.scrollIntoView({block: 'start'});
+    heading.focus({preventScroll: true});
+    return;
+  }
   const toggle = event.target.closest('.event__toggle');
   if (!toggle) return;
   const details = document.getElementById(toggle.getAttribute('aria-controls'));
@@ -344,15 +400,18 @@ document.addEventListener('click', event => {
   details.hidden = open;
 });
 
+document.addEventListener('keydown', event => {
+  const planButton = event.target.closest('[data-sat-plan]');
+  if (!planButton || !['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
+  event.preventDefault();
+  const next = planButton.dataset.satPlan === 'lunch' ? 'breakfast' : 'lunch';
+  document.querySelector(`[data-sat-plan="${next}"]`).click();
+});
+
 document.querySelector('#bars-entry').addEventListener('click', () => {
   selectDay('bars');
   document.querySelector('#panel-bars').focus({preventScroll: true});
   document.querySelector('.day-nav').scrollIntoView();
-});
-document.querySelector('.pub-shortlist-jump').addEventListener('click', () => {
-  const heading = document.querySelector('#pub-shortlist-title');
-  heading.scrollIntoView({block: 'start'});
-  heading.focus({preventScroll: true});
 });
 document.querySelectorAll('.night-picker [data-night]').forEach(button => button.addEventListener('click', () => renderBars(button.dataset.night)));
 
@@ -403,11 +462,7 @@ function makeCalendar(days, filename) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-document.querySelector('#calendar-all').addEventListener('click', () => makeCalendar(DAYS, 'london-8-11-october-2026.ics'));
-document.querySelectorAll('[data-calendar-day]').forEach(button => button.addEventListener('click', () => {
-  const day = DAYS.find(item => item.id === button.dataset.calendarDay);
-  makeCalendar([day], `london-${day.label.toLowerCase()}-${day.date}.ics`);
-}));
+document.querySelector('#calendar-all').addEventListener('click', () => makeCalendar(activeDays(), `london-8-11-october-2026-${selectedSaturdayPlan}.ics`));
 document.querySelector('#bar-grid').addEventListener('click', event => {
   const button = event.target.closest('[data-bar-calendar]');
   if (!button) return;
@@ -443,9 +498,7 @@ document.querySelector('#share-button').addEventListener('click', async () => {
 });
 document.querySelector('#print-button').addEventListener('click', () => window.print());
 
-const viewIds = [...DAYS.map(day => day.id), 'bars'];
-const initialDay = location.hash.slice(1);
-if (viewIds.includes(initialDay)) selectDay(initialDay);
+selectDay(currentView);
 window.addEventListener('hashchange', () => {
   const day = location.hash.slice(1);
   if (viewIds.includes(day)) selectDay(day);
