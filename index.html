@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d3b2e">
+  <meta name="description" content="A four-day London field guide for 8–11 October 2026.">
+  <title>London · Oct 8–11, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#itinerary">Skip to itinerary</a>
+  <header class="masthead">
+    <img src="london.jpg" alt="Westminster Bridge and Big Ben at dusk" class="masthead__image">
+    <div class="masthead__shade"></div>
+    <div class="masthead__inner page-shell">
+      <p class="eyebrow">The weekend field guide</p>
+      <h1>LONDON</h1>
+      <p class="date-line">OCT 8–11, 2026</p>
+      <div class="masthead__actions">
+        <button class="button button--light" id="share-button" type="button">Share guide</button>
+        <button class="button button--outline-light" id="calendar-all" type="button">Add all to calendar</button>
+      </div>
+      <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+
+  <nav class="day-nav" aria-label="Choose itinerary day">
+    <div class="day-nav__inner page-shell" role="tablist" aria-label="London itinerary days">
+      <button class="day-tab" role="tab" id="tab-thu" aria-controls="panel-thu" aria-selected="true" tabindex="0" data-day="thu">
+        <span>Thu</span><strong>08</strong>
+      </button>
+      <button class="day-tab" role="tab" id="tab-fri" aria-controls="panel-fri" aria-selected="false" tabindex="-1" data-day="fri">
+        <span>Fri</span><strong>09</strong>
+      </button>
+      <button class="day-tab" role="tab" id="tab-sat" aria-controls="panel-sat" aria-selected="false" tabindex="-1" data-day="sat">
+        <span>Sat</span><strong>10</strong>
+      </button>
+      <button class="day-tab" role="tab" id="tab-sun" aria-controls="panel-sun" aria-selected="false" tabindex="-1" data-day="sun">
+        <span>Sun</span><strong>11</strong>
+      </button>
+    </div>
+  </nav>
+
+  <main id="itinerary" class="page-shell">
+    <noscript><p class="noscript">Enable JavaScript to view the itinerary, switch days, and download calendars.</p></noscript>
+    <section class="quick-card" aria-label="Weekend essentials">
+      <div><span class="quick-card__icon" aria-hidden="true">⌂</span><p><small>Home base</small><strong>Chelsea</strong></p></div>
+      <div><span class="quick-card__icon" aria-hidden="true">◆</span><p><small>Booked · per group plan</small><strong>Dishoom · Sat 18:00</strong></p></div>
+      <div><span class="quick-card__icon" aria-hidden="true">★</span><p><small>Kickoff</small><strong>Eagles · Sun 14:30</strong></p></div>
+    </section>
+
+    <div id="day-panels"></div>
+
+    <aside class="field-note">
+      <p class="eyebrow">Field note</p>
+      <p>Plan adapted from group screenshots. Late or cropped details are omitted, and bookings are labelled “per group plan.” All times are London time.</p>
+    </aside>
+  </main>
+
+  <footer class="footer page-shell">
+    <p>London · 8–11 October 2026</p>
+    <p><a href="https://www.pexels.com/photo/london-cityscape-460672/" target="_blank" rel="noopener">Photo: Pixabay / Pexels</a></p>
+    <button type="button" id="print-button" class="text-button">Print this guide</button>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
