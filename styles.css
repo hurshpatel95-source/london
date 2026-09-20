@@ -147,6 +147,11 @@ main { padding-block: 12px 64px; }
 .dinner-option dd { margin: .1rem 0 0; font-size: 13px; }
 .dinner-option__links { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: 10px; }
 .dinner-option__links a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
+.venue-links { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; }
+.venue-links a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
+.venue-links small { flex-basis: 100%; color: var(--muted); font-size: 12px; }
+.event__option-links { display: grid; gap: .55rem; margin: .65rem 0 0; }
+.event__option-links > span { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; }
 .covent-guide { margin-top: 1rem; border: 1px solid var(--green); background: var(--paper); }
 .covent-guide > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 46px; padding: .65rem .8rem; color: var(--green); font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
 .covent-guide > summary::-webkit-details-marker { display: none; }

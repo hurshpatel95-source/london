@@ -1,3 +1,259 @@
+const VENUE_LINKS = {
+  "Connaught Bar": {
+    "website": "https://www.maybourne.com/en/hotels/the-connaught/restaurants-bars/connaught-bar",
+    "menu": "https://dxp.maybourne.com/contentassets/e4e490b61c004cdfb9ba66cf2018e231/the-connaught-bar-menu-june-2026.pdf",
+    "menuLabel": "Official cocktail menu (PDF)",
+    "menuNote": ""
+  },
+  "The Fumoir": {
+    "website": "https://www.maybourne.com/en/hotels/claridges/restaurants-bars/the-fumoir",
+    "menu": "https://dxp.maybourne.com/globalassets/our-hotels/claridges/restaurants--bars/the-fumoir/menus/2026/8.-august/the-fumoir-drinks-menu-august-2026.pdf",
+    "menuLabel": "Official drinks menu (PDF)",
+    "menuNote": ""
+  },
+  "Red Room": {
+    "website": "https://www.maybourne.com/en/hotels/the-connaught/restaurants-bars/red-room",
+    "menu": "https://dxp.maybourne.com/globalassets/our-hotels/the-connaught/rb/red-room/2026/9.-september/the-connaught-red-room-menu-september-2026.pdf",
+    "menuLabel": "Official sample menu (PDF)",
+    "menuNote": ""
+  },
+  "Bar Antoine": {
+    "website": "https://www.fourseasons.com/london/dining/lounges/bar-antoine/",
+    "menu": "https://www.fourseasons.com/london/dining/lounges/bar-antoine/cocktails/",
+    "menuLabel": "Official cocktail menu",
+    "menuNote": ""
+  },
+  "Scarfes Bar": {
+    "website": "https://scarfesbar.com/",
+    "menu": "https://scarfesbar.com/cocktail-menu/",
+    "menuLabel": "Official cocktail-menu page",
+    "menuNote": ""
+  },
+  "Old Bank of England": {
+    "website": "https://www.mcmullens.co.uk/local-pub/old-bank-of-england/",
+    "menu": "https://www.mcmullens.co.uk/app/uploads/2024/05/LDN-SS26_OBE-Menu-Drinks_FV-WEB.pdf",
+    "menuLabel": "Official drinks menu (PDF)",
+    "menuNote": ""
+  },
+  "The Seven Stars": {
+    "website": "https://www.thesevenstars1602.co.uk/",
+    "menu": "",
+    "menuLabel": "",
+    "menuNote": "Daily menu on the pub blackboard."
+  },
+  "Princess Louise": {
+    "website": "https://princesslouiseholborn.co.uk/",
+    "menu": "https://princesslouiseholborn.co.uk/wp-content/uploads/2026/05/bar-snacks-A5-april-26.docx.pdf",
+    "menuLabel": "Official bar-snacks menu (PDF)",
+    "menuNote": ""
+  },
+  "Porterhouse Covent Garden": {
+    "website": "https://porterhouse.london/",
+    "menu": "https://porterhouse.london/wp-content/uploads/2026/09/Autumn-Food-Menu-2026.pdf",
+    "menuLabel": "Official autumn 2026 food menu (PDF)",
+    "menuNote": "",
+    "extraMenus": [{ "url": "https://porterhouse.london/wp-content/uploads/2026/04/QR-Code-Drinks-Menu-Spring-2026-Version-2.pdf", "label": "Drinks menu (PDF)" }]
+  },
+  "Philomena's": {
+    "website": "https://www.philomenasbar.co.uk/",
+    "menu": "https://www.philomenasbar.co.uk/menu",
+    "menuLabel": "Official food and drinks menu",
+    "menuNote": ""
+  },
+  "The Blackfriar": {
+    "website": "https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon",
+    "menu": "https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon/foodmenu.html",
+    "menuLabel": "Official food and drinks menu",
+    "menuNote": ""
+  },
+  "The Harp": {
+    "website": "https://www.harpcoventgarden.com/",
+    "menu": "https://www.harpcoventgarden.com/drink",
+    "menuLabel": "Official drinks page",
+    "menuNote": ""
+  },
+  "Lamb & Flag": {
+    "website": "https://www.lambandflagcoventgarden.co.uk/",
+    "menu": "https://www.lambandflagcoventgarden.co.uk/food/menus",
+    "menuLabel": "Official menus",
+    "menuNote": ""
+  },
+  "The George Inn": {
+    "website": "https://www.greeneking.co.uk/pubs/greater-london/george-southwark",
+    "menu": "https://www.greeneking.co.uk/pubs/greater-london/george-southwark/menu",
+    "menuLabel": "Official food and drinks menu",
+    "menuNote": ""
+  },
+  "Ye Olde Cheshire Cheese": {
+    "website": "https://ye-olde-cheshire-cheese.co.uk/",
+    "menu": "https://ye-olde-cheshire-cheese.co.uk/menus/",
+    "menuLabel": "Official menus",
+    "menuNote": ""
+  },
+  "Admiral Codrington": {
+    "website": "https://theadmiralcodrington.com/",
+    "menu": "https://theadmiralcodrington.com/menus",
+    "menuLabel": "Official menus",
+    "menuNote": ""
+  },
+  "The Surprise Chelsea": {
+    "website": "https://www.thesurprise-chelsea.co.uk/",
+    "menu": "https://www.thesurprise-chelsea.co.uk/food-drink/",
+    "menuLabel": "Official food and drink page",
+    "menuNote": ""
+  },
+  "Barts": {
+    "website": "https://www.barts-london.com/",
+    "menu": "https://www.barts-london.com/menus/",
+    "menuLabel": "Official menus",
+    "menuNote": ""
+  },
+  "PJ’s Chelsea Brasserie": {
+    "website": "https://www.pjschelseabrasserie.co.uk/",
+    "menu": "https://www.pjschelseabrasserie.co.uk/menus",
+    "menuLabel": "Menus",
+    "menuNote": ""
+  },
+  "Hawksmoor Knightsbridge": {
+    "website": "https://thehawksmoor.com/locations/knightsbridge/0/",
+    "menu": "https://thehawksmoor.com/locations/knightsbridge/food/menu/",
+    "menuLabel": "Knightsbridge food menu",
+    "menuNote": ""
+  },
+  "The Cadogan Arms": {
+    "website": "https://thecadoganarms.london/",
+    "menu": "https://thecadoganarms.london/menus/",
+    "menuLabel": "Food menus",
+    "menuNote": ""
+  },
+  "Sartori": {
+    "website": "https://www.sartorirestaurant.com/",
+    "menu": "https://booking.sartorirestaurant.com/it/menu/menu?menu=162",
+    "menuLabel": "À la carte menu",
+    "menuNote": ""
+  },
+  "Seven Dials Market": {
+    "website": "https://www.sevendialsmarket.com/",
+    "menu": "https://www.sevendialsmarket.com/food-drink/",
+    "menuLabel": "Current food & drink traders",
+    "menuNote": ""
+  },
+  "Dishoom Covent Garden": {
+    "website": "https://www.dishoom.com/covent-garden/",
+    "menu": "https://www.dishoom.com/menu/covent-garden-all-day/",
+    "menuLabel": "Covent Garden all-day menu",
+    "menuNote": ""
+  },
+  "Monmouth Coffee Company": {
+    "website": "https://www.monmouthcoffee.co.uk/",
+    "menu": "",
+    "menuLabel": "",
+    "menuNote": "Ask at the counter for the current menu."
+  },
+  "Ginger Pig": {
+    "website": "https://thegingerpig.co.uk/",
+    "menu": "",
+    "menuLabel": "",
+    "menuNote": "Ask at the counter for the current menu."
+  },
+  "Bread Ahead": {
+    "website": "https://www.breadahead.com/borough",
+    "menu": "https://www.breadahead.com/borough",
+    "menuLabel": "Borough bakery food selection",
+    "menuNote": ""
+  },
+  "Kappacasein": {
+    "website": "https://www.kappacasein.com/",
+    "menu": "https://www.kappacasein.com/",
+    "menuLabel": "Hot food selection",
+    "menuNote": ""
+  },
+  "The Black Pig": {
+    "website": "https://www.theblackpigsandwiches.co.uk/",
+    "menu": "https://www.theblackpigsandwiches.co.uk/",
+    "menuLabel": "Borough sandwich menu",
+    "menuNote": ""
+  },
+  "Humble Crumble": {
+    "website": "https://www.humble-crumble.com/",
+    "menu": "https://www.humble-crumble.com/",
+    "menuLabel": "Menu & order",
+    "menuNote": ""
+  },
+  "Turnips": {
+    "website": "https://www.turnipsboroughmarket.com/",
+    "menu": "https://www.turnipsboroughmarket.com/turnips-market/strawberries/",
+    "menuLabel": "Chocolate strawberries",
+    "menuNote": ""
+  },
+  "Brindisa": {
+    "website": "https://brindisa.com/",
+    "menu": "https://brindisa.com/pages/chorizo-grill-at-borough-market",
+    "menuLabel": "Borough chorizo grill food selection",
+    "menuNote": ""
+  },
+  "JUMA": {
+    "website": "https://jumakitchen.com/",
+    "menu": "https://boroughmarket.org.uk/traders/kubba/",
+    "menuLabel": "Borough stall food selection",
+    "menuNote": ""
+  },
+  "Horn OK Please": {
+    "website": "https://hop.st/",
+    "menu": "https://hop.st/find-us/",
+    "menuLabel": "Borough menu & location",
+    "menuNote": ""
+  },
+  "Shuk": {
+    "website": "https://www.shuklondon.com/",
+    "menu": "https://www.shuklondon.com/borough-market",
+    "menuLabel": "Borough Market menu",
+    "menuNote": ""
+  },
+  "Gourmet Goat": {
+    "website": "https://www.gourmetgoat.co.uk/",
+    "menu": "https://www.gourmetgoat.co.uk/",
+    "menuLabel": "Borough food selection",
+    "menuNote": ""
+  },
+  "The Enterprise": {
+    "website": "https://www.theenterprise.co.uk/contact/",
+    "menu": "https://www.theenterprise.co.uk/menus/",
+    "menuLabel": "Food menus",
+    "menuNote": ""
+  },
+  "Côte Sloane Square": {
+    "website": "https://www.cote.co.uk/restaurant/sloane-square",
+    "menu": "https://www.cote.co.uk/restaurant/sloane-square/menus?menucode=main-menu",
+    "menuLabel": "Sloane Square main menu",
+    "menuNote": ""
+  },
+  "Passyunk Avenue Fitzrovia": {
+    "website": "https://passyunkavenue.com/fitzrovia/",
+    "menu": "https://passyunkavenue.com/menus/fitzrovia",
+    "menuLabel": "Regular venue menu · separate from tailgate food",
+    "menuNote": ""
+  },
+  "The Ivy Market Grill": {
+    "website": "https://ivycollection.com/restaurants-near-me/the-ivy-london/the-ivy-market-grill-covent-garden/",
+    "menu": "https://ivycollection.com/restaurants-near-me/the-ivy-london/the-ivy-market-grill-covent-garden/a-la-carte-menu/",
+    "menuLabel": "À la carte menu",
+    "menuNote": ""
+  },
+  "Browns Covent Garden": {
+    "website": "https://www.browns-restaurants.co.uk/restaurants/london/covent-garden",
+    "menu": "https://www.browns-restaurants.co.uk/restaurants/london/covent-garden/menus/food",
+    "menuLabel": "Food menu",
+    "menuNote": ""
+  },
+  "The Delaunay": {
+    "website": "https://www.thedelaunay.com/",
+    "menu": "https://www.thedelaunay.com/menus/dinner/",
+    "menuLabel": "Dinner menu",
+    "menuNote": ""
+  }
+};
+
 const BARS = [
   {
     id: 'connaught', rank: 6, editorialOrder: 1, name: 'Connaught Bar', area: 'Mayfair', address: 'The Connaught, Carlos Place, London W1K 2AL',
@@ -112,17 +368,17 @@ const BOROUGH_LATER_PICKS = [
 const FRIDAY_DINNER_OPTIONS = [
   {
     name: 'Sartori', address: '15 Great Newport Street London WC2H 7JE', hours: 'Friday · 12:00–23:00',
-    knownFor: 'Traditional wood-fired Neapolitan pizza, pizza al metro and pastas including pappardelle Bolognese, lasagne and seafood linguine.', fit: 'My Friday pick when the table wants both pasta and Neapolitan pizza. Allow an estimated 5–10 minute walk from Seven Dials or Neal’s Yard.',
+    knownFor: 'Traditional wood-fired Neapolitan pizza, pizza al metro and pastas including pappardelle Bolognese, lasagne and seafood linguine.', fit: 'The Italian choice when the table wants both pasta and Neapolitan pizza. Allow an estimated 5–10 minute walk from Seven Dials or Neal’s Yard.',
     booking: 'Reserve for 18:00 through the official site; availability is not confirmed.',
     tradeoff: 'It is a busy West End restaurant; the attraction is being able to choose both pastas and pizza, including sharing pizzas by the half metre or metre.',
     source: 'https://www.sartorirestaurant.com/', bookingSource: 'https://www.sartorirestaurant.com/', menuSource: 'https://booking.sartorirestaurant.com/it/menu/menu?menu=162'
   },
   {
-    name: 'Pizza Pilgrims Covent Garden', address: '23 Garrick Street London WC2E 9BN', hours: 'Friday · 11:30–23:00',
-    knownFor: 'Neapolitan pizza with a light, chewy, charred crust; current menu examples include ’nduja and double pepperoni with hot honey.', fit: 'The easiest casual Italian choice between Covent Garden and Leicester Square.',
-    booking: 'Ordinary reservations and walk-ins are supported. Group bookings for eight or more offer sharing menus. Booking for 18:00 is sensible because the room is small; availability is not confirmed.',
-    tradeoff: 'A small, buzzy and casual room rather than a long, polished group dinner.',
-    source: 'https://www.pizzapilgrims.co.uk/pizzerias/covent-garden/', bookingSource: 'https://www.pizzapilgrims.co.uk/bookings/'
+    name: 'The Ivy Market Grill', address: '1a Henrietta Street Covent Garden London WC2E 8PS', hours: 'Friday · 08:00–00:00; à la carte 11:30–close',
+    knownFor: 'A broad brasserie menu including chicken Milanese, fish and chips, shepherd’s pie, teriyaki salmon, lobster linguine and steaks.', fit: 'The broad-menu choice for varied tastes and a casual sit-down before Mayfair, an estimated 5–10 minute walk from Seven Dials.',
+    booking: 'Book through the official site; nothing is booked and group availability is not confirmed.',
+    tradeoff: 'A lively, polished brasserie chain; allow the full dinner window before cocktails.',
+    source: 'https://ivycollection.com/restaurants-near-me/the-ivy-london/the-ivy-market-grill-covent-garden/', bookingSource: 'https://ivycollection.com/restaurants-near-me/the-ivy-london/the-ivy-market-grill-covent-garden/', menuSource: 'https://ivycollection.com/restaurants-near-me/the-ivy-london/the-ivy-market-grill-covent-garden/a-la-carte-menu/'
   },
   {
     name: 'Seven Dials Market', address: 'Earlham Street London WC2H 9LX', hours: 'Friday · 11:00–23:00; street food from 12:00',
@@ -130,6 +386,20 @@ const FRIDAY_DINNER_OPTIONS = [
     booking: 'Most tables are walk-in. Reserved Bar Nana tables from 17:00 on Friday currently carry a £300 minimum drinks spend; check current terms.',
     tradeoff: 'It is noisier, orders may involve separate queues, and group seating is uncertain.',
     source: 'https://www.sevendialsmarket.com/visit-us/', bookingSource: 'https://www.sevendialsmarket.com/table-bookings-terms-conditions/', faqSource: 'https://www.sevendialsmarket.com/faqs/'
+  },
+  {
+    name: 'Browns Covent Garden', address: '82–84 St Martin’s Lane London WC2N 4AG', hours: 'Friday · 08:00–00:00; evening menu from 18:00',
+    knownFor: 'British brasserie classics and seasonal dishes, with options such as steak frites, chicken Caesar salad and prawn-and-chorizo linguine; menus change seasonally.', fit: 'A broad, familiar brasserie choice an estimated 5–10 minute walk from Seven Dials.',
+    booking: 'Use the official booking page for an 18:00 table; nothing is booked and availability is not confirmed.',
+    tradeoff: 'Friday live music begins at 19:00, so expect a livelier second half of dinner.',
+    source: 'https://www.browns-restaurants.co.uk/restaurants/london/covent-garden', bookingSource: 'https://www.browns-restaurants.co.uk/restaurants/london/covent-garden/tablebooking.html', infoSource: 'https://www.browns-restaurants.co.uk/restaurants/london/covent-garden/fridays', infoLabel: 'Friday live music'
+  },
+  {
+    name: 'The Delaunay', address: '55 Aldwych London WC2B 4BB', hours: 'Friday dinner · 17:30–22:30 last orders',
+    knownFor: 'European grand-café dishes including Wiener schnitzel, grilled fish, oysters, côte de boeuf and apple strudel.', fit: 'The elegant, more polished choice, an estimated 10–15 minute walk from Seven Dials.',
+    booking: 'An 18:00 dinner fits the published service; nothing is booked and availability is not confirmed.',
+    tradeoff: 'It sits at the Aldwych end of the area, away from Mayfair, so allow extra walking time afterward.',
+    source: 'https://www.thedelaunay.com/', bookingSource: 'https://www.thedelaunay.com/'
   }
 ];
 
@@ -169,17 +439,17 @@ const DAYS = [
       { start: '17:50', title: 'Arrive at London City Airport', place: 'London City Airport', tag: 'Inbound', summary: 'BA 7304 from Milan Linate.', details: 'Flight details are from the group plan; verify timing with the airline before travel.' },
       { start: '18:15', end: '19:15', title: 'Transfer to Chelsea', place: 'Chelsea, London', tag: 'Approx. 50 min', summary: 'Black cab or Uber XL from London City Airport.', details: 'Travel time is an estimate and will vary with evening traffic.', directions: { origin: 'London City Airport', destination: 'Chelsea London', mode: 'driving' } },
       { start: '19:15', end: '20:00', title: 'Settle in', place: 'Chelsea, London', tag: 'At the house', summary: 'Drop bags and ease into welcome refreshments.' },
-      { start: '20:15', end: '22:30', title: 'Welcome dinner', place: 'Chelsea, London', tag: 'Choose together', summary: 'Chelsea dinner options for the first night.', options: ["PJ’s Chelsea Brasserie", 'Hawksmoor Knightsbridge', 'The Cadogan Arms'] },
-      { start: '22:30', title: 'Chelsea nightcap', place: 'Chelsea, London', tag: 'Late', summary: 'One more, if the mood is right.', options: ['The Admiral Codrington', 'The Surprise Chelsea', 'Barts Speakeasy at Chelsea Cloisters'] }
+      { start: '20:15', end: '22:30', title: 'Welcome dinner', place: 'Chelsea, London', tag: 'Choose together', summary: 'Chelsea dinner options for the first night.', options: [{ name: "PJ’s Chelsea Brasserie", venueKey: "PJ’s Chelsea Brasserie" }, { name: 'Hawksmoor Knightsbridge', venueKey: 'Hawksmoor Knightsbridge' }, { name: 'The Cadogan Arms', venueKey: 'The Cadogan Arms' }] },
+      { start: '22:30', title: 'Chelsea nightcap', place: 'Chelsea, London', tag: 'Late', summary: 'One more, if the mood is right.', options: [{ name: 'The Admiral Codrington', venueKey: 'Admiral Codrington' }, { name: 'The Surprise Chelsea', venueKey: 'The Surprise Chelsea' }, { name: 'Barts Speakeasy at Chelsea Cloisters', venueKey: 'Barts' }] }
     ]
   },
   {
     id: 'fri', date: '20261009', label: 'Friday', theme: 'Royal London & West End',
     events: [
       { start: '09:30', end: '13:00', title: 'Royal London walk', place: 'Westminster, London', tag: 'On foot + Tube', summary: 'Sloane Square to the landmarks of Westminster.', details: 'Take the District line from Sloane Square to St James’s Park. Walk Buckingham Palace → St James’s Park → Westminster Abbey → Big Ben → Whitehall.', directions: { origin: 'Buckingham Palace', destination: 'Whitehall London', mode: 'walking', waypoints: ['St James’s Park London','Westminster Abbey','Big Ben'] } },
-      { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
+      { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.', venueKey: 'Ye Olde Cheshire Cheese' },
       { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials, with an optional shop-by-shop route.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] }, coventGuide: true },
-      { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Covent Garden London', tag: 'Choose one · nothing booked', summary: 'Sartori for pasta and Neapolitan pizza; Pizza Pilgrims for a pizza-focused meal; or Seven Dials Market for varied tastes.', details: 'Target an 18:00 seating and aim to finish around 19:45–20:00 before heading to Mayfair for roughly 20:30, or Bar Antoine around 20:45. Times are estimates and nothing is booked.', dinnerGuide: true },
+      { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Covent Garden London', tag: 'Choose one · nothing booked', summary: 'Compare five nearby dinner options below, from Italian and polished brasseries to a flexible food hall.', details: 'Target an 18:00 seating and aim to finish around 19:45–20:00 before heading to Mayfair for roughly 20:30, or Bar Antoine around 20:45. Times are estimates and nothing is booked.', dinnerGuide: true },
       { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 leads a broader shortlist of polished cocktail options.', details: 'Choose by mood, location and travel. The optional Saturday Scarfes nightcap remains a separate choice after Dishoom.', barsCta: true }
     ]
   },
@@ -192,11 +462,11 @@ const DAYS = [
       { start: '09:30', end: '11:30', title: 'Borough Market breakfast', place: 'Borough Market', tag: 'Come hungry', summary: 'Start with Monmouth coffee, then choose Kappacasein or Ginger Pig; The Black Pig is the heartier alternative.', details: 'Borough Market’s published Saturday hours begin at 09:00. Our 09:30–11:30 visit fits the regular hours listed for all seven guide picks; prepared food, flavours and stock vary on the day.', source: 'https://boroughmarket.org.uk/visit-us/', sourceLabel: 'Official market hours', boroughGuide: true, uid: '20261010-0@london-field-guide' },
       { start: '11:30', end: '13:30', title: 'Thames & Tower Bridge walk', place: 'Tower Bridge', tag: 'Riverside walk', summary: 'Walk from Borough to Tower Bridge, cross the river and finish at Tower Hill for north-end views.', details: 'This is a free riverside walk; no paid tour is planned.', directions: { origin: 'Borough Market', destination: 'Tower Hill Station', mode: 'walking', waypoints: ['Tower Bridge'] }, uid: '20261010-1@london-field-guide' },
       { start: '13:30', end: '14:00', title: 'Tower Hill to Blackfriars', place: 'Blackfriars Station London', tag: '30-minute transfer budget', summary: 'Take the District or Circle line west from Tower Hill to Blackfriars.', details: 'Allow for the station walk and weekend service conditions.', directions: { origin: 'Tower Hill Station', destination: 'Blackfriars Station London', mode: 'transit' }, tfl: true, uid: 'saturday-towerhill-blackfriars-20261010@london-field-guide' },
-      { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
-      { start: '15:10', end: '15:50', title: 'Optional: The Harp', place: 'The Harp, 47 Chandos Place London WC2N 4HS', tag: 'Optional if there is room', summary: 'A compact traditional alehouse for cask ale and cider.', details: 'Allow an estimated 25–30 minutes to walk here via Fleet Street and the Strand from The Blackfriar. Saturday hours are listed as 11:00–23:00; skip it if busy or linger depending on space and mood.', source: 'https://www.harpcoventgarden.com/', sourceLabel: 'Official pub information', directions: { origin: 'The Blackfriar London', destination: 'The Harp Covent Garden', mode: 'walking' }, status: 'TENTATIVE', uid: 'saturday-harp-20261010@london-field-guide' },
-      { start: '16:00', end: '16:45', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow an estimated 8–10 minute walk from The Harp, or start earlier if the group skips The Harp. Saturday hours are listed as 11:00–23:00. From 16:45, linger here or wander Covent Garden and Seven Dials; leave by about 17:40 with a generous 10-minute walk budget to Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', directions: { origin: 'The Harp Covent Garden', destination: 'Lamb and Flag Covent Garden', mode: 'walking' }, status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
-      { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' },
-      { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
+      { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', venueKey: 'The Blackfriar', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
+      { start: '15:10', end: '15:50', title: 'Optional: The Harp', place: 'The Harp, 47 Chandos Place London WC2N 4HS', tag: 'Optional if there is room', summary: 'A compact traditional alehouse for cask ale and cider.', details: 'Allow an estimated 25–30 minutes to walk here via Fleet Street and the Strand from The Blackfriar. Saturday hours are listed as 11:00–23:00; skip it if busy or linger depending on space and mood.', source: 'https://www.harpcoventgarden.com/', sourceLabel: 'Official pub information', venueKey: 'The Harp', directions: { origin: 'The Blackfriar London', destination: 'The Harp Covent Garden', mode: 'walking' }, status: 'TENTATIVE', uid: 'saturday-harp-20261010@london-field-guide' },
+      { start: '16:00', end: '16:45', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow an estimated 8–10 minute walk from The Harp, or start earlier if the group skips The Harp. Saturday hours are listed as 11:00–23:00. From 16:45, linger here or wander Covent Garden and Seven Dials; leave by about 17:40 with a generous 10-minute walk budget to Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', venueKey: 'Lamb & Flag', directions: { origin: 'The Harp Covent Garden', destination: 'Lamb and Flag Covent Garden', mode: 'walking' }, status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
+      { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', venueKey: 'Dishoom Covent Garden', uid: '20261010-3@london-field-guide' },
+      { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', venueKey: 'Scarfes Bar', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
     ]
   },
   {
@@ -208,7 +478,7 @@ const DAYS = [
     events: [
       { start: '09:30', end: '10:15', title: 'Breakfast on Pavilion Road', place: 'Pavilion Road Chelsea', tag: '45 minutes', summary: 'Coffee and a proper breakfast before heading north.', uid: '20261011-0@london-field-guide' },
       { start: '10:15', end: '11:00', title: 'Chelsea to Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Est. 45 minutes', summary: 'Sloane Square to Warren Street, then walk to Passyunk.', details: 'Take the District or Circle line east one stop to Victoria → Victoria line north to Warren Street → walk to 80 Cleveland Street. Travel time is an estimate.', directions: { origin: 'Sloane Square Station', destination: 'Passyunk Avenue 80 Cleveland Street London W1T 6NE', mode: 'transit' }, uid: 'sunday-chelsea-fitzrovia-20261011@london-field-guide' },
-      { start: '11:00', end: '12:15', title: 'Passyunk Eagles tailgate in Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Chosen stop · £20 · not booked', summary: 'A 75-minute slice of the official 09:00–21:00 Philly event in central London.', details: 'Meet at 80 Cleveland Street, W1T 6NE. Our visit is 11:00–12:15; leave at 12:15 for Tottenham. Food trucks, mobile bars, live entertainment and a big screen are listed. Tickets are £20, non-refundable and do not include a free drink; plan food and drinks separately. The tailgate ticket is separate from the sold-out in-venue watch party. Check ticket availability on the booking page. For arrival or re-entry questions: eaglesweek@passyunkavenue.com.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate details', secondarySource: 'https://www.sevenrooms.com/events/ahNzfnNldmVucm9vbXMtc2VjdXJlchwLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoM?event_id=ahNzfnNldmVucm9vbXMtc2VjdXJlcjkLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoMCxIQc3JfR2VuVmVudWVFdmVudBiAgMe414rXCgw', secondarySourceLabel: 'Check tailgate tickets', tertiarySource: 'https://passyunkavenue.com/fitzrovia/', tertiarySourceLabel: 'Official Fitzrovia venue', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
+      { start: '11:00', end: '12:15', title: 'Passyunk Eagles tailgate in Fitzrovia', place: 'Passyunk Avenue, 80 Cleveland Street London W1T 6NE', tag: 'Chosen stop · £20 · not booked', summary: 'A 75-minute slice of the official 09:00–21:00 Philly event in central London.', details: 'Meet at 80 Cleveland Street, W1T 6NE. Our visit is 11:00–12:15; leave at 12:15 for Tottenham. Food trucks, mobile bars, live entertainment and a big screen are listed. Tickets are £20, non-refundable and do not include a free drink; plan food and drinks separately. The tailgate ticket is separate from the sold-out in-venue watch party. Check ticket availability on the booking page. For arrival or re-entry questions: eaglesweek@passyunkavenue.com.', source: 'https://passyunkavenue.com/eagles-week-events/', sourceLabel: 'Official tailgate details', secondarySource: 'https://www.sevenrooms.com/events/ahNzfnNldmVucm9vbXMtc2VjdXJlchwLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoM?event_id=ahNzfnNldmVucm9vbXMtc2VjdXJlcjkLEg9uaWdodGxvb3BfVmVudWUYgIDCqt-xzAoMCxIQc3JfR2VuVmVudWVFdmVudBiAgMe414rXCgw', secondarySourceLabel: 'Check tailgate tickets', tertiarySource: 'https://passyunkavenue.com/fitzrovia/', tertiarySourceLabel: 'Official Fitzrovia venue', venueKey: 'Passyunk Avenue Fitzrovia', status: 'TENTATIVE', uid: '20261011-2@london-field-guide' },
       { start: '12:15', end: '13:30', title: 'Fitzrovia to Tottenham', place: 'Tottenham Hotspur Stadium', tag: 'Est. 60–75 minutes', summary: 'Warren Street to Seven Sisters, then continue on foot toward the stadium.', details: 'Walk to Warren Street → Victoria line north to Seven Sisters → allow roughly 30–35 minutes to walk along the High Road toward the stadium, plus queues. Follow stewards and check live TfL guidance. Spurs advises using Liverpool Street for Overground journeys because of the Seven Sisters transfer diversion.', source: 'https://www.tottenhamhotspur.com/the-stadium/attending-matches/getting-here/', sourceLabel: 'Official stadium travel advice', tfl: true, uid: '20261011-1@london-field-guide' },
       { start: '13:30', end: '13:45', title: 'Find the ticket entrance', place: 'Tottenham Hotspur Stadium', tag: 'Outside buffer', summary: 'Use the NFL ticket instructions and skip photos if queues build.', details: 'This is a brief planning buffer, not a booked tour or event activation.', uid: 'sunday-stadium-photos-20261011@london-field-guide' },
       { start: '13:45', end: '14:20', title: 'Security & find our seats', place: 'Tottenham Hotspur Stadium', tag: 'Suggested entry · 45 minutes before kickoff', summary: 'Use the entrance and instructions on the NFL ticket; target being seated by 14:20.', details: 'The 13:45 arrival is our suggested target, not an official mandated entry time. Follow the ticket and current game-day guidance.', uid: 'sunday-stadium-entry-20261011@london-field-guide' },
@@ -229,13 +499,13 @@ const SATURDAY_LUNCH = {
     { start: '09:15', end: '09:30', title: 'Grab-and-go breakfast', place: 'London Bridge Station', tag: 'Quick start', summary: 'Pick up coffee and something light near London Bridge or Borough, skip long queues, and be ready to walk at 09:30.', uid: 'saturday-quick-breakfast-20261010@london-field-guide' },
     { start: '09:30', end: '11:00', title: 'Thames & Tower Bridge walk', place: 'Tower Hill London', tag: 'Outdoor walk', summary: 'Walk from Borough to Tower Bridge, cross the river and finish at Tower Hill.', details: 'Outdoor crossings and views only; no paid exhibition. This replaces the original 11:30–13:30 walk.', directions: { origin: 'Borough Market', destination: 'Tower Hill Station', mode: 'walking', waypoints: ['Tower Bridge'] }, uid: '20261010-1@london-field-guide' },
     { start: '11:00', end: '11:30', title: 'Tower Hill to The George', place: 'The George Inn, 75–77 Borough High Street London SE1 1NH', tag: 'Est. 20–30 minute walk', summary: 'Walk back via London Bridge to The George near Borough Market.', directions: { origin: 'Tower Hill Station', destination: 'The George Inn 75-77 Borough High Street London SE1 1NH', mode: 'walking', waypoints: ['London Bridge'] }, uid: 'saturday-towerhill-george-20261010@london-field-guide' },
-    { start: '11:30', end: '12:10', title: 'First drink at The George', place: 'The George Inn, 75–77 Borough High Street London SE1 1NH', tag: 'Historic pub · nothing booked', summary: 'London’s last remaining galleried inn, with 17th-century history.', details: 'The courtyard is walk-in only. Regular Saturday hours are 11:00–00:00; allow an estimated 3–5 minutes to walk back to the market.', source: 'https://www.greeneking.co.uk/pubs/greater-london/george-southwark/find-us', sourceLabel: 'Official hours & courtyard policy', secondarySource: 'https://www.nationaltrust.org.uk/visit/london/george-inn', secondarySourceLabel: 'National Trust history', status: 'TENTATIVE', uid: 'saturday-george-20261010@london-field-guide' },
+    { start: '11:30', end: '12:10', title: 'First drink at The George', place: 'The George Inn, 75–77 Borough High Street London SE1 1NH', tag: 'Historic pub · nothing booked', summary: 'London’s last remaining galleried inn, with 17th-century history.', details: 'The courtyard is walk-in only. Regular Saturday hours are 11:00–00:00; allow an estimated 3–5 minutes to walk back to the market.', source: 'https://www.greeneking.co.uk/pubs/greater-london/george-southwark/find-us', sourceLabel: 'Official hours & courtyard policy', venueKey: 'The George Inn', secondarySource: 'https://www.nationaltrust.org.uk/visit/london/george-inn', secondarySourceLabel: 'National Trust history', status: 'TENTATIVE', uid: 'saturday-george-20261010@london-field-guide' },
     { start: '12:15', end: '13:15', title: 'Borough Market lunch', place: 'Borough Market', tag: 'Choose one savoury hit', summary: 'Choose one item, or share, from the savoury food guide; prepared food and stock vary on the day.', details: 'Published regular Saturday hours cover this lunch window for the later-food list. This is the main market meal in the lunch plan.', source: 'https://boroughmarket.org.uk/visit-us/', sourceLabel: 'Official market hours', boroughGuide: 'lunch', uid: '20261010-0@london-field-guide' },
     { start: '13:15', end: '14:00', title: 'Walk west to The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Est. 25–35 minute walk + buffer', summary: 'Follow Bankside west via Millennium Bridge toward Blackfriars.', directions: { origin: 'Borough Market', destination: 'The Blackfriar London', mode: 'walking', waypoints: ['Millennium Bridge London'] }, uid: 'saturday-borough-blackfriar-20261010@london-field-guide' },
-    { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
-    { start: '15:30', end: '16:15', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow 30–40 minutes to walk west with sightseeing buffer. The Harp is an alternative to Lamb & Flag. Afterward, wander Covent Garden or linger before leaving for Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
-    { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'From 16:15, use the flexible time for Covent Garden or Seven Dials and keep the 17:50 arrival. Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', uid: '20261010-3@london-field-guide' },
-    { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
+    { start: '14:00', end: '14:40', title: 'Pub crawl: The Blackfriar', place: 'The Blackfriar, 174 Queen Victoria Street London EC4V 4EG', tag: 'Main stop · nothing booked', summary: 'An ornate Art Nouveau pub known for its friar mosaics and character.', details: 'Keep the stop flexible and move on if it is busy.', source: 'https://www.nicholsonspubs.co.uk/restaurants/london/theblackfriarblackfriarslondon', sourceLabel: 'Official pub information', venueKey: 'The Blackfriar', status: 'TENTATIVE', uid: '20261010-2@london-field-guide' },
+    { start: '15:30', end: '16:15', title: 'Lamb & Flag', place: 'Lamb & Flag, 33 Rose Street London WC2E 9EB', tag: 'Main stop · nothing booked', summary: 'A historic Covent Garden pub tucked into an alley.', details: 'Allow 30–40 minutes to walk west with sightseeing buffer. The Harp is an alternative to Lamb & Flag. Afterward, wander Covent Garden or linger before leaving for Dishoom.', source: 'https://www.lambandflagcoventgarden.co.uk/', sourceLabel: 'Official pub information', venueKey: 'Lamb & Flag', status: 'TENTATIVE', uid: 'saturday-lamb-flag-20261010@london-field-guide' },
+    { start: '18:00', end: '20:30', title: 'Dinner at Dishoom Covent Garden', place: "Dishoom Covent Garden, 12 Upper St Martin's Lane London WC2H 9FB", tag: 'Booked · per group plan', summary: 'Arrive 17:50 · table for 8.', details: 'From 16:15, use the flexible time for Covent Garden or Seven Dials and keep the 17:50 arrival. Feast notes: House Black Daal, Chicken Ruby, lamb chops, biryani, garlic naan and Keema Pau.', venueKey: 'Dishoom Covent Garden', uid: '20261010-3@london-field-guide' },
+    { start: '21:00', end: '22:00', title: 'Optional nightcap at Scarfes', place: 'Scarfes Bar, Rosewood London, 252 High Holborn London WC1V 7EN', tag: 'Optional · walk-in · not booked', summary: 'Walk an estimated 15–20 minutes from Dishoom for an optional one-hour nightcap.', details: 'Walk-ins are welcome and tables are normally allocated for 90 minutes. In-house guests and parties of six or more can contact the bar about reservations. Nothing is booked.', source: 'https://scarfesbar.com/', sourceLabel: 'Official entry & group policy', venueKey: 'Scarfes Bar', directions: { origin: "Dishoom Covent Garden, 12 Upper St Martin's Lane London", destination: 'Scarfes Bar, 252 High Holborn London', mode: 'walking' }, status: 'TENTATIVE', uid: 'bar-scarfes-20261010@london-field-guide' }
   ]
 };
 
@@ -245,6 +515,11 @@ const directionsUrl = ({origin, destination, mode = 'transit', waypoints = []}) 
   return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&travelmode=${mode}${points}`;
 };
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+function venueLinksMarkup(name, className = 'venue-links') {
+  const venue = VENUE_LINKS[name];
+  if (!venue) return '';
+  return `<span class="${className}"><a href="${venue.website}" target="_blank" rel="noopener">Website <span aria-hidden="true">↗</span></a>${venue.menu ? `<a href="${venue.menu}" target="_blank" rel="noopener">${escapeHtml(venue.menuLabel || 'Menu')} <span aria-hidden="true">↗</span></a>` : ''}${(venue.extraMenus || []).map(menu => `<a href="${menu.url}" target="_blank" rel="noopener">${escapeHtml(menu.label)} <span aria-hidden="true">↗</span></a>`).join('')}${venue.menuNote ? `<small>${escapeHtml(venue.menuNote)}</small>` : ''}</span>`;
+}
 
 function boroughGuideMarkup(plan = 'breakfast') {
   const isLunch = plan === 'lunch';
@@ -259,7 +534,7 @@ function boroughGuideMarkup(plan = 'breakfast') {
       <div class="borough-pick-grid">${BOROUGH_PICKS.map(pick => `<article class="borough-pick">
         <p class="borough-pick__when">${escapeHtml(isLunch ? 'Market favourite · open at 12:15' : pick.when)}</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
         <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
-        <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a>${pick.secondarySource ? `<a href="${pick.secondarySource}" target="_blank" rel="noopener">Market listing <span aria-hidden="true">↗</span></a>` : ''}</div>
+          <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>${venueLinksMarkup(pick.name, 'venue-links venue-links--inline')}<a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a>${pick.secondarySource ? `<a href="${pick.secondarySource}" target="_blank" rel="noopener">Market listing <span aria-hidden="true">↗</span></a>` : ''}</div>
       </article>`).join('')}</div>
       <section class="borough-later" aria-labelledby="borough-later-title">
         <h4 id="borough-later-title">Open later · savoury top hits</h4>
@@ -267,7 +542,7 @@ function boroughGuideMarkup(plan = 'breakfast') {
         <div class="borough-pick-grid">${BOROUGH_LATER_PICKS.map(pick => `<article class="borough-pick">
           <p class="borough-pick__when">Afternoon reference</p><h4>${escapeHtml(pick.name)}</h4><p class="borough-pick__order">Known for: <strong>${escapeHtml(pick.knownFor)}</strong></p><p>${escapeHtml(pick.why)}</p>
           <dl><div><dt>Find it</dt><dd>${escapeHtml(pick.area)}</dd></div><div><dt>Regular Saturday hours</dt><dd>${escapeHtml(pick.hours)}</dd></div></dl>
-          <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a></div>
+          <div class="borough-pick__links"><a href="${mapsUrl(`${pick.name} ${pick.area} Borough Market London`)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>${venueLinksMarkup(pick.name, 'venue-links venue-links--inline')}<a href="${pick.source}" target="_blank" rel="noopener">Trader details <span aria-hidden="true">↗</span></a></div>
         </article>`).join('')}</div>
       </section>
       <p class="borough-guide__sources">Further reading: <a href="https://www.timeout.com/london/things-to-do/borough-market" target="_blank" rel="noopener">Time Out market guide · 25 Jun 2026</a> · <a href="https://www.timeout.com/london/restaurants/londons-best-bakeries" target="_blank" rel="noopener">Time Out bakery guide · 30 Jun 2026</a> · <a href="https://www.theinfatuation.com/london/guides/best-borough-market-restaurant-bars" target="_blank" rel="noopener">The Infatuation market guide · 22 Jul 2026</a>.</p>
@@ -277,13 +552,13 @@ function boroughGuideMarkup(plan = 'breakfast') {
 
 function fridayDinnerGuideMarkup() {
   return `<details class="dinner-guide">
-    <summary><span>Dinner guide · Sartori / Pizza Pilgrims / Seven Dials Market</span><span aria-hidden="true">＋</span></summary>
+    <summary><span>Dinner guide · 5 nearby options</span><span aria-hidden="true">＋</span></summary>
     <div class="dinner-guide__inner">
-      <p class="dinner-guide__intro"><strong>Choose one:</strong> Sartori is my Friday pick for a table that wants both pasta and Neapolitan pizza; Pizza Pilgrims is the pizza-focused alternative; Seven Dials Market offers the most variety. Target 18:00 and aim to finish by 19:45–20:00 before heading toward Mayfair. Nothing is booked.</p>
-      <div class="dinner-option-grid">${FRIDAY_DINNER_OPTIONS.map((option, index) => `<article class="dinner-option${index === 0 ? ' dinner-option--recommended' : ''}">
-        ${index === 0 ? '<p class="dinner-option__flag">My Friday pick</p>' : ''}<h4>${escapeHtml(option.name)}</h4>
+      <p class="dinner-guide__intro"><strong>Choose one:</strong> compare the options by menu breadth, atmosphere and ease of getting to Mayfair afterward. Target 18:00 and aim to finish by 19:45–20:00. Nothing is booked.</p>
+      <div class="dinner-option-grid">${FRIDAY_DINNER_OPTIONS.map(option => `<article class="dinner-option">
+        <h4>${escapeHtml(option.name)}</h4>
         <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>Why it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(option.hours)}</dd></div><div><dt>Booking</dt><dd>${escapeHtml(option.booking)}</dd></div><div><dt>Tradeoff</dt><dd>${escapeHtml(option.tradeoff)}</dd></div></dl>
-        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.source}" target="_blank" rel="noopener">Official venue details <span aria-hidden="true">↗</span></a><a href="${option.bookingSource}" target="_blank" rel="noopener">Booking terms <span aria-hidden="true">↗</span></a>${option.menuSource ? `<a href="${option.menuSource}" target="_blank" rel="noopener">Menu <span aria-hidden="true">↗</span></a>` : ''}${option.faqSource ? `<a href="${option.faqSource}" target="_blank" rel="noopener">FAQ <span aria-hidden="true">↗</span></a>` : ''}</div>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>${venueLinksMarkup(option.name, 'venue-links venue-links--inline')}<a href="${option.bookingSource}" target="_blank" rel="noopener">Booking terms <span aria-hidden="true">↗</span></a>${option.infoSource ? `<a href="${option.infoSource}" target="_blank" rel="noopener">${escapeHtml(option.infoLabel || 'More details')} <span aria-hidden="true">↗</span></a>` : ''}${option.faqSource ? `<a href="${option.faqSource}" target="_blank" rel="noopener">FAQ <span aria-hidden="true">↗</span></a>` : ''}</div>
       </article>`).join('')}</div>
     </div>
   </details>`;
@@ -297,7 +572,7 @@ function sundayDinnerGuideMarkup() {
       <div class="dinner-option-grid sunday-dinner-grid">${SUNDAY_DINNER_OPTIONS.map((option, index) => `<article class="dinner-option${index === 0 ? ' dinner-option--recommended' : ''}">
         ${index === 0 ? '<p class="dinner-option__flag">Sunday pick</p>' : ''}<h4>${escapeHtml(option.name)}</h4>
         <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>Why it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(option.hours)}</dd></div><div><dt>Booking</dt><dd>${escapeHtml(option.booking)}</dd></div><div><dt>Tradeoff</dt><dd>${escapeHtml(option.tradeoff)}</dd></div></dl>
-        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.source}" target="_blank" rel="noopener">Official venue details <span aria-hidden="true">↗</span></a>${option.menuSource ? `<a href="${option.menuSource}" target="_blank" rel="noopener">Menu <span aria-hidden="true">↗</span></a>` : ''}</div>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>${venueLinksMarkup(option.name, 'venue-links venue-links--inline')}</div>
       </article>`).join('')}</div>
     </div>
   </details>`;
@@ -313,7 +588,7 @@ function coventGardenGuideMarkup() {
         <h4>${escapeHtml(stop.name)}</h4>
         <p>${escapeHtml(stop.why)}</p>
         <dl><div><dt>Where</dt><dd>${escapeHtml(stop.address)}</dd></div><div><dt>Browse</dt><dd>${escapeHtml(stop.time)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(stop.hours)}</dd></div></dl>
-        <div class="covent-stop__links"><a href="${mapsUrl(stop.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${stop.source}" target="_blank" rel="noopener">Official details <span aria-hidden="true">↗</span></a></div>
+        <div class="covent-stop__links"><a href="${mapsUrl(stop.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${stop.source}" target="_blank" rel="noopener">Website <span aria-hidden="true">↗</span></a></div>
       </article>`).join('')}</div>
     </div>
   </details>`;
@@ -324,7 +599,7 @@ function eventMarkup(event, dayId, index) {
   const options = event.options || [];
   const expandedContent = [
     event.details ? `<p>${escapeHtml(event.details)}</p>` : '',
-    options.length ? `<p class="event__option-links">${options.map(option => `<a href="${mapsUrl(option)}" target="_blank" rel="noopener">${escapeHtml(option)} <span aria-hidden="true">↗</span></a>`).join('')}</p>` : ''
+    options.length ? `<div class="event__option-links">${options.map(option => { const item = typeof option === 'string' ? { name: option, venueKey: option } : option; return `<span><a href="${mapsUrl(item.name)}" target="_blank" rel="noopener">${escapeHtml(item.name)} · Map <span aria-hidden="true">↗</span></a>${venueLinksMarkup(item.venueKey, 'venue-links venue-links--inline')}</span>`; }).join('')}</div>` : ''
   ].filter(Boolean).join('');
   const links = [
     event.place ? `<a href="${mapsUrl(event.place)}" target="_blank" rel="noopener">Open in Maps <span aria-hidden="true">↗</span></a>` : '',
@@ -333,6 +608,7 @@ function eventMarkup(event, dayId, index) {
     event.source ? `<a href="${event.source}" target="_blank" rel="noopener">${escapeHtml(event.sourceLabel || 'Official game details')} <span aria-hidden="true">↗</span></a>` : '',
     event.secondarySource ? `<a href="${event.secondarySource}" target="_blank" rel="noopener">${escapeHtml(event.secondarySourceLabel || 'Venue details')} <span aria-hidden="true">↗</span></a>` : '',
     event.tertiarySource ? `<a href="${event.tertiarySource}" target="_blank" rel="noopener">${escapeHtml(event.tertiarySourceLabel || 'More details')} <span aria-hidden="true">↗</span></a>` : '',
+    event.venueKey ? venueLinksMarkup(event.venueKey, 'venue-links venue-links--inline') : '',
     event.barsCta ? '<a href="#bars">Compare the bar shortlist <span aria-hidden="true">→</span></a>' : '',
     expandedContent ? `<button class="event__toggle" type="button" aria-expanded="false" aria-controls="${detailId}">More detail</button>` : ''
   ].filter(Boolean).join('');
@@ -366,7 +642,7 @@ function saturdayPubShortlistMarkup() {
       <div class="pub-swap__body">
         <p>${escapeHtml(pub.why)}</p>
         <dl><div><dt>Where it fits</dt><dd>${escapeHtml(pub.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(pub.hours)}</dd></div><div><dt>Walk to Dishoom</dt><dd>${escapeHtml(pub.dishoom)}</dd></div>${pub.policy ? `<div><dt>Entry</dt><dd>${escapeHtml(pub.policy)}</dd></div>` : ''}</dl>
-        <div class="pub-swap__links"><a href="${mapsUrl(pub.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${directionsUrl({origin: pub.address, destination: 'Dishoom Covent Garden', mode: 'walking'})}" target="_blank" rel="noopener">Walk to Dishoom <span aria-hidden="true">↗</span></a><a href="${pub.source}" target="_blank" rel="noopener">${escapeHtml(pub.sourceLabel)} <span aria-hidden="true">↗</span></a></div>
+        <div class="pub-swap__links"><a href="${mapsUrl(pub.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${directionsUrl({origin: pub.address, destination: 'Dishoom Covent Garden', mode: 'walking'})}" target="_blank" rel="noopener">Walk to Dishoom <span aria-hidden="true">↗</span></a>${venueLinksMarkup(pub.name === 'Seven Stars' ? 'The Seven Stars' : pub.name === 'Philomena’s' ? "Philomena's" : pub.name, 'venue-links venue-links--inline')}<a href="${pub.source}" target="_blank" rel="noopener">${escapeHtml(pub.sourceLabel)} <span aria-hidden="true">↗</span></a></div>
       </div>
     </details>`).join('')}</div>
   </section>`;
@@ -426,7 +702,7 @@ function barCardMarkup(bar, night) {
       </dl>
       <div class="bar-card__actions">
         <a href="${mapsUrl(bar.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a>
-        <a href="${bar.source}" target="_blank" rel="noopener">Official site <span aria-hidden="true">↗</span></a>
+        ${venueLinksMarkup(bar.name, 'venue-links venue-links--inline')}
         ${bar.policySource ? `<a href="${bar.policySource}" target="_blank" rel="noopener">Entry & group policy <span aria-hidden="true">↗</span></a>` : ''}
         ${bar.phone ? `<a href="tel:${bar.phone}">Reservations · ${escapeHtml(bar.phoneLabel)}</a>` : ''}
       </div>
