@@ -256,6 +256,7 @@ main { padding-block: 12px 64px; }
   .bar-grid { grid-template-columns: repeat(2, 1fr); }
   .borough-pick-grid { grid-template-columns: repeat(2, 1fr); }
   .dinner-option-grid { grid-template-columns: repeat(3, 1fr); }
+  .sunday-dinner-grid { grid-template-columns: repeat(2, 1fr); }
   .covent-stop-grid { grid-template-columns: repeat(2, 1fr); }
   .compare-grid { grid-template-columns: repeat(3, 1fr); }
   .pub-swap-grid { grid-template-columns: repeat(2, 1fr); }

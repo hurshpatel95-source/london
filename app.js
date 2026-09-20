@@ -111,11 +111,11 @@ const BOROUGH_LATER_PICKS = [
 
 const FRIDAY_DINNER_OPTIONS = [
   {
-    name: 'Blacklock Covent Garden', address: '16a Bedford Street London WC2E 9HE', hours: 'Friday dinner · 16:45–22:30',
-    knownFor: 'Casual British chophouse cooking: steaks, chops and sharing sides.', fit: 'My Friday pick for a casual seated dinner built around chops and sharing sides.',
-    booking: 'Online bookings are available for up to eight; larger groups contact the restaurant. Walk-ins are not guaranteed.',
-    tradeoff: 'The dining room is in a basement and there is no lift access.',
-    source: 'https://theblacklock.com/restaurants/covent-garden/', bookingSource: 'https://theblacklock.com/coventgarden-reservations/'
+    name: 'Sartori', address: '15 Great Newport Street London WC2H 7JE', hours: 'Friday · 12:00–23:00',
+    knownFor: 'Traditional wood-fired Neapolitan pizza, pizza al metro and pastas including pappardelle Bolognese, lasagne and seafood linguine.', fit: 'My Friday pick when the table wants both pasta and Neapolitan pizza. Allow an estimated 5–10 minute walk from Seven Dials or Neal’s Yard.',
+    booking: 'Reserve for 18:00 through the official site; availability is not confirmed.',
+    tradeoff: 'It is a busy West End restaurant; the attraction is being able to choose both pastas and pizza, including sharing pizzas by the half metre or metre.',
+    source: 'https://www.sartorirestaurant.com/', bookingSource: 'https://www.sartorirestaurant.com/', menuSource: 'https://booking.sartorirestaurant.com/it/menu/menu?menu=162'
   },
   {
     name: 'Pizza Pilgrims Covent Garden', address: '23 Garrick Street London WC2E 9BN', hours: 'Friday · 11:30–23:00',
@@ -142,6 +142,25 @@ const COVENT_GARDEN_STOPS = [
   { name: 'Neal’s Yard courtyard', address: 'Neal’s Yard London WC2H 9DP', time: 'Optional · 5–10 min', hours: 'Outdoor courtyard', why: 'A short wander and photo stop beside the dairy area.', source: 'https://www.coventgarden.london/experience/visit/neal-s-yard' }
 ];
 
+const SUNDAY_DINNER_OPTIONS = [
+  {
+    name: 'The Enterprise', address: '35 Walton Street London SW3 2HU', hours: 'Sunday kitchen · 18:00–22:00',
+    knownFor: 'A relaxed local pub and restaurant; sample evening dishes include chicken Milanese, sausages and mash, and fishcakes.',
+    fit: 'My pick for an easy local dinner near the Chelsea base after the return from Tottenham.',
+    booking: 'Nothing is booked; check the official site for current availability.',
+    tradeoff: 'The Sunday roast is a lunch offering, so plan on the evening menu instead.',
+    source: 'https://www.theenterprise.co.uk/contact/', menuSource: 'https://www.theenterprise.co.uk/menus/'
+  },
+  {
+    name: 'Côte Sloane Square', address: '7–12 Sloane Square London SW1W 8EG', hours: 'Sunday restaurant hours · 08:00–22:30',
+    knownFor: 'A casual French brasserie with dishes such as steak frites and beef cheek bourguignon.',
+    fit: 'The practical backup straight off the Tube at Sloane Square.',
+    booking: 'Nothing is booked; check the venue directly for current availability.',
+    tradeoff: 'The published hours are restaurant hours, not separately stated kitchen hours.',
+    source: 'https://www.cote.co.uk/restaurant/sloane-square'
+  }
+];
+
 const DAYS = [
   {
     id: 'thu', date: '20261008', label: 'Thursday', theme: 'Arrival & Chelsea',
@@ -160,7 +179,7 @@ const DAYS = [
       { start: '09:30', end: '13:00', title: 'Royal London walk', place: 'Westminster, London', tag: 'On foot + Tube', summary: 'Sloane Square to the landmarks of Westminster.', details: 'Take the District line from Sloane Square to St James’s Park. Walk Buckingham Palace → St James’s Park → Westminster Abbey → Big Ben → Whitehall.', directions: { origin: 'Buckingham Palace', destination: 'Whitehall London', mode: 'walking', waypoints: ['St James’s Park London','Westminster Abbey','Big Ben'] } },
       { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
       { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials, with an optional shop-by-shop route.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] }, coventGuide: true },
-      { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Covent Garden London', tag: 'Choose one · nothing booked', summary: 'Blacklock for chops, steaks and sharing sides; Pizza Pilgrims for casual Italian; or Seven Dials Market for varied tastes.', details: 'Target an 18:00 seating and aim to finish around 19:45–20:00 before heading to Mayfair for roughly 20:30, or Bar Antoine around 20:45. Times are estimates and nothing is booked.', dinnerGuide: true },
+      { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Covent Garden London', tag: 'Choose one · nothing booked', summary: 'Sartori for pasta and Neapolitan pizza; Pizza Pilgrims for a pizza-focused meal; or Seven Dials Market for varied tastes.', details: 'Target an 18:00 seating and aim to finish around 19:45–20:00 before heading to Mayfair for roughly 20:30, or Bar Antoine around 20:45. Times are estimates and nothing is booked.', dinnerGuide: true },
       { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 leads a broader shortlist of polished cocktail options.', details: 'Choose by mood, location and travel. The optional Saturday Scarfes nightcap remains a separate choice after Dishoom.', barsCta: true }
     ]
   },
@@ -183,7 +202,7 @@ const DAYS = [
   {
     id: 'sun', date: '20261011', label: 'Sunday', theme: 'Eagles day & an early night',
     planningAlert: 'Passyunk is in Fitzrovia, central London—not near Tottenham Hotspur Stadium in north London. Allow an estimated 60–75 minutes between them by Tube and walking.',
-    planningNote: 'Passyunk is the chosen pregame stop, not a stadium fan zone or a short walk from the ground. Tailgate tickets are currently listed at £20 per person and are not booked; anyone skipping it can go directly to Tottenham. Suggested stadium entry is 13:45, 45 minutes before kickoff, with a target of being seated by 14:20. Target home remains 19:30–20:00.',
+    planningNote: 'Passyunk is the chosen pregame stop, not a stadium fan zone or a short walk from the ground. Tailgate tickets are currently listed at £20 per person and are not booked; anyone skipping it can go directly to Tottenham. Suggested stadium entry is 13:45, 45 minutes before kickoff, with a target of being seated by 14:20. Plan to be back in Chelsea around 19:30–20:00.',
     routeStrip: 'Chelsea → Passyunk, Fitzrovia → Tottenham stadium',
     alternative: true,
     events: [
@@ -194,9 +213,9 @@ const DAYS = [
       { start: '13:30', end: '13:45', title: 'Find the ticket entrance', place: 'Tottenham Hotspur Stadium', tag: 'Outside buffer', summary: 'Use the NFL ticket instructions and skip photos if queues build.', details: 'This is a brief planning buffer, not a booked tour or event activation.', uid: 'sunday-stadium-photos-20261011@london-field-guide' },
       { start: '13:45', end: '14:20', title: 'Security & find our seats', place: 'Tottenham Hotspur Stadium', tag: 'Suggested entry · 45 minutes before kickoff', summary: 'Use the entrance and instructions on the NFL ticket; target being seated by 14:20.', details: 'The 13:45 arrival is our suggested target, not an official mandated entry time. Follow the ticket and current game-day guidance.', uid: 'sunday-stadium-entry-20261011@london-field-guide' },
       { start: '14:30', end: '17:45', title: 'Eagles vs Jaguars', place: 'Tottenham Hotspur Stadium', tag: 'Kickoff · 14:30 BST', summary: 'Philadelphia Eagles vs Jacksonville Jaguars.', details: 'Approximate finish; overtime could run later. Kickoff is confirmed by the official Eagles schedule release.', source: 'https://www.philadelphiaeagles.com/news/eagles-jaguars-nfl-london-games-tottenham-hotspur-stadium-2026-schedule-release', sourceLabel: 'Official game details', uid: '20261011-3@london-field-guide' },
-      { start: '17:45', end: '20:00', title: 'Return to Chelsea', place: 'Chelsea, London', tag: 'Target home 19:30–20:00', summary: 'Allow for stadium exit, queues and the walk back to Seven Sisters.', details: 'Walk to Seven Sisters → Victoria line south to Victoria → District or Circle line west to Sloane Square. The home time is a planning estimate; check TfL and follow steward directions.', directions: { origin: 'Tottenham Hotspur Stadium', destination: 'Sloane Square Station', mode: 'transit' }, tfl: true, uid: 'sunday-return-chelsea-20261011@london-field-guide' },
-      { start: '20:00', end: '20:45', title: 'Easy dinner at home', place: 'Chelsea, London', tag: 'Flexible timing', summary: 'Takeaway or local pickup; move earlier if everyone gets home sooner.', uid: 'sunday-easy-dinner-20261011@london-field-guide' },
-      { start: '20:45', end: '21:30', title: 'Pack & wind down', place: 'Chelsea, London', tag: 'Early night', summary: 'Confirm Monday transfer and check-in, get bags ready, then call it a night.', uid: 'sunday-pack-20261011@london-field-guide' }
+      { start: '17:45', end: '20:00', title: 'Return to Chelsea', place: 'Chelsea, London', tag: 'Back in Chelsea 19:30–20:00', summary: 'Allow for stadium exit, queues and the walk back to Seven Sisters.', details: 'Walk to Seven Sisters → Victoria line south to Victoria → District or Circle line west to Sloane Square. The Chelsea arrival time is a planning estimate; check TfL and follow steward directions.', directions: { origin: 'Tottenham Hotspur Stadium', destination: 'Sloane Square Station', mode: 'transit' }, tfl: true, uid: 'sunday-return-chelsea-20261011@london-field-guide' },
+      { start: '20:00', end: '21:00', title: 'Casual dinner in Chelsea', place: 'Chelsea, London', tag: 'Flexible · nothing booked', summary: 'The Enterprise for a relaxed local pub dinner, with Côte Sloane Square as the practical Tube-side backup.', details: 'Move dinner earlier if the return from Tottenham is quicker. Choose one relaxed meal on the way back to the Chelsea base.', sundayDinnerGuide: true, uid: 'sunday-easy-dinner-20261011@london-field-guide' },
+      { start: '21:00', end: '21:45', title: 'Back, pack & wind down', place: 'Chelsea, London', tag: 'Early night', summary: 'Walk back, confirm Monday transfer and check-in, get bags ready, then call it a night.', uid: 'sunday-pack-20261011@london-field-guide' }
     ]
   }
 ];
@@ -258,13 +277,27 @@ function boroughGuideMarkup(plan = 'breakfast') {
 
 function fridayDinnerGuideMarkup() {
   return `<details class="dinner-guide">
-    <summary><span>Dinner guide · Blacklock / Pizza Pilgrims / Seven Dials Market</span><span aria-hidden="true">＋</span></summary>
+    <summary><span>Dinner guide · Sartori / Pizza Pilgrims / Seven Dials Market</span><span aria-hidden="true">＋</span></summary>
     <div class="dinner-guide__inner">
-      <p class="dinner-guide__intro"><strong>Choose one:</strong> Blacklock is my Friday pick for chops, steaks and sharing sides in a casual seated format; Pizza Pilgrims is the easiest casual Italian choice; Seven Dials Market offers the most variety. Target 18:00 and aim to finish by 19:45–20:00 before heading toward Mayfair. Nothing is booked.</p>
+      <p class="dinner-guide__intro"><strong>Choose one:</strong> Sartori is my Friday pick for a table that wants both pasta and Neapolitan pizza; Pizza Pilgrims is the pizza-focused alternative; Seven Dials Market offers the most variety. Target 18:00 and aim to finish by 19:45–20:00 before heading toward Mayfair. Nothing is booked.</p>
       <div class="dinner-option-grid">${FRIDAY_DINNER_OPTIONS.map((option, index) => `<article class="dinner-option${index === 0 ? ' dinner-option--recommended' : ''}">
         ${index === 0 ? '<p class="dinner-option__flag">My Friday pick</p>' : ''}<h4>${escapeHtml(option.name)}</h4>
         <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>Why it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(option.hours)}</dd></div><div><dt>Booking</dt><dd>${escapeHtml(option.booking)}</dd></div><div><dt>Tradeoff</dt><dd>${escapeHtml(option.tradeoff)}</dd></div></dl>
-        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.source}" target="_blank" rel="noopener">Official venue details <span aria-hidden="true">↗</span></a><a href="${option.bookingSource}" target="_blank" rel="noopener">Booking terms <span aria-hidden="true">↗</span></a>${option.faqSource ? `<a href="${option.faqSource}" target="_blank" rel="noopener">FAQ <span aria-hidden="true">↗</span></a>` : ''}</div>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.source}" target="_blank" rel="noopener">Official venue details <span aria-hidden="true">↗</span></a><a href="${option.bookingSource}" target="_blank" rel="noopener">Booking terms <span aria-hidden="true">↗</span></a>${option.menuSource ? `<a href="${option.menuSource}" target="_blank" rel="noopener">Menu <span aria-hidden="true">↗</span></a>` : ''}${option.faqSource ? `<a href="${option.faqSource}" target="_blank" rel="noopener">FAQ <span aria-hidden="true">↗</span></a>` : ''}</div>
+      </article>`).join('')}</div>
+    </div>
+  </details>`;
+}
+
+function sundayDinnerGuideMarkup() {
+  return `<details class="dinner-guide sunday-dinner-guide">
+    <summary><span>Chelsea dinner guide · The Enterprise / Côte</span><span aria-hidden="true">＋</span></summary>
+    <div class="dinner-guide__inner">
+      <p class="dinner-guide__intro"><strong>Choose one relaxed dinner:</strong> The Enterprise is the local pub-and-restaurant pick; Côte is the practical French brasserie backup at Sloane Square. Move earlier if the journey back is quicker. Nothing is booked.</p>
+      <div class="dinner-option-grid sunday-dinner-grid">${SUNDAY_DINNER_OPTIONS.map((option, index) => `<article class="dinner-option${index === 0 ? ' dinner-option--recommended' : ''}">
+        ${index === 0 ? '<p class="dinner-option__flag">Sunday pick</p>' : ''}<h4>${escapeHtml(option.name)}</h4>
+        <dl><div><dt>Where</dt><dd>${escapeHtml(option.address)}</dd></div><div><dt>Known for</dt><dd>${escapeHtml(option.knownFor)}</dd></div><div><dt>Why it fits</dt><dd>${escapeHtml(option.fit)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(option.hours)}</dd></div><div><dt>Booking</dt><dd>${escapeHtml(option.booking)}</dd></div><div><dt>Tradeoff</dt><dd>${escapeHtml(option.tradeoff)}</dd></div></dl>
+        <div class="dinner-option__links"><a href="${mapsUrl(option.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${option.source}" target="_blank" rel="noopener">Official venue details <span aria-hidden="true">↗</span></a>${option.menuSource ? `<a href="${option.menuSource}" target="_blank" rel="noopener">Menu <span aria-hidden="true">↗</span></a>` : ''}</div>
       </article>`).join('')}</div>
     </div>
   </details>`;
@@ -315,6 +348,7 @@ function eventMarkup(event, dayId, index) {
       ${event.boroughGuide ? boroughGuideMarkup(event.boroughGuide === 'lunch' ? 'lunch' : 'breakfast') : ''}
       ${event.coventGuide ? coventGardenGuideMarkup() : ''}
       ${event.dinnerGuide ? fridayDinnerGuideMarkup() : ''}
+      ${event.sundayDinnerGuide ? sundayDinnerGuideMarkup() : ''}
     </article>
   </li>`;
 }
