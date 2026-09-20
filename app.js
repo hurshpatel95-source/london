@@ -133,6 +133,15 @@ const FRIDAY_DINNER_OPTIONS = [
   }
 ];
 
+const COVENT_GARDEN_STOPS = [
+  { name: 'Twinings flagship store', address: '216 Strand London WC2R 1AP', time: '15–20 min', hours: 'Friday · 11:00–18:00', why: 'A historic flagship with more than 300 years of history, a tea sampling bar and gifts. It is a useful first stop on the way from the Fleet Street lunch, just outside Covent Garden.', source: 'https://twinings.co.uk/pages/twinings-flagship-store-216-strand' },
+  { name: 'The Whisky Exchange', address: '2 Bedford Street London WC2E 9HH', time: '15–20 min', hours: 'Friday · 11:00–19:00', why: 'Whisky, rum, tequila, gin, interesting bottles and expert advice. A strong fit for cocktail interests.', source: 'https://www.thewhiskyexchange.com/components/shop/pages/coventgarden.aspx' },
+  { name: 'Apple Market & Piazza', address: 'Covent Garden Market Building London WC2E 8RF', time: '20–30 min', hours: 'Browse during the afternoon; individual stall hours vary', why: 'The classic Covent Garden browse. Friday’s market focuses on handmade jewellery, artwork and crafts; antiques are the Monday market.', source: 'https://www.coventgarden.london/Shop/Markets' },
+  { name: 'Mr Jones Watches', address: '53a Neal Street London WC2H 9PJ', time: '10–15 min', hours: 'Friday · 10:00–19:00', why: 'Playful, artist-designed watches, including one-off development and sample pieces in the shop. A quick browse if watches or design appeal.', source: 'https://mrjoneswatches.com/pages/mr-jones-watches-flagship-store' },
+  { name: 'Neal’s Yard Dairy', address: '17 Shorts Gardens London WC2H 9AT', time: '15–20 min', hours: 'Friday · 10:30–18:30', why: 'British and Irish cheeses with knowledgeable cheesemongers. This is my strongest food-shop pick.', source: 'https://www.nealsyarddairy.co.uk/pages/store-locator' },
+  { name: 'Neal’s Yard courtyard', address: 'Neal’s Yard London WC2H 9DP', time: 'Optional · 5–10 min', hours: 'Outdoor courtyard', why: 'A short wander and photo stop beside the dairy area.', source: 'https://www.coventgarden.london/experience/visit/neal-s-yard' }
+];
+
 const DAYS = [
   {
     id: 'thu', date: '20261008', label: 'Thursday', theme: 'Arrival & Chelsea',
@@ -150,7 +159,7 @@ const DAYS = [
     events: [
       { start: '09:30', end: '13:00', title: 'Royal London walk', place: 'Westminster, London', tag: 'On foot + Tube', summary: 'Sloane Square to the landmarks of Westminster.', details: 'Take the District line from Sloane Square to St James’s Park. Walk Buckingham Palace → St James’s Park → Westminster Abbey → Big Ben → Whitehall.', directions: { origin: 'Buckingham Palace', destination: 'Whitehall London', mode: 'walking', waypoints: ['St James’s Park London','Westminster Abbey','Big Ben'] } },
       { start: '13:00', end: '14:30', title: 'Lunch at Ye Olde Cheshire Cheese', place: 'Ye Olde Cheshire Cheese, 145 Fleet Street London', tag: 'Historic pub', summary: 'A Fleet Street institution, rebuilt in 1667.', details: '145 Fleet Street. Settle into one of the old wood-panelled rooms for lunch.' },
-      { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] } },
+      { start: '15:00', end: '17:30', title: 'Covent Garden stroll', place: 'Covent Garden London', tag: 'Wander', summary: 'Piazza, Neal’s Yard and Seven Dials, with an optional shop-by-shop route.', details: 'Leave room for shops, street performers, and a slow loop through the colourful courtyard at Neal’s Yard.', directions: { origin: 'Covent Garden Piazza', destination: 'Seven Dials London', mode: 'walking', waypoints: ["Neal's Yard London"] }, coventGuide: true },
       { start: '18:00', end: '20:00', title: 'Casual group dinner', place: 'Covent Garden London', tag: 'Choose one · nothing booked', summary: 'Blacklock for chops, steaks and sharing sides; Pizza Pilgrims for casual Italian; or Seven Dials Market for varied tastes.', details: 'Target an 18:00 seating and aim to finish around 19:45–20:00 before heading to Mayfair for roughly 20:30, or Bar Antoine around 20:45. Times are estimates and nothing is booked.', dinnerGuide: true },
       { start: '20:00', title: 'Friday cocktails', place: 'London', tag: 'Mayfair recommendation', summary: 'The Connaught around 20:30 leads a broader shortlist of polished cocktail options.', details: 'Choose by mood, location and travel. The optional Saturday Scarfes nightcap remains a separate choice after Dishoom.', barsCta: true }
     ]
@@ -261,6 +270,22 @@ function fridayDinnerGuideMarkup() {
   </details>`;
 }
 
+function coventGardenGuideMarkup() {
+  return `<details class="covent-guide">
+    <summary><span>Suggested route &amp; shops</span><span aria-hidden="true">＋</span></summary>
+    <div class="covent-guide__inner">
+      <p class="covent-guide__route"><strong>Suggested order:</strong> Cheshire Cheese lunch → Twinings → The Whisky Exchange → Piazza &amp; Apple Market → Mr Jones Watches → Neal’s Yard Dairy &amp; courtyard → dinner.</p>
+      <p class="covent-guide__intro">Choose the stops that appeal. Prioritise Neal’s Yard Dairy, The Whisky Exchange and the Piazza if time is short. Twinings sits just outside Covent Garden and works naturally en route from Fleet Street. Browsing times are estimates; regular Friday opening hours were checked 20 September 2026.</p>
+      <div class="covent-stop-grid">${COVENT_GARDEN_STOPS.map(stop => `<article class="covent-stop">
+        <h4>${escapeHtml(stop.name)}</h4>
+        <p>${escapeHtml(stop.why)}</p>
+        <dl><div><dt>Where</dt><dd>${escapeHtml(stop.address)}</dd></div><div><dt>Browse</dt><dd>${escapeHtml(stop.time)}</dd></div><div><dt>Hours</dt><dd>${escapeHtml(stop.hours)}</dd></div></dl>
+        <div class="covent-stop__links"><a href="${mapsUrl(stop.address)}" target="_blank" rel="noopener">Map <span aria-hidden="true">↗</span></a><a href="${stop.source}" target="_blank" rel="noopener">Official details <span aria-hidden="true">↗</span></a></div>
+      </article>`).join('')}</div>
+    </div>
+  </details>`;
+}
+
 function eventMarkup(event, dayId, index) {
   const detailId = `details-${dayId}-${index}`;
   const options = event.options || [];
@@ -288,6 +313,7 @@ function eventMarkup(event, dayId, index) {
       <div class="event__links">${links}</div>
       ${expandedContent ? `<div class="event__details" id="${detailId}" hidden>${expandedContent}</div>` : ''}
       ${event.boroughGuide ? boroughGuideMarkup(event.boroughGuide === 'lunch' ? 'lunch' : 'breakfast') : ''}
+      ${event.coventGuide ? coventGardenGuideMarkup() : ''}
       ${event.dinnerGuide ? fridayDinnerGuideMarkup() : ''}
     </article>
   </li>`;

@@ -147,6 +147,23 @@ main { padding-block: 12px 64px; }
 .dinner-option dd { margin: .1rem 0 0; font-size: 13px; }
 .dinner-option__links { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: 10px; }
 .dinner-option__links a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
+.covent-guide { margin-top: 1rem; border: 1px solid var(--green); background: var(--paper); }
+.covent-guide > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 46px; padding: .65rem .8rem; color: var(--green); font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
+.covent-guide > summary::-webkit-details-marker { display: none; }
+.covent-guide[open] > summary > span:last-child { transform: rotate(45deg); }
+.covent-guide__inner { padding: 12px; border-top: 1px solid var(--line); }
+.covent-guide__route { margin: 0 0 .55rem; padding-left: 10px; border-left: 3px solid var(--copper); font-size: 14px; }
+.covent-guide__intro { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.covent-stop-grid { display: grid; gap: 8px; }
+.covent-stop { min-width: 0; padding: 12px; border: 1px solid var(--line); background: #f9f6ee; }
+.covent-stop h4 { margin: 0 0 .45rem; font: 400 1.3rem/1.1 "Libre Caslon Display", Georgia, serif; color: var(--green); }
+.covent-stop > p { margin: .4rem 0 .7rem; color: var(--muted); font-size: 14px; }
+.covent-stop dl { display: grid; gap: 1px; margin: 0; background: var(--line); }
+.covent-stop dl div { padding: .45rem .6rem; background: white; }
+.covent-stop dt { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.covent-stop dd { margin: .08rem 0 0; font-size: 13px; }
+.covent-stop__links { display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: 10px; }
+.covent-stop__links a { color: var(--green); font-size: 13px; font-weight: 700; text-underline-offset: 3px; }
 .borough-later { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .borough-later > p { margin: -.25rem 0 12px; color: var(--muted); font-size: 14px; }
 .badge { display: inline-block; margin-top: .25rem; padding: .2rem .55rem; border-radius: 999px; background: #e5eee8; color: var(--green); font-size: 14px; font-weight: 700; }
@@ -239,6 +256,7 @@ main { padding-block: 12px 64px; }
   .bar-grid { grid-template-columns: repeat(2, 1fr); }
   .borough-pick-grid { grid-template-columns: repeat(2, 1fr); }
   .dinner-option-grid { grid-template-columns: repeat(3, 1fr); }
+  .covent-stop-grid { grid-template-columns: repeat(2, 1fr); }
   .compare-grid { grid-template-columns: repeat(3, 1fr); }
   .pub-swap-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -289,6 +307,9 @@ main { padding-block: 12px 64px; }
   .event:has(.dinner-guide), .dinner-guide { break-inside: auto; }
   .dinner-option { break-inside: avoid; }
   .dinner-guide > .dinner-guide__inner { display: block !important; }
+  .event:has(.covent-guide), .covent-guide { break-inside: auto; }
+  .covent-stop { break-inside: avoid; }
+  .covent-guide > .covent-guide__inner { display: block !important; }
   .sunday-note, .route-alternative { break-inside: avoid; }
   .route-alternative > div { display: block !important; }
 }
